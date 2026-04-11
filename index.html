@@ -1,216 +1,284 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="zh">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-container-highest": "#e2e2e2",
-                    "primary-container": "#3b3b3b",
-                    "on-tertiary-container": "#ffffff",
-                    "on-tertiary-fixed": "#ffffff",
-                    "on-primary-container": "#ffffff",
-                    "on-error-container": "#410002",
-                    "surface-variant": "#e2e2e2",
-                    "on-secondary-fixed": "#00201b",
-                    "primary-fixed-dim": "#474747",
-                    "on-tertiary-fixed-variant": "#d5e3ff",
-                    "on-primary": "#e2e2e2",
-                    "on-surface": "#1a1c1c",
-                    "error-container": "#ffdad6",
-                    "surface": "#f9f9f9",
-                    "on-secondary": "#ffffff",
-                    "primary-fixed": "#5e5e5e",
-                    "secondary-container": "#7fe6d3",
-                    "on-secondary-container": "#00201b",
-                    "inverse-surface": "#2f3131",
-                    "on-surface-variant": "#474747",
-                    "outline-variant": "#c6c6c6",
-                    "secondary-fixed-dim": "#53bcaa",
-                    "primary": "#000000",
-                    "tertiary-fixed": "#3a5f94",
-                    "inverse-primary": "#c6c6c6",
-                    "tertiary": "#0f3c6e",
-                    "secondary-fixed": "#71d8c5",
-                    "on-primary-fixed-variant": "#e2e2e2",
-                    "on-error": "#ffffff",
-                    "on-background": "#1a1c1c",
-                    "surface-container-low": "#f3f3f4",
-                    "error": "#ba1a1a",
-                    "inverse-on-surface": "#f0f1f1",
-                    "surface-container-lowest": "#ffffff",
-                    "secondary": "#006b5e",
-                    "outline": "#777777",
-                    "on-secondary-fixed-variant": "#00443b",
-                    "background": "#f9f9f9",
-                    "surface-container-high": "#e8e8e8",
-                    "surface-dim": "#dadada",
-                    "surface-container": "#eeeeee",
-                    "surface-bright": "#f9f9f9",
-                    "tertiary-container": "#5176ac",
-                    "on-tertiary": "#d5e3ff",
-                    "surface-tint": "#5e5e5e",
-                    "on-primary-fixed": "#ffffff",
-                    "tertiary-fixed-dim": "#1f477a"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "fontFamily": {
-                    "headline": ["Manrope"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
-          },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-container-highest": "#e2e2e2",
+          "primary-container": "#3b3b3b",
+          "on-tertiary-container": "#ffffff",
+          "on-tertiary-fixed": "#ffffff",
+          "on-primary-container": "#ffffff",
+          "on-error-container": "#410002",
+          "surface-variant": "#e2e2e2",
+          "on-secondary-fixed": "#00201b",
+          "primary-fixed-dim": "#474747",
+          "on-tertiary-fixed-variant": "#d5e3ff",
+          "on-primary": "#e2e2e2",
+          "on-surface": "#1a1c1c",
+          "error-container": "#ffdad6",
+          "surface": "#f9f9f9",
+          "on-secondary": "#ffffff",
+          "primary-fixed": "#5e5e5e",
+          "secondary-container": "#7fe6d3",
+          "on-secondary-container": "#00201b",
+          "inverse-surface": "#2f3131",
+          "on-surface-variant": "#474747",
+          "outline-variant": "#c6c6c6",
+          "secondary-fixed-dim": "#53bcaa",
+          "primary": "#000000",
+          "tertiary-fixed": "#3a5f94",
+          "inverse-primary": "#c6c6c6",
+          "tertiary": "#0f3c6e",
+          "secondary-fixed": "#71d8c5",
+          "on-primary-fixed-variant": "#e2e2e2",
+          "on-error": "#ffffff",
+          "on-background": "#1a1c1c",
+          "surface-container-low": "#f3f3f4",
+          "error": "#ba1a1a",
+          "inverse-on-surface": "#f0f1f1",
+          "surface-container-lowest": "#ffffff",
+          "secondary": "#006b5e",
+          "outline": "#777777",
+          "on-secondary-fixed-variant": "#00443b",
+          "background": "#f9f9f9",
+          "surface-container-high": "#e8e8e8",
+          "surface-dim": "#dadada",
+          "surface-container": "#eeeeee",
+          "surface-bright": "#f9f9f9",
+          "tertiary-container": "#5176ac",
+          "on-tertiary": "#d5e3ff",
+          "surface-tint": "#5e5e5e",
+          "on-primary-fixed": "#ffffff",
+          "tertiary-fixed-dim": "#1f477a"
         },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        fontFamily: {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
         }
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
-        .tonal-shift-bottom { box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05); }
-    </style>
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+
+  /* Brand gradient text */
+  .brand-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero headline gradient */
+  .hero-title {
+    background: linear-gradient(160deg, #ffffff 0%, #ffffff 40%, #777777 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Grid texture */
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Scroll animation */
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(6px); opacity: 0.9; }
+  }
+  .scroll-bounce { animation: scrollBounce 2.2s ease-in-out infinite; }
+
+  /* Article row hover slide */
+  .article-row { transition: padding-left 0.3s ease, background 0.3s ease; }
+  .article-row:hover { padding-left: 1.5rem; background-color: rgba(0,0,0,0.02); }
+</style>
 </head>
 <body class="bg-surface text-on-surface selection:bg-secondary-container">
-<!-- Top Navigation Bar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-[0_40px_40px_rgba(0,0,0,0.04)]">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
-<div class="text-xl font-bold tracking-tighter text-black dark:text-white">MANUSCRIPT</div>
-<div class="hidden md:flex items-center space-x-12">
-<a class="font-['Manrope'] tracking-[0.1em] text-[12px] uppercase font-medium text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 hover:text-black dark:hover:text-white transition-colors duration-300" href="#">首页</a>
-<a class="font-['Manrope'] tracking-[0.1em] text-[12px] uppercase font-medium text-zinc-500 dark:text-zinc-400 pb-1 hover:text-black dark:hover:text-white transition-colors duration-300" href="article.html">博客</a>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-black dark:text-white">menu</button>
-</div>
-</div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-black/15 backdrop-blur-xl">
+  <div class="flex justify-between items-center px-10 py-5">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-sm bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
+        <span class="text-white font-extrabold text-base font-['Manrope'] leading-none">H</span>
+      </div>
+      <div class="brand-gradient text-2xl font-extrabold tracking-[0.28em] uppercase font-['Manrope']">海外发行</div>
+    </div>
+  </div>
 </nav>
-<main>
-<!-- SCREEN 1: Hero Section -->
-<section class="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-<div class="max-w-5xl text-center">
-<h1 class="text-[clamp(2.5rem,8vw,5.5rem)] font-extrabold tracking-[-0.03em] leading-[0.9] text-primary mb-10">掌握全球游戏发行</h1>
-<div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-12">
-<p class="text-on-surface-variant max-w-md text-lg leading-relaxed font-light">面向高品质 PC 和移动端游戏的战略级发行框架。我们将复杂的代码转化为全球性的文化现象。</p>
-<div class="h-px w-12 bg-outline-variant/30 hidden md:block"></div>
-<div class="flex flex-col items-start text-left">
-<span class="text-[10px] tracking-[0.2em] font-bold uppercase text-secondary mb-2">卓越服务</span>
-<span class="font-medium text-primary">跨平台优化</span>
-</div>
-</div>
-</div>
-<!-- Hero Floating Element -->
-<div class="mt-24 opacity-20">
-<span class="material-symbols-outlined text-[120px] font-thin">grid_guides</span>
-</div>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen overflow-hidden bg-black">
+  <!-- Background image + overlays -->
+  <div class="absolute inset-0">
+    <img
+      class="w-full h-full object-cover opacity-25"
+      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxeAJxu5IXF_WEORrqnMO25js6DoVBpif2GtcdQ1_BOTpWCY2p4m5ehOBwmzt4g8FoHClVdc-K86HxID-q8kGWa83PzK5rVTVzKD1TskrAstStDyGr8ZbOt1FSNuitkOovYalbHO41MGtadqRvvR6kwpPbreQtNMSF9uPuo1VAte6XYJ5F-ubAJthfX6bUE5C6PO_xv3NM8zvbmv1L8N9VNFlcPBU1ZdI7cxEUyiUlE752FAiX-xsdC5enD40uj5jKWfcuETNtBSAW"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-black/88 to-black/55"></div>
+    <div class="grid-overlay absolute inset-0"></div>
+  </div>
+
+  <!-- Ambient glow orbs -->
+  <div class="absolute top-1/3 right-1/4 w-[480px] h-[480px] bg-[#006b5e]/12 rounded-full blur-[130px] pointer-events-none"></div>
+  <div class="absolute bottom-1/3 left-1/5 w-[320px] h-[320px] bg-[#0f3c6e]/18 rounded-full blur-[90px] pointer-events-none"></div>
+
+  <!-- Hero content -->
+  <div class="relative z-10 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-8">
+    <div class="max-w-4xl">
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-8 h-px bg-[#53bcaa]"></div>
+        <span class="text-[#53bcaa] text-[11px] tracking-[0.3em] uppercase font-semibold font-['Manrope']">Global Game Publishing</span>
+      </div>
+
+      <!-- Main headline -->
+      <h1 class="hero-title font-['Manrope'] font-extrabold tracking-[-0.04em] leading-[0.88]" style="font-size: clamp(3.5rem,10vw,7.5rem);">
+        掌握全球<br/>游戏发行
+      </h1>
+
+      <!-- Description -->
+      <p class="text-white/45 max-w-lg text-lg leading-relaxed font-light mt-10 font-['Inter']">
+        面向高品质 PC 和移动端游戏的战略级发行框架。<br/>我们将复杂的代码转化为全球性的文化现象。
+      </p>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      <span class="text-white/25 text-[9px] tracking-[0.3em] uppercase font-['Manrope']">Scroll</span>
+      <div class="scroll-bounce text-white/30">
+        <span class="material-symbols-outlined text-xl">expand_more</span>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- SCREEN 2: Projects & Insights -->
+
+<!-- Projects Section -->
 <section class="bg-surface-container-low py-32 px-6">
-<div class="max-w-7xl mx-auto">
-<div class="flex justify-between items-end mb-16">
-<div>
-<span class="text-[10px] tracking-[0.2em] font-bold uppercase text-on-surface-variant block mb-4">精选作品集</span>
-<h2 class="text-4xl font-bold tracking-tight">精选案例</h2>
-</div>
-<div class="flex gap-4">
-<button class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white transition-all">
-<span class="material-symbols-outlined">arrow_back</span>
-</button>
-<button class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white transition-all">
-<span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-</div>
-<!-- Simple Slider / Carousel -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
-<!-- Project 1 -->
-<a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest block cursor-pointer">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" data-alt="Cinematic high-fidelity cyberpunk city game environment with neon signs and futuristic atmosphere in dark moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_srYNlY_tOOFlHu7FJzkcITIrtMEGZNwIqhcPdh1kCBDzRq1K2Q9WivXEserwhGNF3ypoonsa1cYLmLLya0BKQRHnDPLnOgKUyRkWBq1nbjKnSxUH5E4KRxV-wlvKWQr0xFrst74nRmFHy0mnKa-LoslOrT_CHPuj9mtFHLFoUVbg7nUPiy61Qq_b8PjJRZpK09BiVWuZhYszScLvBmunwMfr9YRYyc003i_Km_HK33oVX9jCFfty_FaBybW7JQwM97iE1IG1VtRd"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-8 left-8 text-white">
-<span class="text-[10px] tracking-widest uppercase opacity-70">动作冒险</span>
-<h3 class="text-xl font-bold mt-1">霓虹漂移</h3>
-</div>
-</a>
-<!-- Project 2 -->
-<a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest block cursor-pointer">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" data-alt="Minimalist top-down view of a pixel art game development setup with retro console and modern hardware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_V-xHOYsfxC3PZdbDDIb-C4_7-PwzjcG8I2fgQKN2Sx6lWU81ldaT-sIgK04kP_-CAsUWzrGm8xMpVb8zaZvi5HidlkW13eY5iwRDnXy3AeHAMa1ervaPqGL2mkREMs2aHprUcQS-jHdYjcwaiiH76C-_mn1QizCGjd--eL2i9Pftw3dBQbWS81OjZ1hUB5S_5jM0S36PQAzl_iywLWscn1ygaS5oCqV1GS5t9Fksn_ovAfNkd9xEmwkndQ3GDazsDwvx6L87nMJ7"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-8 left-8 text-white">
-<span class="text-[10px] tracking-widest uppercase opacity-70">益智策略</span>
-<h3 class="text-xl font-bold mt-1">逻辑虚空</h3>
-</div>
-</a>
-<!-- Project 3 -->
-<a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest hidden md:block cursor-pointer">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" data-alt="Atmospheric ethereal abstract background with soft blue and green light gradients representing digital flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxeAJxu5IXF_WEORrqnMO25js6DoVBpif2GtcdQ1_BOTpWCY2p4m5ehOBwmzt4g8FoHClVdc-K86HxID-q8kGWa83PzK5rVTVzKD1TskrAstStDyGr8ZbOt1FSNuitkOovYalbHO41MGtadqRvvR6kwpPbreQtNMSF9uPuo1VAte6XYJ5F-ubAJthfX6bUE5C6PO_xv3NM8zvbmv1L8N9VNFlcPBU1ZdI7cxEUyiUlE752FAiX-xsdC5enD40uj5jKWfcuETNtBSAW"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-8 left-8 text-white">
-<span class="text-[10px] tracking-widest uppercase opacity-70">模拟经营</span>
-<h3 class="text-xl font-bold mt-1">轨道回声</h3>
-</div>
-</a>
-</div>
-<!-- Latest Insights -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-<div class="lg:col-span-4">
-<h2 class="text-4xl font-bold tracking-tight mb-6">最新见解</h2>
-<p class="text-on-surface-variant font-light leading-relaxed">深度剖析成功机制。从区域合规到玩家心理，我们记录行业的演变。</p>
-<button class="mt-12 group flex items-center gap-4 text-xs font-bold tracking-widest uppercase">查看所有文章<span class="w-10 h-px bg-primary transition-all group-hover:w-16"></span></button>
-</div>
-<div class="lg:col-span-8 flex flex-col">
-<!-- Insight List Items -->
-<div class="group py-10 px-4 border-b border-outline-variant/10 flex items-center justify-between hover:bg-surface-container-lowest transition-colors cursor-pointer">
-<div class="flex items-center gap-8">
-<span class="material-symbols-outlined text-secondary-fixed-dim">language</span>
-<h4 class="text-2xl font-light tracking-tight group-hover:font-medium transition-all">探索日本市场</h4>
-</div>
-<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-secondary">arrow_outward</span>
-</div>
-<div class="group py-10 px-4 border-b border-outline-variant/10 flex items-center justify-between hover:bg-surface-container-lowest transition-colors cursor-pointer">
-<div class="flex items-center gap-8">
-<span class="material-symbols-outlined text-secondary-fixed-dim">analytics</span>
-<h4 class="text-2xl font-light tracking-tight group-hover:font-medium transition-all">优化用户获取</h4>
-</div>
-<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-secondary">arrow_outward</span>
-</div>
-<div class="group py-10 px-4 border-b border-outline-variant/10 flex items-center justify-between hover:bg-surface-container-lowest transition-colors cursor-pointer">
-<div class="flex items-center gap-8">
-<span class="material-symbols-outlined text-secondary-fixed-dim">payments</span>
-<h4 class="text-2xl font-light tracking-tight group-hover:font-medium transition-all">2024年变现伦理</h4>
-</div>
-<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-secondary">arrow_outward</span>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-end mb-16">
+      <div>
+        <span class="text-[10px] tracking-[0.2em] font-bold uppercase text-on-surface-variant block mb-4">精选作品集</span>
+        <h2 class="text-4xl font-bold tracking-tight font-['Manrope']">精选案例</h2>
+      </div>
+      <div class="flex gap-4">
+        <button class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white transition-all">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <button class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white transition-all">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Project 1 -->
+      <a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest block cursor-pointer">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_srYNlY_tOOFlHu7FJzkcITIrtMEGZNwIqhcPdh1kCBDzRq1K2Q9WivXEserwhGNF3ypoonsa1cYLmLLya0BKQRHnDPLnOgKUyRkWBq1nbjKnSxUH5E4KRxV-wlvKWQr0xFrst74nRmFHy0mnKa-LoslOrT_CHPuj9mtFHLFoUVbg7nUPiy61Qq_b8PjJRZpK09BiVWuZhYszScLvBmunwMfr9YRYyc003i_Km_HK33oVX9jCFfty_FaBybW7JQwM97iE1IG1VtRd"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white">
+          <span class="text-[10px] tracking-widest uppercase opacity-70">动作冒险</span>
+          <h3 class="text-xl font-bold mt-1 font-['Manrope']">霓虹漂移</h3>
+        </div>
+      </a>
+      <!-- Project 2 -->
+      <a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest block cursor-pointer">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_V-xHOYsfxC3PZdbDDIb-C4_7-PwzjcG8I2fgQKN2Sx6lWU81ldaT-sIgK04kP_-CAsUWzrGm8xMpVb8zaZvi5HidlkW13eY5iwRDnXy3AeHAMa1ervaPqGL2mkREMs2aHprUcQS-jHdYjcwaiiH76C-_mn1QizCGjd--eL2i9Pftw3dBQbWS81OjZ1hUB5S_5jM0S36PQAzl_iywLWscn1ygaS5oCqV1GS5t9Fksn_ovAfNkd9xEmwkndQ3GDazsDwvx6L87nMJ7"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white">
+          <span class="text-[10px] tracking-widest uppercase opacity-70">益智策略</span>
+          <h3 class="text-xl font-bold mt-1 font-['Manrope']">逻辑虚空</h3>
+        </div>
+      </a>
+      <!-- Project 3 -->
+      <a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest hidden md:block cursor-pointer">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxeAJxu5IXF_WEORrqnMO25js6DoVBpif2GtcdQ1_BOTpWCY2p4m5ehOBwmzt4g8FoHClVdc-K86HxID-q8kGWa83PzK5rVTVzKD1TskrAstStDyGr8ZbOt1FSNuitkOovYalbHO41MGtadqRvvR6kwpPbreQtNMSF9uPuo1VAte6XYJ5F-ubAJthfX6bUE5C6PO_xv3NM8zvbmv1L8N9VNFlcPBU1ZdI7cxEUyiUlE752FAiX-xsdC5enD40uj5jKWfcuETNtBSAW"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white">
+          <span class="text-[10px] tracking-widest uppercase opacity-70">模拟经营</span>
+          <h3 class="text-xl font-bold mt-1 font-['Manrope']">轨道回声</h3>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
-</main>
+
+<!-- Article List Section -->
+<section class="py-32 px-6 bg-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16">
+      <span class="text-[10px] tracking-[0.2em] font-bold uppercase text-on-surface-variant block mb-4">深度内容</span>
+      <h2 class="text-4xl font-bold tracking-tight font-['Manrope']">最新文章</h2>
+    </div>
+    <div class="flex flex-col">
+      <!-- Article 1 -->
+      <a href="article.html" class="article-row group flex items-center justify-between py-8 px-4 border-b border-outline-variant/15">
+        <div class="flex items-start gap-8">
+          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase mt-1.5 w-24 shrink-0 hidden md:block font-['Inter']">2024-12-01</span>
+          <h3 class="text-xl md:text-2xl font-light tracking-tight group-hover:font-medium transition-all font-['Manrope']">探索日本游戏市场：机遇与挑战</h3>
+        </div>
+        <div class="flex items-center gap-4 shrink-0 ml-6">
+          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase md:hidden font-['Inter']">2024-12-01</span>
+          <span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant text-lg">arrow_outward</span>
+        </div>
+      </a>
+      <!-- Article 2 -->
+      <a href="article.html" class="article-row group flex items-center justify-between py-8 px-4 border-b border-outline-variant/15">
+        <div class="flex items-start gap-8">
+          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase mt-1.5 w-24 shrink-0 hidden md:block font-['Inter']">2024-11-15</span>
+          <h3 class="text-xl md:text-2xl font-light tracking-tight group-hover:font-medium transition-all font-['Manrope']">优化用户获取：全球化视角与本地化策略</h3>
+        </div>
+        <div class="flex items-center gap-4 shrink-0 ml-6">
+          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase md:hidden font-['Inter']">2024-11-15</span>
+          <span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant text-lg">arrow_outward</span>
+        </div>
+      </a>
+      <!-- Article 3 -->
+      <a href="article.html" class="article-row group flex items-center justify-between py-8 px-4 border-b border-outline-variant/15">
+        <div class="flex items-start gap-8">
+          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase mt-1.5 w-24 shrink-0 hidden md:block font-['Inter']">2024-10-24</span>
+          <h3 class="text-xl md:text-2xl font-light tracking-tight group-hover:font-medium transition-all font-['Manrope']">2024 年变现伦理：玩家优先的可持续策略</h3>
+        </div>
+        <div class="flex items-center gap-4 shrink-0 ml-6">
+          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase md:hidden font-['Inter']">2024-10-24</span>
+          <span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant text-lg">arrow_outward</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
-<footer class="w-full py-12 mt-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6">
-<div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-900 dark:text-zinc-100">
-                © 2024 THE CURATED MANUSCRIPT
-            </div>
-<div class="flex gap-12">
-<a class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white underline decoration-zinc-200 underline-offset-4 transition-all duration-500 ease-in-out" href="#">照片墙</a>
-<a class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white underline decoration-zinc-200 underline-offset-4 transition-all duration-500 ease-in-out" href="#">领英</a>
-<a class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white underline decoration-zinc-200 underline-offset-4 transition-all duration-500 ease-in-out" href="#">联系我们</a>
-</div>
-</div>
+<footer class="w-full py-12 bg-zinc-50 border-t border-zinc-100">
+  <div class="flex items-center justify-center px-12 max-w-7xl mx-auto">
+    <div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400">© 2024 海外发行</div>
+  </div>
 </footer>
-</body></html>
+
+</body>
+</html>
