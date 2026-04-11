@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e2e2e2",
+                        "primary-container": "#3b3b3b",
+                        "on-tertiary-container": "#ffffff",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-primary-container": "#ffffff",
+                        "on-error-container": "#410002",
+                        "surface-variant": "#e2e2e2",
+                        "on-secondary-fixed": "#00201b",
+                        "primary-fixed-dim": "#474747",
+                        "on-tertiary-fixed-variant": "#d5e3ff",
+                        "on-primary": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9f9",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#5e5e5e",
+                        "secondary-container": "#7fe6d3",
+                        "on-secondary-container": "#00201b",
+                        "inverse-surface": "#2f3131",
+                        "on-surface-variant": "#474747",
+                        "outline-variant": "#c6c6c6",
+                        "secondary-fixed-dim": "#53bcaa",
+                        "primary": "#000000",
+                        "tertiary-fixed": "#3a5f94",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary": "#0f3c6e",
+                        "secondary-fixed": "#71d8c5",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "surface-container-low": "#f3f3f4",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f0f1f1",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#006b5e",
+                        "outline": "#777777",
+                        "on-secondary-fixed-variant": "#00443b",
+                        "background": "#f9f9f9",
+                        "surface-container-high": "#e8e8e8",
+                        "surface-dim": "#dadada",
+                        "surface-container": "#eeeeee",
+                        "surface-bright": "#f9f9f9",
+                        "tertiary-container": "#5176ac",
+                        "on-tertiary": "#d5e3ff",
+                        "surface-tint": "#5e5e5e",
+                        "on-primary-fixed": "#ffffff",
+                        "tertiary-fixed-dim": "#1f477a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-bottom {
+            box-shadow: 0 40px 40px rgba(0,0,0,0.04);
+        }
+        ::selection {
+            background-color: #71d8c5;
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-[0_40px_40px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<div class="text-xl font-bold tracking-tighter text-black dark:text-white">策展文稿</div>
+<!-- Navigation Links - Desktop -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Manrope'] tracking-[0.1em] text-[12px] uppercase font-medium text-zinc-500 dark:text-zinc-400 pb-1 hover:text-black dark:hover:text-white transition-colors duration-300" href="index.html">首页</a>
+<a class="font-['Manrope'] tracking-[0.1em] text-[12px] uppercase font-medium text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 hover:text-black dark:hover:text-white transition-colors duration-300" href="article.html">博客</a>
+</div>
+<!-- Trailing Action -->
+<button class="text-black dark:text-white active:opacity-70 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-0">
+<!-- Article Header -->
+<header class="max-w-4xl mx-auto mb-20">
+<div class="flex items-center gap-4 mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] tracking-widest uppercase font-bold px-2 py-1 rounded-sm">战略</span>
+<span class="text-on-surface-variant text-[10px] tracking-widest uppercase font-medium">2024年10月24日</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-primary mb-12 leading-[1.1]">选择的架构：定义数字发行中的质量</h1>
+<div class="aspect-[16/7] w-full overflow-hidden mb-16 rounded-lg grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Minimalist Architecture" class="w-full h-full object-cover" data-alt="Ultra-minimalist architectural detail showing white concrete angles against a clear sky with sharp geometric shadows and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNpXlXHqxlluLf-dLLnW6U4J-CYa_aJS_tPtcXRMM9d-pUeBWwMgaejHSJoWyhULptO4CSYxB8HMIH58qRoPXQmQmHo_2k56IdvkRZz3EBc5jhcWipCIWQja2P5vSEInHG-rhVdgoa2C8ncb-vUYBYtGfEsBZBlitwvryxsDYsQxzsFR320ka75pNQXn5n-AgKYDLRqwt8x4qRyMpT5ENOn9MndzVS7LhnjB2WK7Y74_2t99XQeznadAZCVnwSsSz5tevZux7ykegG"/>
+</div>
+</header>
+<!-- Article Content -->
+<article class="max-w-3xl mx-auto">
+<div class="space-y-12">
+<p class="text-2xl font-light text-on-surface leading-relaxed font-body">在无限滚动的时代，出版物的价值不再由其产出量衡量，而取决于其排除的严谨性。我们相信，我们选择<span class="bg-secondary-fixed/30 px-1">不发布</span>的内容与我们发布的内容同样重要。</p>
+<h2 class="font-headline text-3xl font-bold tracking-tight text-primary mt-16">编辑哲学</h2>
+<p class="text-lg text-on-surface-variant leading-loose font-body">
+                    The curated manuscript represents a shift away from algorithmic dominance towards human-centric strategy. When every game is available, no game feels essential. Our role is to restore that sense of necessity. We look for projects that don't just fill a niche, but create a new vernacular for the medium.
+                </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-16">
+<div class="p-8 bg-surface-container-lowest border border-outline-variant/10 rounded-sm">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h4 class="font-headline font-bold mb-2">目的性</h4>
+<p class="text-sm text-on-surface-variant">每一个元素都必须服务于一个目的。如果它不能增加清晰度，就是在增加噪音。</p>
+</div>
+<div class="p-8 bg-surface-container-lowest border border-outline-variant/10 rounded-sm">
+<span class="material-symbols-outlined text-tertiary-fixed text-3xl mb-4" data-icon="vignette">vignette</span>
+<h4 class="font-headline font-bold mb-2">氛围</h4>
+<p class="text-sm text-on-surface-variant">内容周围的空间决定了用户如何感知内容。</p>
+</div>
+</div>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-primary">新标准的核心原则</h3>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim shrink-0 mt-1" data-icon="radio_button_checked">radio_button_checked</span>
+<span class="text-lg text-on-surface-variant">非对称性作为视觉节奏和读者参与的工具。</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim shrink-0 mt-1" data-icon="radio_button_checked">radio_button_checked</span>
+<span class="text-lg text-on-surface-variant">最大化留白以优化阅读理解和减轻认知负担。</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim shrink-0 mt-1" data-icon="radio_button_checked">radio_button_checked</span>
+<span class="text-lg text-on-surface-variant">高对比度排版层级以引导用户注意力。</span>
+</li>
+</ul>
+<blockquote class="border-l-4 border-primary pl-8 py-4 my-16 italic text-2xl font-light text-primary">“设计是品牌无声的大使。在文稿中，设计就是油墨、纸张和思想本身。”</blockquote>
+<p class="text-lg text-on-surface-variant leading-loose font-body">结束我们对选择的探索时，我们必须认识到数字发行的未来不在于多，而在于精。通过遵循策展文稿的原则，我们创造出在屏幕关闭后仍能产生共鸣的体验。</p>
+</div>
+<!-- Navigation Action -->
+<div class="mt-24 pt-12 border-t border-outline-variant/20 flex flex-col items-start">
+<a class="group flex items-center gap-3 bg-primary text-on-primary px-8 py-4 rounded-sm transition-all duration-300 hover:bg-primary-fixed hover:-translate-y-1" href="#">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="font-['Inter'] text-[10px] tracking-widest uppercase font-bold">返回首页</span>
+</a>
+<p class="mt-12 text-[10px] tracking-widest text-zinc-400 uppercase">分享此文稿</p>
+<div class="flex gap-6 mt-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors uppercase text-[10px] font-bold tracking-widest" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors uppercase text-[10px] font-bold tracking-widest" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors uppercase text-[10px] font-bold tracking-widest" href="#">电子邮件</a>
+</div>
+</div>
+</article>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6 max-w-7xl mx-auto">
+<div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500">© 2024 策展文稿</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white underline decoration-zinc-200 underline-offset-4 transition-all duration-500 ease-in-out" href="#">© 2024 策展文稿</a>
+<a class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white underline decoration-zinc-200 underline-offset-4 transition-all duration-500 ease-in-out" href="#">LinkedIn</a>
+<a class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white underline decoration-zinc-200 underline-offset-4 transition-all duration-500 ease-in-out" href="#">联系我们</a>
+</div>
+</div>
+</footer>
+</body></html>
