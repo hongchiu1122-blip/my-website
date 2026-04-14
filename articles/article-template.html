@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="light" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-surface": "#1a1c1c",
+          "surface": "#f9f9f9",
+          "on-surface-variant": "#474747",
+          "outline-variant": "#c6c6c6",
+          "surface-container-low": "#f3f3f4"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem"
+        },
+        fontFamily: {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+
+  /* 导航 Logo 渐变（白色背景用深色） */
+  .brand-gradient {
+    background: linear-gradient(135deg, #111111 0%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  ::selection { background-color: #71d8c5; color: #000; }
+</style>
+
+<!-- ★ 修改1：浏览器标签标题（改成：文章标题 - 我的博客） -->
+<title>文章标题 - 我的博客</title>
+</head>
+<body class="bg-white text-on-surface antialiased">
+
+<!-- ===== 导航栏（白色背景版，用于文章页） ===== -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]">
+  <div class="flex items-center px-8 md:px-10 py-5">
+    <a href="../index.html" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-sm bg-black flex items-center justify-center shrink-0">
+        <span class="text-white font-extrabold text-base font-['Manrope'] leading-none">文</span>
+      </div>
+      <div class="brand-gradient text-xl md:text-2xl font-extrabold tracking-[0.2em] uppercase font-['Manrope']">我的博客</div>
+    </a>
+  </div>
+</nav>
+
+<!-- ===== 文章主体 ===== -->
+<main class="pt-28 pb-24">
+  <article class="max-w-3xl mx-auto px-6 md:px-0">
+
+    <!-- ===== 文章头部 ===== -->
+    <header class="mb-12 pt-8">
+
+      <!-- 分类标签 + 发布日期 -->
+      <div class="flex items-center gap-4 mb-6">
+        <!-- ★ 修改2：分类标签（如：随笔 / 生活 / 思考 / 旅行） -->
+        <span class="bg-zinc-100 text-zinc-600 text-[10px] tracking-widest uppercase font-bold px-3 py-1.5 rounded-sm font-['Inter']">
+          随笔
+        </span>
+        <!-- ★ 修改3：发布日期 -->
+        <span class="text-zinc-400 text-[11px] tracking-widest uppercase font-['Inter']">
+          2026年4月13日
+        </span>
+      </div>
+
+      <!-- ★ 修改4：文章标题 -->
+      <h1 class="font-['Manrope'] text-4xl md:text-6xl font-extrabold tracking-tight text-black leading-[1.1] mb-10">
+        在这里写你的文章标题
+      </h1>
+
+      <!-- 封面图片：把图片放到 articles/covers/ 文件夹，修改 src 为文件名 -->
+      <!-- 没有封面图时，删除下面整个 <div> 即可 -->
+      <div class="w-full overflow-hidden rounded-lg mb-12" style="aspect-ratio:16/7;">
+        <img
+          class="w-full h-full object-cover"
+          src="../articles/covers/placeholder.jpg"
+          alt="文章封面图片描述"
+          onerror="this.parentElement.style.background='linear-gradient(135deg,#e2e8f0,#94a3b8)'"
+        />
+      </div>
+
+    </header>
+
+    <!-- ===== 文章正文 ===== -->
+    <!-- 所有内容写在这个 <div> 里面 -->
+    <div class="space-y-8 text-[17px] leading-[1.85] text-zinc-700 font-['Inter']">
+
+      <!-- 引言段（较大字号，用于文章开头的概括） -->
+      <!-- ★ 修改5：引言段落（删掉或替换成你的开头） -->
+      <p class="text-xl md:text-2xl font-light text-black leading-relaxed">
+        这是文章的引言段落，字号较大、较浅，用来概括全文核心思想。
+        一两句话吸引读者读下去。
+      </p>
+
+      <!-- 小标题：用 <h2> -->
+      <!-- ★ 在这里继续写你的内容，用 <p> 写段落，用 <h2> 写小标题 -->
+      <h2 class="font-['Manrope'] text-2xl font-bold text-black pt-6">
+        第一节标题
+      </h2>
+
+      <!-- 正文段落：用 <p> -->
+      <p>
+        这是正文段落。每一段都用 &lt;p&gt; 标签包裹。段落之间会自动留有间距，不需要手动敲空行。把这段文字替换成你的内容即可。
+      </p>
+
+      <p>
+        继续写第二段内容。可以写很多段，直接在这里添加更多 &lt;p&gt; 标签。
+      </p>
+
+      <!-- 正文配图（可选）：删除或替换 src 为实际图片路径 -->
+      <!--
+      <div class="w-full overflow-hidden rounded-lg my-10" style="aspect-ratio:16/9;">
+        <img
+          class="w-full h-full object-cover"
+          src="covers/inline-image.jpg"
+          alt="图片描述"
+        />
+      </div>
+      -->
+
+      <!-- 第二个小标题 -->
+      <!--
+      <h2 class="font-['Manrope'] text-2xl font-bold text-black pt-6">
+        第二节标题
+      </h2>
+
+      <p>
+        继续写内容...
+      </p>
+      -->
+
+    </div>
+    <!-- 正文结束 -->
+
+    <!-- ===== 返回按钮 ===== -->
+    <div class="mt-16 pt-2">
+      <a href="../index.html" class="inline-flex items-center gap-3 text-zinc-500 hover:text-black transition-colors duration-300 group">
+        <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform duration-300">arrow_back</span>
+        <span class="font-['Inter'] text-[11px] tracking-widest uppercase font-semibold">返回首页</span>
+      </a>
+    </div>
+
+  </article>
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="w-full py-10 bg-zinc-50 border-t border-zinc-100">
+  <div class="flex items-center justify-center">
+    <!-- 修改：版权信息 -->
+    <div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400">© 2026 我的博客</div>
+  </div>
+</footer>
+
+</body>
+</html>
