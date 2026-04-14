@@ -12,53 +12,12 @@
     theme: {
       extend: {
         colors: {
-          "surface-container-highest": "#e2e2e2",
-          "primary-container": "#3b3b3b",
-          "on-tertiary-container": "#ffffff",
-          "on-tertiary-fixed": "#ffffff",
-          "on-primary-container": "#ffffff",
-          "on-error-container": "#410002",
-          "surface-variant": "#e2e2e2",
-          "on-secondary-fixed": "#00201b",
-          "primary-fixed-dim": "#474747",
-          "on-tertiary-fixed-variant": "#d5e3ff",
-          "on-primary": "#e2e2e2",
           "on-surface": "#1a1c1c",
-          "error-container": "#ffdad6",
           "surface": "#f9f9f9",
-          "on-secondary": "#ffffff",
-          "primary-fixed": "#5e5e5e",
-          "secondary-container": "#7fe6d3",
-          "on-secondary-container": "#00201b",
-          "inverse-surface": "#2f3131",
           "on-surface-variant": "#474747",
           "outline-variant": "#c6c6c6",
-          "secondary-fixed-dim": "#53bcaa",
-          "primary": "#000000",
-          "tertiary-fixed": "#3a5f94",
-          "inverse-primary": "#c6c6c6",
-          "tertiary": "#0f3c6e",
-          "secondary-fixed": "#71d8c5",
-          "on-primary-fixed-variant": "#e2e2e2",
-          "on-error": "#ffffff",
-          "on-background": "#1a1c1c",
-          "surface-container-low": "#f3f3f4",
-          "error": "#ba1a1a",
-          "inverse-on-surface": "#f0f1f1",
-          "surface-container-lowest": "#ffffff",
-          "secondary": "#006b5e",
-          "outline": "#777777",
-          "on-secondary-fixed-variant": "#00443b",
-          "background": "#f9f9f9",
-          "surface-container-high": "#e8e8e8",
-          "surface-dim": "#dadada",
-          "surface-container": "#eeeeee",
-          "surface-bright": "#f9f9f9",
-          "tertiary-container": "#5176ac",
-          "on-tertiary": "#d5e3ff",
-          "surface-tint": "#5e5e5e",
-          "on-primary-fixed": "#ffffff",
-          "tertiary-fixed-dim": "#1f477a"
+          "secondary-container": "#7fe6d3",
+          "primary": "#000000"
         },
         borderRadius: {
           "DEFAULT": "0.125rem",
@@ -82,15 +41,6 @@
   body { font-family: 'Inter', sans-serif; }
   h1, h2, h3 { font-family: 'Manrope', sans-serif; }
 
-  /* Brand gradient text */
-  .brand-gradient {
-    background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Hero headline gradient */
   .hero-title {
     background: linear-gradient(160deg, #ffffff 0%, #ffffff 40%, #777777 100%);
     -webkit-background-clip: text;
@@ -98,7 +48,6 @@
     background-clip: text;
   }
 
-  /* Grid texture */
   .grid-overlay {
     background-image:
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
@@ -106,71 +55,88 @@
     background-size: 64px 64px;
   }
 
-  /* Scroll animation */
   @keyframes scrollBounce {
     0%, 100% { transform: translateY(0); opacity: 0.4; }
-    50% { transform: translateY(6px); opacity: 0.9; }
+    50%       { transform: translateY(6px); opacity: 0.9; }
   }
   .scroll-bounce { animation: scrollBounce 2.2s ease-in-out infinite; }
 
-  /* Article row hover slide */
-  .article-row { transition: padding-left 0.3s ease, background 0.3s ease; }
-  .article-row:hover { padding-left: 1.5rem; background-color: rgba(0,0,0,0.02); }
-</style>
-</head>
-<body class="bg-surface text-on-surface selection:bg-secondary-container">
+  /* 导航过渡 */
+  #mainNav { transition: background 0.4s ease, box-shadow 0.4s ease; }
+  #mainNav .logo-box   { transition: background 0.4s ease, border-color 0.4s ease; }
+  #mainNav .brand-text { transition: background-image 0.4s ease; }
 
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-black/15 backdrop-blur-xl">
-  <div class="flex justify-between items-center px-10 py-5">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-sm bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
-        <span class="text-white font-extrabold text-base font-['Manrope'] leading-none">H</span>
+  /* 图片轮播条 */
+  #stripTrack { transition: transform 0.55s cubic-bezier(.4,0,.2,1); }
+
+  /* 文章条目悬停 */
+  .post-item { transition: background 0.2s ease; }
+  .post-item:hover { background: #fafafa; }
+</style>
+
+<!-- 修改这里：浏览器标签标题 -->
+<title>我的博客</title>
+</head>
+<body class="bg-black text-on-surface selection:bg-secondary-container overflow-x-hidden">
+
+<!-- =====================================================================
+     顶部导航（滚动自适应：Hero 深色 ↔ 第二屏白色）
+===================================================================== -->
+<nav id="mainNav" class="fixed top-0 w-full z-50 bg-black/15 backdrop-blur-xl">
+  <div class="flex items-center px-8 md:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-3">
+      <!-- Logo 方块：修改 "文" 为你想要的字母 -->
+      <div class="logo-box w-9 h-9 rounded-sm bg-white/15 border border-white/25
+                  flex items-center justify-center shrink-0">
+        <span class="text-white font-extrabold text-base font-['Manrope'] leading-none">文</span>
       </div>
-      <div class="brand-gradient text-2xl font-extrabold tracking-[0.28em] uppercase font-['Manrope']">海外营销</div>
-    </div>
+      <!-- 修改这里：博客名称 -->
+      <div class="brand-text font-extrabold tracking-[0.2em] uppercase font-['Manrope'] text-xl"
+           style="background:linear-gradient(135deg,#fff 0%,#888 100%);
+                  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        我的博客
+      </div>
+    </a>
   </div>
 </nav>
 
-<!-- Hero Section -->
-<section class="relative min-h-screen overflow-hidden bg-black">
-  <!-- Background image + overlays -->
-  <div class="absolute inset-0">
-    <img
-      class="w-full h-full object-cover opacity-25"
-      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxeAJxu5IXF_WEORrqnMO25js6DoVBpif2GtcdQ1_BOTpWCY2p4m5ehOBwmzt4g8FoHClVdc-K86HxID-q8kGWa83PzK5rVTVzKD1TskrAstStDyGr8ZbOt1FSNuitkOovYalbHO41MGtadqRvvR6kwpPbreQtNMSF9uPuo1VAte6XYJ5F-ubAJthfX6bUE5C6PO_xv3NM8zvbmv1L8N9VNFlcPBU1ZdI7cxEUyiUlE752FAiX-xsdC5enD40uj5jKWfcuETNtBSAW"
-    />
-    <div class="absolute inset-0 bg-gradient-to-br from-black via-black/88 to-black/55"></div>
-    <div class="grid-overlay absolute inset-0"></div>
-  </div>
 
-  <!-- Ambient glow orbs -->
-  <div class="absolute top-1/3 right-1/4 w-[480px] h-[480px] bg-[#006b5e]/12 rounded-full blur-[130px] pointer-events-none"></div>
-  <div class="absolute bottom-1/3 left-1/5 w-[320px] h-[320px] bg-[#0f3c6e]/18 rounded-full blur-[90px] pointer-events-none"></div>
+<!-- =====================================================================
+     Screen 1 — 全屏 Hero（深色）
+===================================================================== -->
+<section id="heroSection" class="relative min-h-screen overflow-hidden bg-black">
 
-  <!-- Hero content -->
+  <!-- 背景图（可选）：取消注释并改成你的图片文件名 -->
+  <!-- <img class="absolute inset-0 w-full h-full object-cover opacity-25" src="hero-bg.jpg" alt=""/> -->
+
+  <div class="absolute inset-0 bg-gradient-to-br from-black via-black/88 to-black/55"></div>
+  <div class="grid-overlay absolute inset-0"></div>
+  <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#006b5e]/10 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute bottom-1/3 left-1/5 w-[340px] h-[340px] bg-[#1e3a8a]/16 rounded-full blur-[100px] pointer-events-none"></div>
+
   <div class="relative z-10 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-8">
     <div class="max-w-4xl">
-      <!-- Eyebrow -->
       <div class="flex items-center gap-4 mb-12">
         <div class="w-8 h-px bg-[#53bcaa]"></div>
-        <span class="text-[#53bcaa] text-[11px] tracking-[0.3em] uppercase font-semibold font-['Manrope']">Global Game Publishing</span>
+        <!-- 修改这里：小标签 -->
+        <span class="text-[#53bcaa] text-[11px] tracking-[0.3em] uppercase font-semibold font-['Manrope']">Personal Writing</span>
       </div>
-
-      <!-- Main headline -->
       <h1 class="font-['Manrope'] font-extrabold tracking-[-0.04em] leading-none">
-        <span class="hero-title block font-light" style="font-size: clamp(2rem,5vw,4.2rem); opacity: 0.6; margin-bottom: 0.25em; letter-spacing: 0.05em;">掌握全球</span>
-        <span class="hero-title block ml-8 md:ml-20" style="font-size: clamp(4.5rem,12vw,9.5rem);">游戏发行</span>
+        <!-- 修改这里：第一行（较小、较淡） -->
+        <span class="hero-title block font-light"
+              style="font-size:clamp(1.8rem,4.5vw,4rem);opacity:0.6;margin-bottom:0.25em;letter-spacing:0.06em;">
+          记录思考与生活
+        </span>
+        <!-- 修改这里：第二行（超大主标题） -->
+        <span class="hero-title block ml-8 md:ml-20" style="font-size:clamp(4rem,11vw,9rem);">
+          我的博客
+        </span>
       </h1>
-
-      <!-- Description -->
+      <!-- 修改这里：副标题 -->
       <p class="text-white/45 max-w-lg text-lg leading-relaxed font-light mt-10 font-['Inter']">
-        面向高品质 PC 和移动端游戏的战略级发行框架。<br/>我们将复杂的代码转化为全球性的文化现象。
+        用文字记录真实的思考与生活。<br/>分享那些值得被看见的瞬间与感悟。
       </p>
-
     </div>
-
-    <!-- Scroll indicator -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
       <span class="text-white/25 text-[9px] tracking-[0.3em] uppercase font-['Manrope']">Scroll</span>
       <div class="scroll-bounce text-white/30">
@@ -180,106 +146,252 @@
   </div>
 </section>
 
-<!-- Projects Section -->
-<section class="bg-surface-container-low py-32 px-6">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex justify-between items-end mb-16">
-      <div>
-        <span class="text-[10px] tracking-[0.2em] font-bold uppercase text-on-surface-variant block mb-4">精选作品集</span>
-        <h2 class="text-4xl font-bold tracking-tight font-['Manrope']">精选案例</h2>
+
+<!-- =====================================================================
+     Screen 2 — 图片轮播条 + 文章网格
+===================================================================== -->
+<section class="min-h-screen bg-white flex flex-col mt-10 md:mt-14">
+
+  <!-- ── 顶部：横向图片轮播条 ───────────────────────────────────── -->
+  <div class="relative overflow-hidden bg-zinc-900 shrink-0"
+       style="height:clamp(220px,44vh,440px);">
+
+    <!--
+    ══════════════════════════════════════════════════════════════════
+     图片轮播条：每张幻灯片对应一篇精选文章
+     桌面端同时展示 3 张，移动端展示 1 张
+     修改每个 .strip-slide 内的：href / 分类标签 / 文章标题 / 配图
+     增减幻灯片：复制整个 .strip-slide 块，同时在 JS 中无需修改
+    ══════════════════════════════════════════════════════════════════
+    -->
+    <div id="stripTrack" class="flex h-full">
+
+      <!-- 幻灯片 1 -->
+      <div class="strip-slide relative overflow-hidden shrink-0 h-full"
+           style="width:100%;">
+        <div class="absolute inset-0 bg-gradient-to-br from-zinc-500 to-zinc-900"></div>
+        <!-- 配图：取消注释，改成图片路径 -->
+        <!-- <img class="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay"
+                  src="articles/covers/post1.jpg" alt=""/> -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <a href="articles/my-first-post.html"
+           class="absolute inset-0 flex flex-col justify-end px-5 pb-5 md:px-7 md:pb-7 group">
+          <!-- 修改：分类标签 -->
+          <span class="text-[9px] tracking-[0.25em] uppercase text-white/50 font-['Inter'] mb-2">随笔</span>
+          <!-- 修改：文章标题 -->
+          <h3 class="font-['Manrope'] text-base md:text-xl font-extrabold text-white leading-snug
+                     group-hover:opacity-75 transition-opacity line-clamp-2">
+            我的第一篇文章
+          </h3>
+        </a>
       </div>
-      <div class="flex gap-4">
-        <button class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white transition-all">
-          <span class="material-symbols-outlined">arrow_back</span>
-        </button>
-        <button class="w-12 h-12 rounded-full border border-outline-variant/20 flex items-center justify-center hover:bg-white transition-all">
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
+
+      <!-- 幻灯片 2 -->
+      <div class="strip-slide relative overflow-hidden shrink-0 h-full"
+           style="width:100%;">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-700 to-teal-950"></div>
+        <!-- <img class="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay"
+                  src="articles/covers/post2.jpg" alt=""/> -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <a href="articles/my-first-post.html"
+           class="absolute inset-0 flex flex-col justify-end px-5 pb-5 md:px-7 md:pb-7 group">
+          <span class="text-[9px] tracking-[0.25em] uppercase text-white/50 font-['Inter'] mb-2">生活</span>
+          <h3 class="font-['Manrope'] text-base md:text-xl font-extrabold text-white leading-snug
+                     group-hover:opacity-75 transition-opacity line-clamp-2">
+            文章标题
+          </h3>
+        </a>
       </div>
+
+      <!-- 幻灯片 3 -->
+      <div class="strip-slide relative overflow-hidden shrink-0 h-full"
+           style="width:100%;">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-800 to-blue-950"></div>
+        <!-- <img class="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay"
+                  src="articles/covers/post3.jpg" alt=""/> -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <a href="articles/my-first-post.html"
+           class="absolute inset-0 flex flex-col justify-end px-5 pb-5 md:px-7 md:pb-7 group">
+          <span class="text-[9px] tracking-[0.25em] uppercase text-white/50 font-['Inter'] mb-2">思考</span>
+          <h3 class="font-['Manrope'] text-base md:text-xl font-extrabold text-white leading-snug
+                     group-hover:opacity-75 transition-opacity line-clamp-2">
+            文章标题
+          </h3>
+        </a>
+      </div>
+
+      <!-- 幻灯片 4（可选，超过3张时导航箭头才会移动） -->
+      <!--
+      <div class="strip-slide relative overflow-hidden shrink-0 h-full"
+           style="width:100%;">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-800 to-purple-950"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <a href="articles/your-post.html"
+           class="absolute inset-0 flex flex-col justify-end px-5 pb-5 md:px-7 md:pb-7 group">
+          <span class="text-[9px] tracking-[0.25em] uppercase text-white/50 font-['Inter'] mb-2">分类</span>
+          <h3 class="font-['Manrope'] text-base md:text-xl font-extrabold text-white leading-snug
+                     group-hover:opacity-75 transition-opacity line-clamp-2">
+            文章标题
+          </h3>
+        </a>
+      </div>
+      -->
+
+    </div><!-- stripTrack 结束 -->
+
+    <!-- 左右翻页箭头（只有幻灯片数 > 可见数时才有意义） -->
+    <button id="stripPrev"
+      class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full
+             bg-black/40 hover:bg-black/70 flex items-center justify-center
+             text-white/60 hover:text-white transition-all duration-200"
+      aria-label="上一张">
+      <span class="material-symbols-outlined text-base">arrow_back</span>
+    </button>
+    <button id="stripNext"
+      class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full
+             bg-black/40 hover:bg-black/70 flex items-center justify-center
+             text-white/60 hover:text-white transition-all duration-200"
+      aria-label="下一张">
+      <span class="material-symbols-outlined text-base">arrow_forward</span>
+    </button>
+
+  </div><!-- 轮播条结束 -->
+
+
+  <!-- ── 中部：标签页 / 过滤栏 ─────────────────────────────────── -->
+  <div class="flex items-center justify-between border-b border-zinc-100 px-6 md:px-10 shrink-0">
+    <div class="flex items-center">
+      <!-- 修改：可增减标签 -->
+      <button class="strip-tab font-['Inter'] text-[12px] font-semibold tracking-wide text-black
+                     border-b-2 border-black px-1 py-3.5 mr-6">精选</button>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Project 1 -->
-      <a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest block cursor-pointer">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_srYNlY_tOOFlHu7FJzkcITIrtMEGZNwIqhcPdh1kCBDzRq1K2Q9WivXEserwhGNF3ypoonsa1cYLmLLya0BKQRHnDPLnOgKUyRkWBq1nbjKnSxUH5E4KRxV-wlvKWQr0xFrst74nRmFHy0mnKa-LoslOrT_CHPuj9mtFHLFoUVbg7nUPiy61Qq_b8PjJRZpK09BiVWuZhYszScLvBmunwMfr9YRYyc003i_Km_HK33oVX9jCFfty_FaBybW7JQwM97iE1IG1VtRd"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <span class="text-[10px] tracking-widest uppercase opacity-70">动作冒险</span>
-          <h3 class="text-xl font-bold mt-1 font-['Manrope']">霓虹漂移</h3>
-        </div>
-      </a>
-      <!-- Project 2 -->
-      <a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest block cursor-pointer">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_V-xHOYsfxC3PZdbDDIb-C4_7-PwzjcG8I2fgQKN2Sx6lWU81ldaT-sIgK04kP_-CAsUWzrGm8xMpVb8zaZvi5HidlkW13eY5iwRDnXy3AeHAMa1ervaPqGL2mkREMs2aHprUcQS-jHdYjcwaiiH76C-_mn1QizCGjd--eL2i9Pftw3dBQbWS81OjZ1hUB5S_5jM0S36PQAzl_iywLWscn1ygaS5oCqV1GS5t9Fksn_ovAfNkd9xEmwkndQ3GDazsDwvx6L87nMJ7"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <span class="text-[10px] tracking-widest uppercase opacity-70">益智策略</span>
-          <h3 class="text-xl font-bold mt-1 font-['Manrope']">逻辑虚空</h3>
-        </div>
-      </a>
-      <!-- Project 3 -->
-      <a href="article.html" class="group relative aspect-[3/4] overflow-hidden rounded-sm bg-surface-container-highest hidden md:block cursor-pointer">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxeAJxu5IXF_WEORrqnMO25js6DoVBpif2GtcdQ1_BOTpWCY2p4m5ehOBwmzt4g8FoHClVdc-K86HxID-q8kGWa83PzK5rVTVzKD1TskrAstStDyGr8ZbOt1FSNuitkOovYalbHO41MGtadqRvvR6kwpPbreQtNMSF9uPuo1VAte6XYJ5F-ubAJthfX6bUE5C6PO_xv3NM8zvbmv1L8N9VNFlcPBU1ZdI7cxEUyiUlE752FAiX-xsdC5enD40uj5jKWfcuETNtBSAW"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <span class="text-[10px] tracking-widest uppercase opacity-70">模拟经营</span>
-          <h3 class="text-xl font-bold mt-1 font-['Manrope']">轨道回声</h3>
-        </div>
-      </a>
-    </div>
+    <a href="articles.html"
+       class="font-['Inter'] text-[11px] tracking-widest uppercase text-zinc-400
+              hover:text-black transition-colors duration-200 font-semibold">
+      查看更多
+    </a>
   </div>
+
+
+  <!-- ── 下部：两列文章网格 ─────────────────────────────────────── -->
+  <div class="flex-1 grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+
+    <!--
+    ════════════════════════════════════════════════════════════
+     发布新文章：复制下方整个 <a> 块，粘贴到列表最上方
+     修改：href / 日期 / 分类标签 / 标题 / 摘要
+     首页建议最多保留 6 篇（两列 × 3 行），其余移至 articles.html
+    ════════════════════════════════════════════════════════════
+    -->
+
+    <!-- 文章条目：复制此块添加新文章 -->
+    <a href="articles/my-first-post.html"
+       class="post-item block px-6 md:px-10 py-6">
+      <!-- 修改1：日期 YYYY-MM-DD -->
+      <div class="font-['Inter'] text-[11px] text-zinc-400 mb-2">2026-04-13</div>
+      <div class="flex items-start gap-2 mb-2">
+        <!-- 修改2：分类标签（如：随笔 / 生活 / 思考 / 旅行） -->
+        <span class="shrink-0 font-['Inter'] text-[10px] font-bold tracking-wide
+                     bg-zinc-900 text-white px-1.5 py-[3px] leading-none mt-[1px]">[随笔]</span>
+        <!-- 修改3：文章标题 -->
+        <h3 class="font-['Manrope'] text-[15px] font-semibold text-zinc-900 leading-snug line-clamp-2
+                   group-hover:text-black">
+          我的第一篇文章
+        </h3>
+      </div>
+      <!-- 修改4：摘要（一两句话，可以删掉这行） -->
+      <p class="font-['Inter'] text-[13px] text-zinc-500 leading-relaxed line-clamp-2">
+        这是博客的第一篇文章，记录了建站的过程以及我为什么开始写作。
+      </p>
+    </a>
+
+    <!-- 文章条目示例 2 -->
+    <a href="articles/my-first-post.html"
+       class="post-item block px-6 md:px-10 py-6">
+      <div class="font-['Inter'] text-[11px] text-zinc-400 mb-2">2026-03-25</div>
+      <div class="flex items-start gap-2 mb-2">
+        <span class="shrink-0 font-['Inter'] text-[10px] font-bold tracking-wide
+                     bg-zinc-900 text-white px-1.5 py-[3px] leading-none mt-[1px]">[生活]</span>
+        <h3 class="font-['Manrope'] text-[15px] font-semibold text-zinc-900 leading-snug line-clamp-2">
+          文章标题（示例）
+        </h3>
+      </div>
+      <p class="font-['Inter'] text-[13px] text-zinc-500 leading-relaxed line-clamp-2">
+        文章摘要，一两句话描述文章的核心内容，吸引读者点击阅读全文。
+      </p>
+    </a>
+
+    <!-- 在上方粘贴新文章条目 ↑ -->
+
+  </div><!-- 文章网格结束 -->
+
 </section>
 
-<!-- Article List Section -->
-<section class="py-32 px-6 bg-surface">
-  <div class="max-w-7xl mx-auto">
-    <div class="mb-16">
-      <span class="text-[10px] tracking-[0.2em] font-bold uppercase text-on-surface-variant block mb-4">深度内容</span>
-      <h2 class="text-4xl font-bold tracking-tight font-['Manrope']">最新文章</h2>
-    </div>
-    <div class="flex flex-col">
-      <!-- Article 1 -->
-      <a href="article.html" class="article-row group flex items-center justify-between py-8 px-4 border-b border-outline-variant/15">
-        <div class="flex items-start gap-8">
-          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase mt-1.5 w-24 shrink-0 hidden md:block font-['Inter']">2024-12-01</span>
-          <h3 class="text-xl md:text-2xl font-light tracking-tight group-hover:font-medium transition-all font-['Manrope']">探xxxxxxx</h3>
-        </div>
-        <div class="flex items-center gap-4 shrink-0 ml-6">
-          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase md:hidden font-['Inter']">2024-12-01</span>
-          <span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant text-lg">arrow_outward</span>
-        </div>
-      </a>
-      <!-- Article 2 -->
-      <a href="article.html" class="article-row group flex items-center justify-between py-8 px-4 border-b border-outline-variant/15">
-        <div class="flex items-start gap-8">
-          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase mt-1.5 w-24 shrink-0 hidden md:block font-['Inter']">2024-11-15</span>
-          <h3 class="text-xl md:text-2xl font-light tracking-tight group-hover:font-medium transition-all font-['Manrope']">优xxxxxxx</h3>
-        </div>
-        <div class="flex items-center gap-4 shrink-0 ml-6">
-          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase md:hidden font-['Inter']">2024-11-15</span>
-          <span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant text-lg">arrow_outward</span>
-        </div>
-      </a>
-      <!-- Article 3 -->
-      <a href="article.html" class="article-row group flex items-center justify-between py-8 px-4 border-b border-outline-variant/15">
-        <div class="flex items-start gap-8">
-          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase mt-1.5 w-24 shrink-0 hidden md:block font-['Inter']">2024-10-24</span>
-          <h3 class="text-xl md:text-2xl font-light tracking-tight group-hover:font-medium transition-all font-['Manrope']">2xxxxxxxx</h3>
-        </div>
-        <div class="flex items-center gap-4 shrink-0 ml-6">
-          <span class="text-[11px] tracking-widest text-on-surface-variant/40 uppercase md:hidden font-['Inter']">2024-10-24</span>
-          <span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant text-lg">arrow_outward</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<!-- Footer -->
-<footer class="w-full py-12 bg-zinc-50 border-t border-zinc-100">
-  <div class="flex items-center justify-center px-12 max-w-7xl mx-auto">
-    <div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400">© 2026 海外发行</div>
+<!-- =====================================================================
+     页脚
+===================================================================== -->
+<footer class="w-full py-10 bg-zinc-50 border-t border-zinc-100">
+  <div class="flex items-center justify-center">
+    <!-- 修改这里：版权信息 -->
+    <div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400">© 2026 我的博客</div>
   </div>
 </footer>
+
+
+<!-- =====================================================================
+     JavaScript（无需修改）
+===================================================================== -->
+
+<!-- 轮播逻辑（单张全宽） -->
+<script>
+(function () {
+  const track   = document.getElementById('stripTrack');
+  const slides  = track.querySelectorAll('.strip-slide');
+  const prevBtn = document.getElementById('stripPrev');
+  const nextBtn = document.getElementById('stripNext');
+  const total   = slides.length;
+  let cur = 0, timer;
+
+  function goTo(n) {
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + cur * 100 + '%)';
+  }
+
+  function startTimer() { timer = setInterval(() => goTo(cur + 1), 4500); }
+  function resetTimer()  { clearInterval(timer); startTimer(); }
+
+  nextBtn.addEventListener('click', () => { goTo(cur + 1); resetTimer(); });
+  prevBtn.addEventListener('click', () => { goTo(cur - 1); resetTimer(); });
+
+  startTimer();
+})();
+</script>
+
+<!-- 导航栏滚动自适应 -->
+<script>
+(function () {
+  const nav       = document.getElementById('mainNav');
+  const logoBox   = nav.querySelector('.logo-box');
+  const brandText = nav.querySelector('.brand-text');
+
+  function updateNav() {
+    if (window.scrollY > window.innerHeight * 0.8) {
+      nav.style.background   = 'rgba(255,255,255,0.93)';
+      nav.style.boxShadow    = '0 1px 0 rgba(0,0,0,0.06)';
+      logoBox.style.cssText  = 'background:#000;border-color:#000;';
+      brandText.style.backgroundImage = 'linear-gradient(135deg,#111 0%,#666 100%)';
+    } else {
+      nav.style.background   = 'rgba(0,0,0,0.15)';
+      nav.style.boxShadow    = 'none';
+      logoBox.style.cssText  = 'background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);';
+      brandText.style.backgroundImage = 'linear-gradient(135deg,#fff 0%,#888 100%)';
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+})();
+</script>
 
 </body>
 </html>
