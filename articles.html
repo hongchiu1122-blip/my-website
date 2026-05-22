@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="light" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-container-highest": "#e2e2e2",
+          "on-primary-container": "#ffffff",
+          "on-surface": "#1a1c1c",
+          "surface": "#f9f9f9",
+          "on-surface-variant": "#474747",
+          "outline-variant": "#c6c6c6",
+          "surface-container-low": "#f3f3f4",
+          "surface-container": "#eeeeee",
+          "primary": "#000000"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem"
+        },
+        fontFamily: {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+
+  .brand-gradient {
+    background: linear-gradient(135deg, #111111 0%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .article-row { transition: padding-left 0.3s ease, background 0.3s ease; }
+  .article-row:hover { padding-left: 1.5rem; background-color: rgba(0,0,0,0.02); }
+
+  ::selection { background-color: #71d8c5; color: #000; }
+</style>
+<title>所有文章 - 我的博客</title>
+</head>
+<body class="bg-white text-on-surface antialiased">
+
+<!-- ===== 导航栏（白色背景） ===== -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]">
+  <div class="flex items-center px-8 md:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-sm bg-black flex items-center justify-center shrink-0">
+        <span class="text-white font-extrabold text-base font-['Manrope'] leading-none">文</span>
+      </div>
+      <div class="brand-gradient text-xl md:text-2xl font-extrabold tracking-[0.2em] uppercase font-['Manrope']">我的博客</div>
+    </a>
+  </div>
+</nav>
+
+<!-- ===== 页面头部 ===== -->
+<div class="pt-28 pb-0 px-6 md:px-10 bg-white border-b border-zinc-100">
+  <div class="max-w-7xl mx-auto pb-12">
+
+    <!-- 返回首页 -->
+    <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-black transition-colors duration-200 group mb-10 block">
+      <span class="material-symbols-outlined text-base group-hover:-translate-x-0.5 transition-transform duration-200">arrow_back</span>
+      <span class="font-['Inter'] text-[10px] tracking-widest uppercase font-semibold">返回首页</span>
+    </a>
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div>
+        <span class="text-[10px] tracking-[0.2em] font-bold uppercase text-zinc-400 block mb-3">Archive</span>
+        <h1 class="font-['Manrope'] text-4xl md:text-5xl font-extrabold tracking-tight text-black">所有文章</h1>
+      </div>
+      <!-- 文章总数：每次新增文章时手动更新这里的数字 -->
+      <div class="font-['Inter'] text-[11px] tracking-widest uppercase text-zinc-400 mb-1">
+        共 <span class="text-black font-bold">1</span> 篇
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 文章列表主体 ===== -->
+<main class="px-6 md:px-10 py-0 bg-surface min-h-screen">
+  <div class="max-w-7xl mx-auto">
+
+    <!--
+    ════════════════════════════════════════════════════════════
+     添加新文章：
+       1. 在对应年份分组内复制一个 <a> 行，粘贴到最上方
+       2. 修改 href 链接、日期、文章标题
+       3. 更新顶部"共 X 篇"的数字
+
+     添加新年份分组：
+       复制整个 <!-- 年份分组 --> 块，修改年份数字即可
+    ════════════════════════════════════════════════════════════
+    -->
+
+    <!-- ── 2026 年 ── -->
+    <div class="pt-16 pb-4">
+      <div class="flex items-center gap-6 mb-2">
+        <!-- 修改：年份 -->
+        <span class="font-['Manrope'] text-[11px] tracking-[0.25em] uppercase font-bold text-zinc-300">2026</span>
+        <div class="flex-1 h-px bg-zinc-100"></div>
+      </div>
+    </div>
+
+    <!-- 文章行：复制此块添加同年新文章 -->
+    <a href="articles/my-first-post.html" class="article-row group flex items-center justify-between py-6 md:py-7 px-4 border-b border-zinc-100/80">
+      <div class="flex items-start gap-6 md:gap-10">
+        <!-- 修改：日期 MM-DD -->
+        <span class="text-[11px] tracking-widest text-zinc-300 uppercase mt-1.5 w-12 shrink-0 hidden md:block font-['Inter']">04-13</span>
+        <!-- 修改：文章标题 -->
+        <h2 class="text-lg md:text-xl font-light tracking-tight group-hover:font-medium transition-all duration-200 font-['Manrope'] text-zinc-800 group-hover:text-black">
+          我的第一篇文章
+        </h2>
+      </div>
+      <div class="flex items-center gap-4 shrink-0 ml-6">
+        <!-- 修改：分类标签（可选，删掉也可以） -->
+        <span class="text-[10px] tracking-widest uppercase text-zinc-300 hidden md:block font-['Inter']">随笔</span>
+        <span class="text-[11px] tracking-widest text-zinc-300 uppercase md:hidden font-['Inter']">04-13</span>
+        <span class="material-symbols-outlined opacity-0 group-hover:opacity-60 transition-opacity text-zinc-500 text-lg">arrow_outward</span>
+      </div>
+    </a>
+
+    <!-- 在上方粘贴同年新文章行 ↑ -->
+
+    <!--
+    如需添加更早年份，复制以下整块粘贴到本注释上方，修改年份和文章内容：
+
+    <div class="pt-16 pb-4">
+      <div class="flex items-center gap-6 mb-2">
+        <span class="font-['Manrope'] text-[11px] tracking-[0.25em] uppercase font-bold text-zinc-300">2025</span>
+        <div class="flex-1 h-px bg-zinc-100"></div>
+      </div>
+    </div>
+
+    <a href="articles/your-article.html" class="article-row group flex items-center justify-between py-6 md:py-7 px-4 border-b border-zinc-100/80">
+      <div class="flex items-start gap-6 md:gap-10">
+        <span class="text-[11px] tracking-widest text-zinc-300 uppercase mt-1.5 w-12 shrink-0 hidden md:block font-['Inter']">12-01</span>
+        <h2 class="text-lg md:text-xl font-light tracking-tight group-hover:font-medium transition-all duration-200 font-['Manrope'] text-zinc-800 group-hover:text-black">
+          文章标题
+        </h2>
+      </div>
+      <div class="flex items-center gap-4 shrink-0 ml-6">
+        <span class="text-[10px] tracking-widest uppercase text-zinc-300 hidden md:block font-['Inter']">分类</span>
+        <span class="text-[11px] tracking-widest text-zinc-300 uppercase md:hidden font-['Inter']">12-01</span>
+        <span class="material-symbols-outlined opacity-0 group-hover:opacity-60 transition-opacity text-zinc-500 text-lg">arrow_outward</span>
+      </div>
+    </a>
+    -->
+
+    <div class="pb-24"></div>
+  </div>
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="w-full py-10 bg-zinc-50 border-t border-zinc-100">
+  <div class="flex items-center justify-center">
+    <div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400">© 2026 我的博客</div>
+  </div>
+</footer>
+
+</body>
+</html>

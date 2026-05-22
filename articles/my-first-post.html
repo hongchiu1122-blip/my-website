@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="light" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-surface": "#1a1c1c",
+          "surface": "#f9f9f9",
+          "on-surface-variant": "#474747",
+          "outline-variant": "#c6c6c6"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem"
+        },
+        fontFamily: {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  body { font-family: 'Inter', sans-serif; }
+  h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+  .brand-gradient {
+    background: linear-gradient(135deg, #111111 0%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  ::selection { background-color: #71d8c5; color: #000; }
+</style>
+<title>我的第一篇文章 - 我的博客</title>
+</head>
+<body class="bg-white text-on-surface antialiased">
+
+<!-- 导航栏 -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]">
+  <div class="flex items-center px-8 md:px-10 py-5">
+    <a href="../index.html" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-sm bg-black flex items-center justify-center shrink-0">
+        <span class="text-white font-extrabold text-base font-['Manrope'] leading-none">文</span>
+      </div>
+      <div class="brand-gradient text-xl md:text-2xl font-extrabold tracking-[0.2em] uppercase font-['Manrope']">我的博客</div>
+    </a>
+  </div>
+</nav>
+
+<!-- 文章主体 -->
+<main class="pt-28 pb-24">
+  <article class="max-w-3xl mx-auto px-6 md:px-0">
+
+    <!-- 文章头部 -->
+    <header class="mb-12 pt-8">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-zinc-100 text-zinc-600 text-[10px] tracking-widest uppercase font-bold px-3 py-1.5 rounded-sm font-['Inter']">
+          随笔
+        </span>
+        <span class="text-zinc-400 text-[11px] tracking-widest uppercase font-['Inter']">
+          2026年4月13日
+        </span>
+      </div>
+
+      <h1 class="font-['Manrope'] text-4xl md:text-6xl font-extrabold tracking-tight text-black leading-[1.1] mb-10">
+        我的第一篇文章
+      </h1>
+
+      <!-- 封面图：这里用渐变占位，有实际图片时替换 src -->
+      <div class="w-full overflow-hidden rounded-lg mb-12 bg-gradient-to-br from-zinc-200 to-zinc-400" style="aspect-ratio:16/7;">
+        <!-- 有图时取消注释：<img class="w-full h-full object-cover" src="covers/my-first-post.jpg" alt="封面"/> -->
+      </div>
+    </header>
+
+    <!-- 文章正文 -->
+    <div class="space-y-8 text-[17px] leading-[1.85] text-zinc-700 font-['Inter']">
+
+      <p class="text-xl md:text-2xl font-light text-black leading-relaxed">
+        这是博客的第一篇文章。搭建这个网站不需要任何编程基础，只需要几个 HTML 文件，直接上传就能访问。
+      </p>
+
+      <h2 class="font-['Manrope'] text-2xl font-bold text-black pt-6">
+        为什么开始写作
+      </h2>
+
+      <p>
+        我决定开始写博客，是因为想把自己的想法记录下来。读过的书、走过的地方、突然冒出来的念头——这些东西如果不写下来，很快就会消散。
+      </p>
+
+      <p>
+        市面上有很多博客平台，但我更喜欢这种「自己掌控」的感觉。文章存在自己的文件里，不依赖任何第三方服务，也不会突然消失或被删除。
+      </p>
+
+      <h2 class="font-['Manrope'] text-2xl font-bold text-black pt-6">
+        关于这个博客
+      </h2>
+
+      <p>
+        我打算每隔一段时间更新一篇，内容不限——可能是读书笔记，可能是某次旅行的记录，也可能只是某天午后的随想。写作的意义不在于完美，而在于真实。
+      </p>
+
+      <p>
+        写作是思考的副产品。落笔的那一刻，想法才真正变得清晰。如果你正在读这篇文章，感谢你的到来。
+      </p>
+
+    </div>
+
+    <!-- 返回按钮 -->
+    <div class="mt-16 pt-2">
+      <a href="../index.html" class="inline-flex items-center gap-3 text-zinc-500 hover:text-black transition-colors duration-300 group">
+        <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform duration-300">arrow_back</span>
+        <span class="font-['Inter'] text-[11px] tracking-widest uppercase font-semibold">返回首页</span>
+      </a>
+    </div>
+
+  </article>
+</main>
+
+<!-- 页脚 -->
+<footer class="w-full py-10 bg-zinc-50 border-t border-zinc-100">
+  <div class="flex items-center justify-center">
+    <div class="font-['Inter'] text-[10px] tracking-widest uppercase text-zinc-400">© 2026 我的博客</div>
+  </div>
+</footer>
+
+</body>
+</html>
