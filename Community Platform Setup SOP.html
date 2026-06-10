@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海外主流社区平台官号搭建与认证 SOP</title>
+<style>
+  :root {
+    --primary: #1a56db;
+    --primary-light: #eff6ff;
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #ffffff;
+    color: var(--gray-800);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* Cover */
+  .cover {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a56db 40%, #4f46e5 100%);
+    color: #fff;
+    padding: 80px 60px;
+    text-align: center;
+  }
+  .cover h1 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+  .cover .subtitle { font-size: 18px; opacity: 0.85; }
+  .cover .meta { margin-top: 32px; font-size: 13px; opacity: 0.6; }
+  .cover .badge-row { margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .cover .badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 6px 18px; font-size: 13px; }
+
+  /* Container */
+  .container { max-width: 1020px; margin: 0 auto; padding: 48px 40px; }
+
+  /* TOC */
+  .toc { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 12px; padding: 32px 36px; margin-bottom: 48px; }
+  .toc h2 { font-size: 20px; color: var(--gray-900); margin-bottom: 16px; }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc ol li { counter-increment: toc; padding: 6px 0; font-size: 14px; }
+  .toc ol li::before { content: counter(toc) ". "; font-weight: 700; color: var(--primary); }
+  .toc ol li a { color: var(--gray-600); text-decoration: none; transition: color 0.15s; }
+  .toc ol li a:hover { color: var(--primary); text-decoration: underline; }
+
+  /* Section */
+  .section { margin-bottom: 56px; }
+  .section h2 { font-size: 26px; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; padding-bottom: 12px; border-bottom: 3px solid var(--primary); }
+  .section h3 { font-size: 20px; font-weight: 700; color: var(--gray-800); margin: 28px 0 10px; }
+
+  /* Platform Card */
+  .platform-section {
+    margin-bottom: 48px;
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .platform-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 28px;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .platform-header .platform-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .platform-header .platform-name { font-size: 19px; font-weight: 800; color: var(--gray-900); }
+  .platform-body { padding: 24px 28px; }
+
+  /* Flow */
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 24px; }
+  .flow-step {
+    background: var(--primary-light); border: 1.5px solid var(--primary); border-radius: 8px;
+    padding: 10px 16px; font-size: 13px; font-weight: 600; color: var(--primary);
+    text-align: center; min-width: 90px;
+  }
+  .flow-step.key {
+    background: #fef3c7; border-color: var(--warning); color: #92400e;
+  }
+  .flow-arrow { color: var(--gray-400); font-size: 18px; font-weight: 300; }
+  .flow-note { font-size: 12px; color: var(--gray-500); font-weight: 400; display: block; margin-top: 2px; }
+
+  /* Detail Grid */
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+  .detail-card { background: var(--gray-50); border-radius: 8px; padding: 18px; border: 1px solid var(--gray-100); }
+  .detail-card h4 { font-size: 13px; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .detail-card p, .detail-card li { font-size: 13px; color: var(--gray-700); line-height: 1.65; }
+  .detail-card ul { padding-left: 18px; }
+
+  /* Official Links */
+  .official-links {
+    margin-top: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .official-links h4 { font-size: 13px; font-weight: 700; color: var(--gray-600); margin-bottom: 10px; }
+  .official-links .link-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 5px 0; font-size: 13px;
+  }
+  .official-links .link-item .link-label {
+    color: var(--gray-500); min-width: 140px; flex-shrink: 0; font-weight: 600;
+  }
+  .official-links .link-item a {
+    color: var(--primary); text-decoration: none; word-break: break-all;
+  }
+  .official-links .link-item a:hover { text-decoration: underline; }
+
+  /* Comparison Table */
+  .comparison-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    margin: 20px 0; border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden;
+  }
+  .comparison-table th {
+    background: var(--gray-800); color: #fff; padding: 12px 14px;
+    text-align: left; font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  .comparison-table td { padding: 11px 14px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tr:nth-child(even) td { background: var(--gray-50); }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .tag.free { background: #ecfdf5; color: #065f46; }
+  .tag.paid { background: #fef3c7; color: #92400e; }
+  .tag.conditional { background: #eff6ff; color: #1e40af; }
+
+  /* Asset Table */
+  .asset-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  .asset-table th { background: var(--gray-100); padding: 8px 12px; text-align: left; font-weight: 700; font-size: 12px; color: var(--gray-600); border-bottom: 2px solid var(--gray-200); }
+  .asset-table td { padding: 8px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
+
+  /* Priorities */
+  .priority-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
+  @media (max-width: 768px) { .priority-grid { grid-template-columns: 1fr 1fr; } }
+  .priority-card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px; text-align: center; }
+  .priority-card.p0 { border-left: 4px solid var(--danger); }
+  .priority-card.p1 { border-left: 4px solid var(--warning); }
+  .priority-card.p2 { border-left: 4px solid var(--primary); }
+  .priority-card.p3 { border-left: 4px solid var(--success); }
+  .priority-card .pri-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .priority-card.p0 .pri-label { color: var(--danger); }
+  .priority-card.p1 .pri-label { color: var(--warning); }
+  .priority-card.p2 .pri-label { color: var(--primary); }
+  .priority-card.p3 .pri-label { color: var(--success); }
+  .priority-card .pri-platforms { font-size: 13px; color: var(--gray-700); font-weight: 600; }
+
+  /* Checklist */
+  .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin: 20px 0; }
+  @media (max-width: 768px) { .checklist { grid-template-columns: 1fr; } }
+  .checklist-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 14px; color: var(--gray-700); }
+  .checklist-item .checkbox { width: 18px; height: 18px; border: 2px solid var(--gray-300); border-radius: 4px; flex-shrink: 0; }
+
+  /* Platform-grouped checklist */
+  .platform-checklist { margin: 20px 0; }
+  .platform-checklist-group {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .platform-checklist-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 18px;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 15px; font-weight: 700; color: var(--gray-900);
+  }
+  .platform-checklist-header .pch-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .platform-checklist-body {
+    padding: 12px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  @media (max-width: 768px) { .platform-checklist-body { grid-template-columns: 1fr; } }
+  .platform-checklist-body .checklist-item { padding: 5px 0; font-size: 13px; }
+  .platform-checklist-body .checklist-item .checkbox { width: 16px; height: 16px; }
+
+  /* Summary */
+  .summary-box {
+    background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+    border: 1px solid #bfdbfe; border-radius: 12px; padding: 28px 32px; margin: 36px 0;
+  }
+  .summary-box h3 { color: var(--primary); margin-top: 0; }
+  .summary-box ul { padding-left: 20px; }
+  .summary-box li { margin-bottom: 6px; font-size: 14px; color: var(--gray-700); }
+
+  /* Intro */
+  .intro-note {
+    background: var(--gray-50); border-left: 4px solid var(--primary);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 12px;
+    font-size: 14px; color: var(--gray-600);
+  }
+  .intro-note strong { color: var(--gray-800); }
+
+  /* Platform intro */
+  .platform-intro {
+    font-size: 14px; color: var(--gray-600); margin-bottom: 18px; line-height: 1.65;
+  }
+
+  /* Footer */
+  .footer { text-align: center; padding: 32px; color: var(--gray-400); font-size: 12px; border-top: 1px solid var(--gray-100); margin-top: 48px; }
+
+  @media print {
+    .cover { page-break-after: always; }
+    .platform-section { page-break-inside: avoid; }
+    body { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<div class="cover">
+  <h1>🌐 海外主流社区平台<br>官号搭建与认证 SOP</h1>
+  <div class="subtitle">10 大平台 · 全流程覆盖 · 附官方链接</div>
+  <div class="badge-row">
+    <span class="badge">Discord</span><span class="badge">Reddit</span><span class="badge">Facebook</span>
+    <span class="badge">YouTube</span><span class="badge">X / Twitter</span><span class="badge">Instagram</span>
+    <span class="badge">TikTok</span><span class="badge">LINE</span><span class="badge">Twitch</span><span class="badge">Steam</span>
+  </div>
+  <div class="meta">基于各平台官方文档 & 2025–2026 社区实践  |  2026年6月</div>
+</div>
+
+<!-- ============== CONTAINER ============== -->
+<div class="container">
+
+<!-- TOC -->
+<div class="toc">
+  <h2>📋 文档导读</h2>
+  <ol>
+    <li><a href="#section-overview">平台总览对比表</a></li>
+    <li><a href="#section-discord">Discord — 官方社区服务器</a></li>
+    <li><a href="#section-reddit">Reddit — 官方 Subreddit</a></li>
+    <li><a href="#section-facebook">Facebook — 官方主页 &amp; Meta 生态</a></li>
+    <li><a href="#section-youtube">YouTube — 品牌频道</a></li>
+    <li><a href="#section-x">X / Twitter — 企业账号</a></li>
+    <li><a href="#section-instagram">Instagram — 官方账号（Meta 生态）</a></li>
+    <li><a href="#section-tiktok">TikTok — 官方账号</a></li>
+    <li><a href="#section-line">LINE — 官方账号</a></li>
+    <li><a href="#section-twitch">Twitch — 官方品牌频道</a></li>
+    <li><a href="#section-steam">Steam — 开发者 / 发行商主页</a></li>
+    <li><a href="#section-assets">品牌资产尺寸速查表</a></li>
+    <li><a href="#section-priority">实施优先级 &amp; 执行清单</a></li>
+  </ol>
+</div>
+
+<!-- ============ 1. 平台总览 ============ -->
+<div class="section" id="section-overview">
+  <h2>1. 平台总览对比</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr><th>平台</th><th>认证类型</th><th>费用</th><th>核心门槛</th><th>优先级</th><th>审核周期</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Discord</strong></td>
+        <td>Verified Server / Partner</td>
+        <td><span class="tag free">免费</span></td>
+        <td>仅游戏开发者/发行商/电竞战队可申请 Verified</td>
+        <td>⚡ P0</td>
+        <td>~5 工作日</td>
+      </tr>
+      <tr>
+        <td><strong>Reddit</strong></td>
+        <td>无官方认证体系</td>
+        <td><span class="tag free">免费</span></td>
+        <td>账号 ≥30 天 + 正向 Karma</td>
+        <td>⚡ P0</td>
+        <td>即时创建</td>
+      </tr>
+      <tr>
+        <td><strong>Facebook</strong></td>
+        <td>Business Verification / Meta Verified</td>
+        <td><span class="tag free">免费</span> + <span class="tag paid">$21.99/月起</span></td>
+        <td>营业执照 + 域名邮箱 + 2FA</td>
+        <td>🔶 P1</td>
+        <td>数天~数周</td>
+      </tr>
+      <tr>
+        <td><strong>YouTube</strong></td>
+        <td>Verification Badge</td>
+        <td><span class="tag free">免费</span></td>
+        <td><strong>100,000 订阅</strong></td>
+        <td>🔶 P1</td>
+        <td>数周</td>
+      </tr>
+      <tr>
+        <td><strong>X / Twitter</strong></td>
+        <td>Premium Business (Gold Checkmark)</td>
+        <td><span class="tag paid">$200–$1,000/月起</span></td>
+        <td>营业执照 + 域名邮箱 + 活跃官网</td>
+        <td>🔷 P2</td>
+        <td>3–14 工作日</td>
+      </tr>
+      <tr>
+        <td><strong>Instagram</strong></td>
+        <td>Meta Verified</td>
+        <td><span class="tag paid">$21.99–$34.99/月</span></td>
+        <td>同 Facebook，可捆绑统一认证</td>
+        <td>🔷 P2</td>
+        <td>随 Meta Verified</td>
+      </tr>
+      <tr>
+        <td><strong>TikTok</strong></td>
+        <td>蓝V企业认证</td>
+        <td><span class="tag free">免费</span></td>
+        <td>≥4 篇自然媒体报道 + 企业邮箱 + 2FA</td>
+        <td>🔷 P2</td>
+        <td>~30 天</td>
+      </tr>
+      <tr>
+        <td><strong>LINE</strong></td>
+        <td>蓝盾企业认证</td>
+        <td><span class="tag free">免费</span>（专属ID NT$720/年）</td>
+        <td>专属ID + 商业登记证 + 在职证明</td>
+        <td>📌 视地区</td>
+        <td>~2–4 周</td>
+      </tr>
+      <tr>
+        <td><strong>Twitch</strong></td>
+        <td>Affiliate / Partner / Verified Badge</td>
+        <td><span class="tag free">免费</span></td>
+        <td>Affiliate: 25粉丝+4小时+4天+3观众；Partner: 更高要求</td>
+        <td>🔶 P1</td>
+        <td>Affiliate自动 / Partner数天</td>
+      </tr>
+      <tr>
+        <td><strong>Steam</strong></td>
+        <td>无认证标识体系</td>
+        <td><span class="tag conditional">需 Steamworks</span></td>
+        <td>Steamworks Partner 准入</td>
+        <td>⚡ P0</td>
+        <td>即时</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 2. Discord ============ -->
+<div class="section" id="section-discord">
+  <h2>2. Discord — 官方社区服务器</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#5865f2;color:#fff;">🎮</div>
+      <div class="platform-name">Discord Official Community Server</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        Discord Verified Server 认证仍然面向<strong>游戏开发者、发行商、职业电竞战队</strong>开放申请，但不再向泛品类企业开放。
+        游戏厂商优先走 Verified Server 路径；若社区活跃度达标（500+ 成员、活跃度高），可同时申请 <strong>Partner Program</strong>，获得额外权益（动态图标、免费 Nitro、服务器横幅等）。
+        Verified 与 Partner <strong>不互斥，可同时持有</strong>。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">① 注册企业管理账号</div><span class="flow-arrow">→</span>
+        <div class="flow-step">② 创建服务器 + 启用 Community</div><span class="flow-arrow">→</span>
+        <div class="flow-step">③ 安全配置</div><span class="flow-arrow">→</span>
+        <div class="flow-step">④ 官网挂载 + 品牌统一</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">⑤ 申请 Verified<br><span class="flow-note">discord.com/verification</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1–2：创建服务器 &amp; 启用 Community</h4>
+          <ul>
+            <li>使用<strong>专属企业管理账号</strong>（禁止员工私人账号），前往 <a href="https://discord.com/register" target="_blank" style="color:var(--primary)">discord.com/register</a> 注册</li>
+            <li>点击左侧 "+" 创建服务器 → 选择「<strong>俱乐部或社区 (Club or Community)</strong>」</li>
+            <li>上传游戏 Logo：<strong>512×512 PNG</strong></li>
+            <li>Server Settings → Community → <strong>Enable Community</strong></li>
+            <li>完成安全检查：Require Verified Email + Media Content Filter</li>
+            <li>设置 Rules Channel + Community Updates Channel</li>
+            <li>参考官方社区指南：<a href="https://support.discord.com/hc/en-us/articles/360047132851-Enabling-Your-Community-Server" target="_blank" style="color:var(--primary)">Enabling Your Community Server</a></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🛡️ 步骤 3：安全配置（必做）</h4>
+          <ul>
+            <li>开启 <strong>AutoMod</strong> 自动内容审核</li>
+            <li>开启 <strong>Raid Protection</strong> 防突袭保护</li>
+            <li>开启 <strong>Spam Protection</strong> 防垃圾信息</li>
+            <li>完成 <strong>Safety Setup</strong> 安全检查向导</li>
+            <li>启用 <strong>Membership Screening</strong> 新成员入群筛查</li>
+            <li>管理员强制开启 <strong>2FA 双因素认证</strong></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🏗️ 推荐频道结构</h4>
+          <ul>
+            <li><strong>Information</strong>：welcome / rules / announcements / patch-notes</li>
+            <li><strong>Community</strong>：general / off-topic / media-share</li>
+            <li><strong>Support</strong>：bug-report / feedback / support</li>
+            <li><strong>Regional</strong>：english / chinese / japanese</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>⭐ Verified 申请 &amp; Partner 计划</h4>
+          <ul>
+            <li><strong>Verified Server 申请</strong>：前往 <a href="https://discord.com/verification" target="_blank" style="color:var(--primary)">discord.com/verification</a>，使用关联邮箱提交身份证明材料（企业注册、商标等），审核约 <strong>5 个工作日</strong></li>
+            <li><strong>Partner Program</strong>：创建 ≥8 周、≥500 成员、每周 ≥50 活跃发言者、首周留存 ≥20%。满足后前往 <a href="https://discord.com/partners" target="_blank" style="color:var(--primary)">discord.com/partners</a> 申请</li>
+            <li>Verified 与 Partner 可<strong>同时持有</strong>，互不冲突</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">账号注册</span><a href="https://discord.com/register" target="_blank">https://discord.com/register</a></div>
+        <div class="link-item"><span class="link-label">社区服务器指南</span><a href="https://support.discord.com/hc/en-us/articles/360047132851-Enabling-Your-Community-Server" target="_blank">https://support.discord.com/hc/en-us/articles/360047132851</a></div>
+        <div class="link-item"><span class="link-label">Verified 申请</span><a href="https://discord.com/verification" target="_blank">https://discord.com/verification</a></div>
+        <div class="link-item"><span class="link-label">Partner 计划</span><a href="https://discord.com/partners" target="_blank">https://discord.com/partners</a></div>
+        <div class="link-item"><span class="link-label">开发者门户</span><a href="https://discord.com/developers" target="_blank">https://discord.com/developers</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3. Reddit ============ -->
+<div class="section" id="section-reddit">
+  <h2>3. Reddit — 官方 Subreddit</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#ff4500;color:#fff;">🤖</div>
+      <div class="platform-name">Reddit Official Subreddit</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        Reddit <strong>没有官方认证徽章体系</strong>，官方身份完全依赖 User Flair（用户标签）+ 品牌视觉 + 官方描述来体现。
+        创建 Subreddit 有<strong>硬性门槛</strong>：账号必须注册 ≥30 天且拥有正向 Karma（点赞积分），因此<strong>需提前安排专人养号</strong>。
+        建议在创建前先确认：①你的受众已在 Reddit 讨论你 ②团队能承诺服务社区 ③有 Reddit 原生运营者 ④能接受公开审视。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step key">① 提前养号<br><span class="flow-note">≥30天 + 积累Karma</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">② 自检品牌四条件</div><span class="flow-arrow">→</span>
+        <div class="flow-step">③ 创建 Subreddit<br><span class="flow-note">名称永久不可改</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">④ 社区装修</div><span class="flow-arrow">→</span>
+        <div class="flow-step">⑤ 配置 Flair + 规则</div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>🚪 步骤 1–2：前置条件</h4>
+          <ul>
+            <li>前往 <a href="https://www.reddit.com/register/" target="_blank" style="color:var(--primary)">reddit.com/register</a> 注册账号</li>
+            <li>账号必须注册 <strong>≥30 天</strong></li>
+            <li>必须拥有 <strong>正向 Karma</strong>（点赞分数，具体阈值未公开，建议至少几十以上）</li>
+            <li>建议在目标 Subreddit 社区活跃互动，积累信用</li>
+            <li>确认四条件：已有 Reddit 讨论你的游戏 / 能持续运营 / 有专人负责 / 能接受批评</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📛 步骤 3：创建 Subreddit</h4>
+          <ul>
+            <li>前往 <a href="https://www.reddit.com/subreddits/create" target="_blank" style="color:var(--primary)">reddit.com/subreddits/create</a></li>
+            <li>命名建议：r/GameName 或 r/StudioName</li>
+            <li>⚠️ <strong>名称创建后永久不可修改</strong>，提交前务必再三确认</li>
+            <li>Topic 选择：<strong>Gaming</strong></li>
+            <li>Community Type：<strong>Public</strong></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🎨 步骤 4：社区装修</h4>
+          <ul>
+            <li><strong>Avatar</strong>：256×256 PNG</li>
+            <li><strong>Banner Desktop</strong>：1920×384</li>
+            <li><strong>Banner Mobile</strong>：1600×480</li>
+            <li>在 Mod Tools → Community Appearance 中配置</li>
+            <li>描述中体现官方身份 + 官网链接</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🏷️ 步骤 5：身份标签 &amp; 发帖分类</h4>
+          <ul>
+            <li>创建 <strong>User Flair</strong>（授予官方成员）：[Developer] / [Community Manager] / [Game Designer] / [Producer]</li>
+            <li>创建 <strong>Post Flair</strong>：Official News / Update / Feedback / Bug Report / Discussion / Question / Community Event</li>
+            <li>Mod Tools → User Flair / Post Flair 中配置</li>
+            <li>制定内部行为准则（Playbook）：通用回复话术、身份披露规则、危机预案、升级流程</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">注册 Reddit 账号</span><a href="https://www.reddit.com/register/" target="_blank">https://www.reddit.com/register/</a></div>
+        <div class="link-item"><span class="link-label">创建 Subreddit</span><a href="https://www.reddit.com/subreddits/create" target="_blank">https://www.reddit.com/subreddits/create</a></div>
+        <div class="link-item"><span class="link-label">社区设置文档</span><a href="https://support.reddithelp.com/hc/en-us/articles/15484519467156-Community-settings" target="_blank">https://support.reddithelp.com/hc/en-us/articles/15484519467156</a></div>
+        <div class="link-item"><span class="link-label">User Flair 设置</span><a href="https://support.reddithelp.com/hc/en-us/articles/15484524538132-User-flair" target="_blank">https://support.reddithelp.com/hc/en-us/articles/15484524538132</a></div>
+        <div class="link-item"><span class="link-label">Mod Tools</span><a href="https://www.reddit.com/mod/" target="_blank">https://www.reddit.com/mod/</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4. Facebook ============ -->
+<div class="section" id="section-facebook">
+  <h2>4. Facebook — 官方主页 &amp; Meta 生态</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#1877f2;color:#fff;">📘</div>
+      <div class="platform-name">Facebook Official Page（含 Meta Business Suite）</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        Facebook 有两套不同的认证体系需区分清楚：① <strong>Business Verification</strong>（免费，用于 API 接入、WhatsApp 绿勾、广告账户）和
+        ② <strong>Meta Verified for Businesses</strong>（$21.99–$34.99/月 付费订阅，提供蓝勾徽章 + 防冒充 + 搜索曝光加权）。
+        二者<strong>独立并行</strong>，游戏公司通常需要完成 Business Verification 先行，再根据运营需求订阅 Meta Verified。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">① 创建公共主页<br><span class="flow-note">facebook.com/pages/create</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">② Meta Business Suite<br><span class="flow-note">business.facebook.com</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">③ Business Verification<br><span class="flow-note">免费 · API/WhatsApp</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ Meta Verified<br><span class="flow-note">$21.99–$34.99/月</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1：创建公共主页</h4>
+          <ul>
+            <li>前往 <a href="https://www.facebook.com/pages/create" target="_blank" style="color:var(--primary)">facebook.com/pages/create</a> 创建</li>
+            <li>使用<strong>真实管理员账号</strong>，填写 Page Name、Category、Description</li>
+            <li><strong>推荐类别</strong>：Video Game / Gaming Video Creator / Entertainment Website</li>
+            <li>完善头像（176×176，显示 170×170）与封面（820×312）</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🏢 步骤 2：接入 Meta Business Suite</h4>
+          <ul>
+            <li>前往 <a href="https://business.facebook.com/" target="_blank" style="color:var(--primary)">business.facebook.com</a> 创建 Meta Business Portfolio</li>
+            <li>绑定 Facebook Page + Instagram Account</li>
+            <li>至少配置 <strong>2 名管理员 + 1 名备用管理员</strong></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📄 步骤 3：Business Verification（免费）</h4>
+          <ul>
+            <li>进入 Meta Business Suite → 安全中心 → 开始验证</li>
+            <li>准备材料：<strong>企业营业执照</strong> + 企业信息 + 域名邮箱</li>
+            <li>可选择验证方式：电话/邮箱/域名验证/官方文件</li>
+            <li>审核周期：1–7 个工作日</li>
+            <li>参考：<a href="https://www.facebook.com/business/help/2058515294227817" target="_blank" style="color:var(--primary)">Meta Business Verification 帮助</a></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>💎 步骤 4：Meta Verified for Businesses（付费）</h4>
+          <ul>
+            <li><strong>费用</strong>：$21.99/月（网页端单平台） / $27.99/月（移动端） / $34.99/月（Facebook+Instagram 捆绑）</li>
+            <li><strong>要求</strong>：账户存续时间达标 + 最低活跃度 + 已开启 2FA + 完成实名验证</li>
+            <li>⚠️ 认证后<strong>不可更改名称或头像</strong>（如需修改需重新验证）</li>
+            <li>参考：<a href="https://www.facebook.com/business/help/1739543746427833" target="_blank" style="color:var(--primary)">Meta Verified for Businesses</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">创建公共主页</span><a href="https://www.facebook.com/pages/create" target="_blank">https://www.facebook.com/pages/create</a></div>
+        <div class="link-item"><span class="link-label">Meta Business Suite</span><a href="https://business.facebook.com/" target="_blank">https://business.facebook.com/</a></div>
+        <div class="link-item"><span class="link-label">Business Verification 帮助</span><a href="https://www.facebook.com/business/help/2058515294227817" target="_blank">https://www.facebook.com/business/help/2058515294227817</a></div>
+        <div class="link-item"><span class="link-label">Meta Verified for Businesses</span><a href="https://www.facebook.com/business/help/1739543746427833" target="_blank">https://www.facebook.com/business/help/1739543746427833</a></div>
+        <div class="link-item"><span class="link-label">域名验证方法</span><a href="https://www.facebook.com/business/help/272398847444959" target="_blank">https://www.facebook.com/business/help/272398847444959</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 5. YouTube ============ -->
+<div class="section" id="section-youtube">
+  <h2>5. YouTube — 品牌频道</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#ff0000;color:#fff;">▶️</div>
+      <div class="platform-name">YouTube Brand Channel</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        YouTube 认证徽章（Verification Badge）硬性门槛为 <strong>100,000 订阅者</strong>，对中小型工作室可能是长期目标。短期内可通过<strong>手机号验证</strong>解锁基础功能（自定义封面、长视频、直播）。
+        强烈建议使用<strong>企业 Google Workspace 邮箱</strong>创建 Brand Account，避免员工离职时频道归属纠纷。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step key">① 创建 Brand Account<br><span class="flow-note">企业Workspace邮箱</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">② 添加管理员</div><span class="flow-arrow">→</span>
+        <div class="flow-step">③ 手机号验证<br><span class="flow-note">解锁基础功能</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ 积累 100K 订阅</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">⑤ 申请认证徽章<br><span class="flow-note">youtube.com/verify</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1–2：创建 Brand Account</h4>
+          <ul>
+            <li>使用<strong>企业 Google Workspace 邮箱</strong>（非个人 Gmail），前往 <a href="https://www.youtube.com/account" target="_blank" style="color:var(--primary)">youtube.com/account</a></li>
+            <li>创建一个 Brand Channel（<strong>禁止使用个人频道</strong>）</li>
+            <li>Brand Account 允许多人管理，不共享个人密码——这是安全核心</li>
+            <li>Settings → Permissions 添加管理员：社区经理、市场负责人、备用管理员</li>
+            <li>参考：<a href="https://support.google.com/youtube/answer/1646861" target="_blank" style="color:var(--primary)">Google Brand Account 官方说明</a></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📱 步骤 3：手机号验证</h4>
+          <ul>
+            <li>进入 <a href="https://studio.youtube.com/" target="_blank" style="color:var(--primary)">YouTube Studio</a></li>
+            <li>Settings → Channel → Feature Eligibility</li>
+            <li>完成 Phone Verification 后解锁：<strong>自定义缩略图、长视频（>15分钟）、直播</strong></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>✅ 步骤 4–5：认证徽章</h4>
+          <ul>
+            <li>硬性门槛：<strong>100,000 订阅者</strong></li>
+            <li>满足条件后前往 <a href="https://www.youtube.com/verify" target="_blank" style="color:var(--primary)">youtube.com/verify</a> 提交申请</li>
+            <li>审核周期：<strong>数周</strong>；审核因素包括频道年龄、内容质量、合规记录</li>
+            <li>不满足条件时页面会提示"请达到 100K 订阅后再来"</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📌 建议做的事</h4>
+          <ul>
+            <li>创建后立即上传品牌视觉：横幅（2560×1440，安全区 1546×423）、Logo（98×98）</li>
+            <li>配置频道预告片和分区（Sections）</li>
+            <li>频道 URL 可自定义（需满足 100 订阅 + 频道图标 + 30 天等条件）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">YouTube 账号管理</span><a href="https://www.youtube.com/account" target="_blank">https://www.youtube.com/account</a></div>
+        <div class="link-item"><span class="link-label">YouTube Studio</span><a href="https://studio.youtube.com/" target="_blank">https://studio.youtube.com/</a></div>
+        <div class="link-item"><span class="link-label">Brand Account 官方说明</span><a href="https://support.google.com/youtube/answer/1646861" target="_blank">https://support.google.com/youtube/answer/1646861</a></div>
+        <div class="link-item"><span class="link-label">功能验证页面</span><a href="https://www.youtube.com/verify" target="_blank">https://www.youtube.com/verify</a></div>
+        <div class="link-item"><span class="link-label">Google Workspace</span><a href="https://workspace.google.com/" target="_blank">https://workspace.google.com/</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 6. X/Twitter ============ -->
+<div class="section" id="section-x">
+  <h2>6. X / Twitter — 企业账号</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#000;color:#fff;">𝕏</div>
+      <div class="platform-name">X (Twitter) Premium Business（原 Verified Organizations）</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        X 已将原有的 Verified Organizations 拆分为两类：<strong>Premium Business</strong>（金色勾号，面向企业）和 <strong>Premium Organizations</strong>（灰色勾号，面向政府/多边组织）。
+        游戏公司应选择 <strong>Premium Business</strong>。费用分三档：Basic $200/月、Full Access $1,000/月、Enterprise 定制价格。附属子账号（Affiliates）$50/个/月。
+        <strong>费用按月扣款</strong>，停止付费即失去金标。注：限时活动中可以广告积分形式获得 100% 费用返还。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">① 创建账号<br><span class="flow-note">@GameName</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">② 完善资料 + 2FA</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">③ Premium Business<br><span class="flow-note">$200–$1,000/月</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ 配置 Affiliates<br><span class="flow-note">$50/个/月</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1–2：创建账号 &amp; 基础建设</h4>
+          <ul>
+            <li>前往 <a href="https://x.com/signup" target="_blank" style="color:var(--primary)">x.com/signup</a> 创建，建议 @GameName 或 @StudioName</li>
+            <li>完善：Logo（400×400）、Banner（1500×500）、官网链接、企业介绍</li>
+            <li>前往 <a href="https://x.com/settings/security" target="_blank" style="color:var(--primary)">x.com/settings/security</a> 开启 2FA</li>
+            <li>确保<strong>官网 ↔ X 双向互链</strong></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>💰 步骤 3：Premium Business 费用明细（2025.10 更新）</h4>
+          <ul>
+            <li><strong>Basic</strong>：$200/月 — 基础企业工具，金色勾号</li>
+            <li><strong>Full Access</strong>：$1,000/月 — 附属徽章 + 优先支持 + 防冒充 + 优先用户名</li>
+            <li><strong>Enterprise</strong>：定制价格 — 专属账户管理 + 高级工具</li>
+            <li>附属账号（Affiliates）：<strong>$50/个/月</strong></li>
+            <li>费用审核通过后才会扣款</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📄 申请材料 &amp; 流程</h4>
+          <ul>
+            <li>前往 <a href="https://x.com/settings/verified-organizations" target="_blank" style="color:var(--primary)">x.com/settings/verified-organizations</a> 或 <a href="https://help.x.com/en/using-x/premium-business" target="_blank" style="color:var(--primary)">X Premium Business 帮助</a></li>
+            <li>提交：组织名称 + 运营国家 + 官网 URL + 组织类型</li>
+            <li>附加：营业执照 + 域名所有权证明 + 申请人身份证件</li>
+            <li>审核周期：<strong>3–14 个工作日</strong></li>
+            <li>常见被拒原因：信息不一致、品牌不匹配、使用通用邮箱</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>👥 步骤 4：配置 Affiliates</h4>
+          <ul>
+            <li>用途：社区经理账号、地区官号、品牌子账号</li>
+            <li>每个附属号 $50/月</li>
+            <li>被邀请账号需主动接受邀请后关联生效</li>
+            <li>附属账号显示品牌小头像图标 + 蓝/金勾</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">X 账号注册</span><a href="https://x.com/signup" target="_blank">https://x.com/signup</a></div>
+        <div class="link-item"><span class="link-label">Premium Business 官方帮助</span><a href="https://help.x.com/en/using-x/premium-business" target="_blank">https://help.x.com/en/using-x/premium-business</a></div>
+        <div class="link-item"><span class="link-label">Verified Organizations 申请</span><a href="https://x.com/settings/verified-organizations" target="_blank">https://x.com/settings/verified-organizations</a></div>
+        <div class="link-item"><span class="link-label">安全设置 (2FA)</span><a href="https://x.com/settings/security" target="_blank">https://x.com/settings/security</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 7. Instagram ============ -->
+<div class="section" id="section-instagram">
+  <h2>7. Instagram — 官方账号（Meta 生态）</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;">📸</div>
+      <div class="platform-name">Instagram Official Account（建议与 Facebook 合并处理）</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        Instagram 与 Facebook 同属 Meta 生态。建议在完成 Facebook 主页搭建后，<strong>一并处理 Instagram</strong>——
+        通过同一个 Meta Business Suite 管理，Meta Verified 可捆绑订阅（Facebook+Instagram $34.99/月，比分订更经济）。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">① 创建账号<br><span class="flow-note">@GameName</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">② 切换 Professional<br><span class="flow-note">Business 类型</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">③ 绑定 Meta Business Suite</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ Meta Verified<br><span class="flow-note">建议与Facebook捆绑</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1–2：创建 &amp; 切换 Professional</h4>
+          <ul>
+            <li>前往 <a href="https://www.instagram.com/" target="_blank" style="color:var(--primary)">instagram.com</a> 注册，建议 @GameName</li>
+            <li>Settings → Account → Switch to Professional Account</li>
+            <li>选择 <strong>Business</strong> 类别（非 Creator）</li>
+            <li>完善头像（320×320）、Bio、官网链接</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🏢 步骤 3：绑定 Meta Business Suite</h4>
+          <ul>
+            <li>前往 <a href="https://business.facebook.com/" target="_blank" style="color:var(--primary)">Meta Business Suite</a></li>
+            <li>将 Instagram Business Account 关联到与 Facebook Page 同一 Portfolio</li>
+            <li>统一管理两个平台的品牌资产、发布计划和消息</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>💎 步骤 4：Meta Verified（捆绑建议）</h4>
+          <ul>
+            <li><strong>单平台</strong>：$21.99/月（网页） / $27.99/月（App 内购）</li>
+            <li><strong>Facebook+Instagram 捆绑</strong>：$34.99/月 ✅ 推荐</li>
+            <li>与 Facebook 的 Meta Verified 同步处理，一次申请两个平台</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🛡️ 安全建议</h4>
+          <ul>
+            <li>开启 2FA（Settings → Security）</li>
+            <li>绑定企业域名邮箱</li>
+            <li>定期检查授权应用列表</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">Instagram 注册</span><a href="https://www.instagram.com/" target="_blank">https://www.instagram.com/</a></div>
+        <div class="link-item"><span class="link-label">Meta Business Suite</span><a href="https://business.facebook.com/" target="_blank">https://business.facebook.com/</a></div>
+        <div class="link-item"><span class="link-label">Meta Verified for Businesses</span><a href="https://www.facebook.com/business/help/1739543746427833" target="_blank">https://www.facebook.com/business/help/1739543746427833</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 8. TikTok ============ -->
+<div class="section" id="section-tiktok">
+  <h2>8. TikTok — 官方账号</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#000;color:#fff;">🎵</div>
+      <div class="platform-name">TikTok Official Business Account</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        TikTok 的「Business Account」和「蓝V认证」是<strong>两个独立的步骤</strong>：先切换 Business Account 获得基础商业功能，
+        再单独申请蓝V认证。认证<strong>完全免费</strong>（任何收费都是诈骗），但有 5 大硬性要求，
+        其中<strong>最难的是「知名度」</strong>——需提供 ≥4 篇非付费的权威媒体自然报道链接。粉丝数和点赞数<strong>不是认证标准</strong>。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">① 企业邮箱注册</div><span class="flow-arrow">→</span>
+        <div class="flow-step">② 切换 Business Account</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">③ 满足 5 大认证条件<br><span class="flow-note">含PR布局</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ 申请蓝V认证<br><span class="flow-note">App内申请 · ~30天</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1–2：注册 &amp; 切换 Business Account</h4>
+          <ul>
+            <li>使用<strong>企业域名邮箱</strong>（如 @yourstudio.com）前往 <a href="https://www.tiktok.com/signup" target="_blank" style="color:var(--primary)">tiktok.com/signup</a> 注册</li>
+            <li>Settings → Account → <strong>Switch to Business Account</strong></li>
+            <li>完成 <strong>Website Verification</strong>（域名验证）绑定官网</li>
+            <li>完善：Logo（200×200）、Banner、Bio、官方链接</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>✅ 步骤 3：TikTok 蓝V 5 大认证条件</h4>
+          <ul>
+            <li>① <strong>活跃</strong> — 过去 6 个月内登录过 TikTok</li>
+            <li>② <strong>真实</strong> — 代表真实实体（非粉丝页/恶搞号）、每人每企业通常限 1 个认证号</li>
+            <li>③ <strong>完整</strong> — 资料 100% 填写 + 公开 + 至少 1 条视频</li>
+            <li>④ <strong>知名度</strong> — <strong>≥4 篇非付费的权威媒体自然报道链接</strong>（新闻稿和付费媒体不计入！）</li>
+            <li>⑤ <strong>安全</strong> — 开启 2FA + 绑定已验证邮箱</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📝 步骤 4：申请流程</h4>
+          <ul>
+            <li>TikTok App 内：Settings → Account → <strong>Verification</strong> → Start</li>
+            <li>提交法定身份信息（企业证明）</li>
+            <li>附上 <strong>≥4 个媒体报道链接</strong> 作为知名度证明</li>
+            <li>审核周期：<strong>约 30 天</strong></li>
+            <li>被拒后可 30 天后重新申请（通常附带拒因反馈）</li>
+            <li>若 App 内看不到 Verification 选项，可通过 TikTok 官网在线表格提交</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📌 关键提醒</h4>
+          <ul>
+            <li><strong>认证完全免费</strong>，任何索要费用的都是欺诈</li>
+            <li>粉丝数和点赞数 <strong>不是认证标准</strong></li>
+            <li>若在其他平台已有认证，可附上链接加分</li>
+            <li>建议在产品公布前提前布局 PR（行业博客、当地新闻、专业杂志均可）</li>
+            <li>TikTok for Business 商业平台：<a href="https://ads.tiktok.com/" target="_blank" style="color:var(--primary)">ads.tiktok.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">TikTok 注册</span><a href="https://www.tiktok.com/signup" target="_blank">https://www.tiktok.com/signup</a></div>
+        <div class="link-item"><span class="link-label">TikTok for Business</span><a href="https://ads.tiktok.com/" target="_blank">https://ads.tiktok.com/</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 9. LINE ============ -->
+<div class="section" id="section-line">
+  <h2>9. LINE — 官方账号</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#06c755;color:#fff;">💬</div>
+      <div class="platform-name">LINE Official Account (OA)</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        LINE 是日本、中国台湾、泰国、印尼等亚太地区的核心通讯平台（全球 2 亿+ MAU）。游戏厂商通过 LINE Official Account 可进行公告推送、客服自动化、社区互动。认证分为三层：一般账号（灰盾，2026年4月起取消）、<strong>认证账号（蓝盾）</strong>、企业账号（绿盾，LINE 主动邀请）。蓝盾是品牌建设的核心目标。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step ">① 创建 LINE OA 一般账号<br><span class="flow-note">manager.line.biz</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step ">② 设置基本资料<br><span class="flow-note">头像 640×640 / 封面 1080×540</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step ">③ 购买专属 ID<br><span class="flow-note">@你的品牌名 (NT$720/年)</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ 提交蓝盾认证<br><span class="flow-note">上传证件 + OAV 审核</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1：创建 LINE OA 账号 &amp; 设置资料</h4>
+          <ul>
+            <li>前往 <a href="https://manager.line.biz/" target="_blank" style="color:var(--primary)">manager.line.biz</a> 点击「建立帳號」注册</li>
+            <li>使用<strong>企业域名邮箱</strong>注册（非个人 Gmail），完成手机短信验证</li>
+            <li>上传<strong>头像</strong>：640×640 px（建议 1080×1080），JPG/PNG，≤3 MB；上传后裁切为圆形，核心图形放中心</li>
+            <li>上传<strong>封面图</strong>：1080×540 px，JPG/PNG；底部会被头像遮挡，避免放关键信息</li>
+            <li>填写账号名称（≤20 字，禁 Emoji / 广告语）、简介、官网链接</li>
+            <li>⚠️ 名称审核通过后<strong>永久不可修改</strong>，务必确认后再提交</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🔑 步骤 2：购买专属 ID（认证前置必做）</h4>
+          <ul>
+            <li>进入 LINE OA 后台 → 设置 → <strong>LINE ID</strong> → 搜索并购买 <code>@品牌名</code></li>
+            <li><strong>费用</strong>：NT$720/年（Android/PC 端）或 NT$1,038/年（iOS 端），约合 $22–32 USD</li>
+            <li>购买后 ID 立即生效，用户可通过 <code>@品牌名</code> 搜索并添加账号</li>
+            <li>⚠️ <strong>未购买专属 ID 无法提交蓝盾认证申请</strong>，此为硬性前置条件</li>
+            <li>参考：<a href="https://tw.linebiz.com/tw/blog/2023/08/02/line-oa-id/" target="_blank" style="color:var(--primary)">LINE OA 专属 ID 说明</a></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📄 步骤 3：提交蓝盾认证申请</h4>
+          <ul>
+            <li>进入 <a href="http://twoav.line.biz/" target="_blank" style="color:var(--primary)">twoav.line.biz</a>（LINE 官方认证审核平台）</li>
+            <li>登录后选择对应 OA → 填写企业信息 → 上传<strong>商业登记证/公司注册证明</strong></li>
+            <li>上传<strong>申请人在职证明或名片</strong>（需具有该 OA 的管理员权限）</li>
+            <li>确认账号已<strong>正式上线运营</strong>（有实际服务内容，非空白账号）</li>
+            <li>提交后审核周期约 <strong>2–4 周</strong>，审核通过后头像旁显示<strong>蓝色盾牌</strong>标识</li>
+            <li>参考：<a href="https://tw.linebiz.com/tw/blog/2021/11/25/line-oa-verification/" target="_blank" style="color:var(--primary)">LINE 认证账号申请指南</a></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>⚙️ 步骤 4：运营配置（自动回复 / 图文选单 / API）</h4>
+          <ul>
+            <li><strong>自动回复</strong>：后台可设置 5 条规则；通过 <a href="https://developers.line.biz/" target="_blank" style="color:var(--primary)">Messaging API</a> 可突破限制，实现高级客服</li>
+            <li><strong>图文选单（Rich Menu）</strong>：建议尺寸 1200×810 px（大）/ 1200×405 px（小），≤1 MB</li>
+            <li><strong>Messaging API 接入</strong>：可对接游戏内通知（补丁推送/活动提醒），需在开发者后台配置 Webhook</li>
+            <li><strong>多地区策略</strong>：为核心市场分别建立独立 OA（如 @GameNameJP / @GameNameTH / @GameNameTW）</li>
+            <li><strong>LINE VOOM</strong>：利用内置短视频/帖文功能发布游戏预告、幕后花絮，增加曝光</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">LINE OA 管理后台</span><a href="https://manager.line.biz/" target="_blank">https://manager.line.biz/</a></div>
+        <div class="link-item"><span class="link-label">LINE OA 账号创建</span><a href="https://tw.linebiz.com/account/" target="_blank">https://tw.linebiz.com/account/</a></div>
+        <div class="link-item"><span class="link-label">LINE 认证审核平台 (OAV)</span><a href="http://twoav.line.biz/" target="_blank">http://twoav.line.biz/</a></div>
+        <div class="link-item"><span class="link-label">LINE Biz-Solutions</span><a href="https://tw.linebiz.com/" target="_blank">https://tw.linebiz.com/</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 10. Twitch ============ -->
+<div class="section" id="section-twitch">
+  <h2>10. Twitch — 官方品牌频道</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#9146ff;color:#fff;">📺</div>
+      <div class="platform-name">Twitch Official Brand Channel</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        Twitch 是全球最大的游戏直播平台（2.4 亿+ 月活用户）。游戏厂商可通过官方品牌频道进行游戏直播、社区互动、活动宣发。
+        Twitch 认证体系分三层：<strong>Affiliate（联盟）</strong> → <strong>Partner（合作伙伴）</strong> → <strong>Verified Badge（认证徽章）</strong>。
+        Affiliate 门槛已大幅降低（2025 年更新），建议作为 P1 优先级推进。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">① 注册账号<br><span class="flow-note">twitch.tv/signup</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">② 频道装修 &amp; 设置</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">③ 达成 Affiliate<br><span class="flow-note">25粉丝+4h+4天</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">④ 申请 Partner<br><span class="flow-note">更高要求 + 审核</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step key">⑤ 申请认证徽章<br><span class="flow-note">需成为Partner</span></div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>📋 步骤 1–2：注册 &amp; 频道基础设置</h4>
+          <ul>
+            <li>前往 <a href="https://www.twitch.tv/signup" target="_blank" style="color:var(--primary)">twitch.tv/signup</a> 注册，建议使用企业邮箱</li>
+            <li>进入 <a href="https://dashboard.twitch.tv/" target="_blank" style="color:var(--primary)">Creator Dashboard</a>（dashboard.twitch.tv）</li>
+            <li>Channel Settings → 上传<strong>头像</strong>（256×256 PNG）、<strong>封面图</strong>（1200×480）、<strong>离线画面</strong>（1920×1080）</li>
+            <li>填写频道标题、简介、官网链接、社交媒体链接</li>
+            <li>设置<strong>频道标签</strong>（Tags）：游戏名称、语言、品类</li>
+            <li>开启<strong>2FA 双因素认证</strong>（安全设置必做）</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>⭐ 步骤 3：Twitch Affiliate 要求（2025 年更新）</h4>
+          <ul>
+            <li><strong>粉丝（Followers）</strong>：≥ 25（原 50）</li>
+            <li><strong>直播时长</strong>：≥ 4 小时（原 500 分钟）</li>
+            <li><strong>直播天数</strong>：≥ 4 天（原 7 天）</li>
+            <li><strong>平均观众</strong>：≥ 3 人（30 天内）</li>
+            <li>达成后<strong>自动授予</strong> Affiliate 身份，可立即开启订阅、Bits、游戏销售分成</li>
+            <li>参考：<a href="https://www.twitch.tv/p/affiliate/" target="_blank" style="color:var(--primary)">Affiliate Program 官方说明</a></li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>💎 步骤 4：Twitch Partner 申请</h4>
+          <ul>
+            <li><strong>要求更高</strong>：通常需连续 30 天直播、稳定观众基础、高互动率</li>
+            <li>进入 <a href="https://www.twitch.tv/p/partner/" target="_blank" style="color:var(--primary)">twitch.tv/p/partner</a> 查看具体路径要求</li>
+            <li>点击下方"Apply for Partner"按钮提交申请</li>
+            <li>审核周期：<strong>数天</strong>；Twitch 会综合评估内容质量、社区互动、直播稳定性</li>
+            <li>Partner 权益：更高分成比例、自定义订阅等级、优先支持、无广告观看</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>✅ 步骤 5：Verified Badge 认证徽章</h4>
+          <ul>
+            <li>Twitch <strong>Verified Badge（蓝勾）</strong>通常仅授予已通过 Partner 且具备高影响力的频道</li>
+            <li>认证为<strong>邀请制</strong>，Twitch 会主动联系符合条件的频道</li>
+            <li>品牌官方频道建议：持续高质量直播 + 跨平台推广 + 社区活跃运营</li>
+            <li>认证后用户名旁显示<strong>紫色或白色对勾</strong>（视背景色自动调整）</li>
+            <li>参考：<a href="https://help.twitch.tv/s/article/twitch-verified-badge" target="_blank" style="color:var(--primary)">Verified Badge 帮助文档</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">Twitch 注册</span><a href="https://www.twitch.tv/signup" target="_blank">https://www.twitch.tv/signup</a></div>
+        <div class="link-item"><span class="link-label">Creator Dashboard</span><a href="https://dashboard.twitch.tv/" target="_blank">https://dashboard.twitch.tv/</a></div>
+        <div class="link-item"><span class="link-label">Affiliate Program</span><a href="https://www.twitch.tv/p/affiliate/" target="_blank">https://www.twitch.tv/p/affiliate/</a></div>
+        <div class="link-item"><span class="link-label">Partner Program</span><a href="https://www.twitch.tv/p/partner/" target="_blank">https://www.twitch.tv/p/partner/</a></div>
+        <div class="link-item"><span class="link-label">帮助中心</span><a href="https://help.twitch.tv/" target="_blank">https://help.twitch.tv/</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 11. Steam ============ -->
+<div class="section" id="section-steam">
+  <h2>11. Steam — 开发者 / 发行商主页</h2>
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon" style="background:#1b2838;color:#fff;">🎮</div>
+      <div class="platform-name">Steam Developer &amp; Publisher Page</div>
+    </div>
+    <div class="platform-body">
+
+      <div class="platform-intro">
+        Steam 开发者/发行商主页 <strong>基于 Steam 社区组构建</strong>。创建前需具备：
+        ①有效的 Steamworks 开发者账号；②有「编辑应用营销数据」权限；③个人 Steam 账号非受限状态。
+        主页可自定义短 URL（如 steampowered.com/developer/yourname），URL 被视为公司标记，不得冒用他人商标。
+      </div>
+
+      <div class="flow">
+        <div class="flow-step key">① Steamworks 注册</div><span class="flow-arrow">→</span>
+        <div class="flow-step key">② 创建 Steam 社区组<br><span class="flow-note">steamcommunity.com/actions/GroupCreate</span></div><span class="flow-arrow">→</span>
+        <div class="flow-step">③ 创建 Developer Page</div><span class="flow-arrow">→</span>
+        <div class="flow-step">④ 创建 Publisher Page</div><span class="flow-arrow">→</span>
+        <div class="flow-step">⑤ 关联游戏 + 自定义</div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h4>🔑 步骤 1–2：前置条件</h4>
+          <ul>
+            <li>① 前往 <a href="https://partner.steamgames.com/steamdirect" target="_blank" style="color:var(--primary)">partner.steamgames.com/steamdirect</a> 注册 Steamworks（Steam Direct 准入费用 $100/游戏）</li>
+            <li>② 需具有<strong>「编辑应用营销数据」权限</strong></li>
+            <li>③ 个人 Steam 账号<strong>不能是受限账号</strong>（受限账号无法创建组）</li>
+            <li>前往 <a href="https://steamcommunity.com/actions/GroupCreate" target="_blank" style="color:var(--primary)">steamcommunity.com/actions/GroupCreate</a> 创建使用公司名称的<strong>社区组</strong></li>
+            <li>账号需为该组的<strong>所有者</strong>或具有官员权限（访问组页面时右侧有"管理员工具"）</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📝 步骤 3–4：创建主页 &amp; 关联游戏</h4>
+          <ul>
+            <li>前往 <a href="https://partner.steamgames.com/creatorhome/setup" target="_blank" style="color:var(--primary)">partner.steamgames.com/creatorhome/setup</a> 批量链接应用</li>
+            <li>或：编辑商店页面 → 基本信息 → 在开发者/发行商名称旁点击"链接"</li>
+            <li>可同时创建 Developer Page 和 Publisher Page（同一个组）</li>
+            <li>链接成功：商店页面的开发者/发行商链接变为灰色（非蓝色）</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>🌐 步骤 5：自定义 URL &amp; 品牌资产</h4>
+          <ul>
+            <li>Steamworks → "应用与程序包" → 创作者主页自定义 URL 设置</li>
+            <li>可用格式：steampowered.com/developer/[名称]、/dev/[名称]、/publisher/[名称]、/pub/[名称]</li>
+            <li>⚠️ URL 视为公司标记，不得冒用他人商标</li>
+            <li>上传资产：组头像（公司 Logo）、胶囊图、头部胶囊、库资产、商店横幅</li>
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h4>📌 附加功能 &amp; 注意事项</h4>
+          <ul>
+            <li><strong>列表（Lists）</strong>：按系列/促销分组展示游戏</li>
+            <li><strong>直播</strong>：V1 主页可嵌入直播（显示观众最多的一路）</li>
+            <li><strong>系列页面</strong>：共享同一 IP 的游戏系列独立页面</li>
+            <li><strong>关注通知</strong>：关注主页后，新游戏发布时玩家将收到邮件通知</li>
+            <li>游戏转让后自动从原主页移除</li>
+            <li>参考完整文档：<a href="https://partner.steamgames.com/doc/store/creator_homepage" target="_blank" style="color:var(--primary)">官方 Creator Homepage 文档</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="official-links">
+        <h4>🔗 官方链接</h4>
+        <div class="link-item"><span class="link-label">Steamworks 注册</span><a href="https://partner.steamgames.com/steamdirect" target="_blank">https://partner.steamgames.com/steamdirect</a></div>
+        <div class="link-item"><span class="link-label">创建社区组</span><a href="https://steamcommunity.com/actions/GroupCreate" target="_blank">https://steamcommunity.com/actions/GroupCreate</a></div>
+        <div class="link-item"><span class="link-label">创作者主页设置</span><a href="https://partner.steamgames.com/creatorhome/setup" target="_blank">https://partner.steamgames.com/creatorhome/setup</a></div>
+        <div class="link-item"><span class="link-label">Creator Homepage 官方文档</span><a href="https://partner.steamgames.com/doc/store/creator_homepage" target="_blank">https://partner.steamgames.com/doc/store/creator_homepage</a></div>
+        <div class="link-item"><span class="link-label">自定义工具文档</span><a href="https://partner.steamgames.com/doc/marketing/event_tools/creatorhome/tools" target="_blank">https://partner.steamgames.com/doc/marketing/event_tools/creatorhome/tools</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 10. 资产速查表 ============ -->
+<div class="section" id="section-assets">
+  <h2>12. 品牌资产尺寸速查表</h2>
+  <p style="color:var(--gray-500);margin-bottom:16px;">建议提前按此表准备全部素材，避免后续重复裁剪。</p>
+
+  <table class="comparison-table">
+    <thead>
+      <tr><th>平台</th><th>头像 / Logo</th><th>横幅 / Banner</th><th>其他关键资产</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Discord</strong></td><td>512×512 PNG</td><td>—</td><td>邀请启动画面背景</td></tr>
+      <tr><td><strong>Reddit</strong></td><td>256×256 PNG</td><td>Desktop: 1920×384<br>Mobile: 1600×480</td><td>—</td></tr>
+      <tr><td><strong>Facebook</strong></td><td>176×176 (显示170×170)</td><td>820×312</td><td>封面视频: 820×462</td></tr>
+      <tr><td><strong>YouTube</strong></td><td>98×98</td><td>2560×1440 (安全区1546×423)</td><td>视频水印: 150×150</td></tr>
+      <tr><td><strong>X / Twitter</strong></td><td>400×400</td><td>1500×500</td><td>—</td></tr>
+      <tr><td><strong>Instagram</strong></td><td>320×320</td><td>—</td><td>帖子: 1080×1080 (1:1)</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>200×200</td><td>—</td><td>视频: 1080×1920 (9:16)</td></tr>
+      <tr><td><strong>LINE</strong></td><td>640×640 (圆形裁切)</td><td>封面: 1080×540</td><td>图文选单: 1200×810 / 1200×405</td></tr>
+      <tr><td><strong>Twitch</strong></td><td>256×256 PNG</td><td>封面图: 1200×480</td><td>离线画面: 1920×1080 / Panels: 320×</td></tr>
+      <tr><td><strong>Steam</strong></td><td>社区组头像</td><td>商店横幅</td><td>Capsule / Header Capsule / Library Assets / Logo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 11. 优先级 ============ -->
+<div class="section" id="section-priority">
+  <h2>13. 实施优先级建议</h2>
+
+  <div class="priority-grid">
+    <div class="priority-card p0">
+      <div class="pri-label">⚡ P0 — 立即执行</div>
+      <div class="pri-platforms">Discord · Reddit · Steam</div>
+      <div style="font-size:12px;color:var(--gray-500);margin-top:8px;">免费 · 无付费门槛 · 覆盖面广</div>
+    </div>
+    <div class="priority-card p1">
+      <div class="pri-label">🔶 P1 — 随后推进</div>
+      <div class="pri-platforms">Facebook · YouTube · Twitch</div>
+      <div style="font-size:12px;color:var(--gray-500);margin-top:8px;">需一定积累 · 短期有运营价值</div>
+    </div>
+    <div class="priority-card p2">
+      <div class="pri-label">🔷 P2 — 量力而行</div>
+      <div class="pri-platforms">X/Twitter · Instagram · TikTok · LINE</div>
+      <div style="font-size:12px;color:var(--gray-500);margin-top:8px;">认证成本或门槛较高 / 视地区推进</div>
+    </div>
+    <div class="priority-card p3">
+      <div class="pri-label">🔄 P3 — 持续迭代</div>
+      <div class="pri-platforms">全部平台</div>
+      <div style="font-size:12px;color:var(--gray-500);margin-top:8px;">认证非终点 · 持续运营是关键</div>
+    </div>
+  </div>
+
+  <h3>📝 执行清单（按平台分组）</h3>
+  <div class="platform-checklist">
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#5865f2;color:#fff;">🎮</div>
+        <span>Discord</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 注册 Discord 企业管理账号（非私人号）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建服务器 + 启用 Community 模式</div>
+        <div class="checklist-item"><span class="checkbox"></span> 配置频道结构（Info / Community / Support / Regional）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 开启 AutoMod + Raid/Spam Protection + 2FA</div>
+        <div class="checklist-item"><span class="checkbox"></span> 官网挂载 Discord 邀请链接</div>
+        <div class="checklist-item"><span class="checkbox"></span> 申请 Verified Server（条件成熟后）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 申请 Partner Program（500人/8周/20%留存达标后）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#ff4500;color:#fff;">🤖</div>
+        <span>Reddit</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 注册 Reddit 账号 + 养号 ≥30 天 + 积累 Karma</div>
+        <div class="checklist-item"><span class="checkbox"></span> 自检品牌四条件（受众/运营/专人/公开）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建 Subreddit（名称永久不可改，务必谨慎）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 配置 Avatar(256×256) + Banner + 社区描述</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建 User Flair（Developer / CM 等身份标签）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建 Post Flair（Official News / Update 等分类）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 制定内部行为准则 Playbook</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#06c755;color:#fff;">💬</div>
+        <span>LINE</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 创建 LINE OA 一般账号（manager.line.biz）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 设置头像（640×640）和封面图（1080×540）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 购买专属 ID（@品牌名，NT$720/年）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 准备蓝盾认证文件（商业登记证 + 在职证明）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 提交蓝盾认证申请（OAV 平台）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 搭建自动回复 + 图文选单</div>
+        <div class="checklist-item"><span class="checkbox"></span> 为核心地区建立独立 OA（@GameNameJP / @GameNameTH 等）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#9146ff;color:#fff;">📺</div>
+        <span>Twitch</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 注册 Twitch 账号（企业邮箱）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 进入 Creator Dashboard 完成频道基础设置</div>
+        <div class="checklist-item"><span class="checkbox"></span> 上传头像（256×256）、封面图（1200×480）、离线画面（1920×1080）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 填写频道标题、简介、官网链接 + 标签设置</div>
+        <div class="checklist-item"><span class="checkbox"></span> 开启 2FA 双因素认证</div>
+        <div class="checklist-item"><span class="checkbox"></span> 达成 Affiliate 要求（25粉丝 + 4小时 + 4天 + 平均3观众）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 申请 Partner Program（持续运营达标后）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#1b2838;color:#fff;">🎮</div>
+        <span>Steam</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 注册 Steamworks 开发者账号</div>
+        <div class="checklist-item"><span class="checkbox"></span> 确保个人 Steam 账号非受限状态</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建 Steam 社区组</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建 Developer Page + Publisher Page</div>
+        <div class="checklist-item"><span class="checkbox"></span> 关联已有游戏到主页</div>
+        <div class="checklist-item"><span class="checkbox"></span> 设置自定义 URL（developer/publisher）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 上传品牌资产（组头像、胶囊图、横幅等）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#1877f2;color:#fff;">📘</div>
+        <span>Facebook（含 Meta 生态）</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 创建 Facebook 公共主页</div>
+        <div class="checklist-item"><span class="checkbox"></span> 接入 Meta Business Suite（绑定 Page）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 配置管理员（≥2人 + 1备用）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 完成 Facebook Business Verification（免费）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 完成域名验证（DNS / meta tag）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 订阅 Meta Verified for Businesses（按需，$21.99–34.99/月）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#ff0000;color:#fff;">▶️</div>
+        <span>YouTube</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 注册企业 Google Workspace（非个人 Gmail）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 创建 YouTube Brand Channel（非个人频道）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 添加管理员权限（社区经理/市场负责人/备用）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 完成手机号验证（解锁缩略图/长视频/直播）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 上传品牌横幅(2560×1440) + Logo(98×98)</div>
+        <div class="checklist-item"><span class="checkbox"></span> 配置频道预告片和分区</div>
+        <div class="checklist-item"><span class="checkbox"></span> 积累 100K 订阅后申请认证徽章</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#000;color:#fff;">𝕏</div>
+        <span>X / Twitter</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 创建 X/Twitter 账号（建议 @GameName）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 完善资料（Logo 400×400 / Banner 1500×500 / 官网 / 简介）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 开启 2FA</div>
+        <div class="checklist-item"><span class="checkbox"></span> 官网 ↔ X 双向互链</div>
+        <div class="checklist-item"><span class="checkbox"></span> 申请 Premium Business（$200–$1,000/月，按需）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 配置 Affiliates 附属号（$50/个/月，按需）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;">📸</div>
+        <span>Instagram</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 创建 Instagram 账号</div>
+        <div class="checklist-item"><span class="checkbox"></span> 切换为 Professional Account（Business 类型）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 绑定 Meta Business Suite（与 Facebook 同 Portfolio）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 订阅 Meta Verified（建议与 Facebook 捆绑 $34.99/月）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 开启 2FA + 绑定企业域名邮箱</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:#000;color:#fff;">🎵</div>
+        <span>TikTok</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 使用企业域名邮箱注册</div>
+        <div class="checklist-item"><span class="checkbox"></span> 切换为 Business Account</div>
+        <div class="checklist-item"><span class="checkbox"></span> 完成 Website Verification（域名验证）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 完善 Logo + Banner + Bio + 官方链接</div>
+        <div class="checklist-item"><span class="checkbox"></span> 提前布局 PR：准备 ≥4 篇自然媒体报道</div>
+        <div class="checklist-item"><span class="checkbox"></span> 申请蓝V认证（App 内提交，~30天审核）</div>
+      </div>
+    </div>
+
+    <div class="platform-checklist-group">
+      <div class="platform-checklist-header">
+        <div class="pch-icon" style="background:var(--gray-700);color:#fff;">📋</div>
+        <span>通用前置 &amp; 收尾</span>
+      </div>
+      <div class="platform-checklist-body">
+        <div class="checklist-item"><span class="checkbox"></span> 注册专属企业管理邮箱（非个人邮箱）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 准备统一品牌素材包（按第10章尺寸表）</div>
+        <div class="checklist-item"><span class="checkbox"></span> 为各平台配置核心运营人员及权限</div>
+        <div class="checklist-item"><span class="checkbox"></span> 官网挂载全部社区平台链接</div>
+        <div class="checklist-item"><span class="checkbox"></span> 制定跨平台内容发布日历</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ SUMMARY ============ -->
+<div class="section">
+  <div class="summary-box">
+    <h3>🔑 关键提醒</h3>
+    <ul>
+      <li><strong>费用注意：</strong>X Premium Business $200–$1,000/月 + 附属号 $50/个/月；Meta Verified $21.99–$34.99/月；其他平台认证大多免费。</li>
+      <li><strong>Reddit 前置：</strong>账号需 ≥30 天 + 正向 Karma，务必提前养号。Subreddit 名称创建后永久不可修改。</li>
+      <li><strong>TikTok PR 前置：</strong>蓝V 认证需要 ≥4 篇非付费自然媒体报道，需在产品公布前布局媒体关系。</li>
+      <li><strong>Facebook 认证分层：</strong>Business Verification（免费）和 Meta Verified（付费）是两套独立体系，不可互相替代。</li>
+      <li><strong>Meta 生态协同：</strong>Facebook + Instagram 建议捆绑走 Meta Verified（$34.99/月 vs. 分别 $43.98/月），统一管理更高效。</li>
+      <li><strong>YouTube 耐心：</strong>100K 订阅短期难以达到时，先完成手机号验证解锁基础功能。</li>
+      <li><strong>Steam 前置：</strong>需要 Steamworks 账号 + 非受限个人 Steam + 社区组，建议按官方文档逐项确认。</li>
+      <li><strong>LINE 地区策略：</strong>仅在日本、中国台湾、泰国、印尼等核心 LINE 市场有投入价值；建议按地区分设独立 OA。蓝盾认证前必须先购买专属 ID（NT$720/年）。</li>
+      <li><strong>Twitch 分层认证：</strong>Affiliate（自动获得，门槛低）→ Partner（申请审核）→ Verified Badge（邀请制）。游戏厂商优先推进 Affiliate，快速获得变现功能。</li>
+      <li><strong>Discord 双重路径：</strong>Verified Server（身份认证）和 Partner Program（活跃度认证）可同时持有，互不冲突。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <p>本文件基于《主流社区平台官号搭建与认证 SOP》校验重构</p>
+  <p>数据来源：各平台官方文档及 2025–2026 年社区实践 &nbsp;|&nbsp; 生成日期：2026年6月10日</p>
+</div>
+
+</div>
+</body>
+</html>
