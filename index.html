@@ -191,7 +191,7 @@
       <!-- Game 1 - 猫咪扫雷 / Cat Stars -->
       <a href="https://apps.apple.com/us/app/cat-stars/id6775446731" target="_blank" rel="noopener noreferrer" class="game-card group relative rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl">
         <div class="aspect-[3/4] relative overflow-hidden">
-          <img src="images/background_chapter_cherry_park.jpg" alt="Cat Stars" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+          <img data-i18n-img="game1_img" src="images/game_catstars_zh.jpg" alt="Cat Stars" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
           <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <div class="flex items-center gap-2 mb-3">
@@ -207,7 +207,8 @@
       <!-- Game 2 - 怪谈修复铺 / Ghostlight Relics -->
       <a href="https://apps.apple.com/us/app/ghostlight-relics/id6777337695" target="_blank" rel="noopener noreferrer" class="game-card group relative rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl">
         <div class="aspect-[3/4] relative overflow-hidden">
-          <div class="w-full h-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center">
+          <img data-i18n-img="game2_img" src="images/game_relics_zh.jpg" alt="Ghostlight Relics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="w-full h-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center" style="display:none;">
             <div class="text-center">
               <span class="material-symbols-outlined text-6xl text-gray-300">auto_fix</span>
               <p class="text-gray-300 text-sm mt-4 font-medium" data-i18n="coming_soon_short">即将上线</p>
@@ -243,14 +244,6 @@
           </div>
         </div>
       </a>
-            <div class="flex items-center gap-2 mb-3">
-              <span class="px-2 py-0.5 rounded bg-white/10 text-[10px] font-semibold text-white/70 tracking-wide">TBD</span>
-            </div>
-            <h3 class="font-display font-bold text-xl md:text-2xl text-white/60" data-i18n="game3_title">敬请期待</h3>
-            <p class="text-white/30 text-xs md:text-sm mt-2 leading-relaxed" data-i18n="game3_desc">新游戏正在开发中……</p>
-          </div>
-        </div>
-      </a>
 
     </div>
   </div>
@@ -262,7 +255,7 @@
 <footer class="relative bg-white border-t border-gray-100 py-8">
   <div class="max-w-7xl mx-auto px-6 md:px-10">
     <div class="text-center w-full">
-      <p class="text-gray-300 text-xs">© 2026 heyhong</p>
+      <p class="text-gray-300 text-xs">© 2026 @heyhong</p>
       <a href="mailto:hong@heyhong.net" class="text-gray-400 hover:text-brand-coral transition-colors text-xs">hong@heyhong.net</a>
     </div>
   </div>
@@ -297,6 +290,8 @@ const i18n = {
     game3_desc: '新游戏正在开发中……',
     coming_soon_short: '即将上线',
     coming_soon_short2: '即将上线',
+    game1_img: 'images/game_catstars_zh.jpg',
+    game2_img: 'images/game_relics_zh.jpg',
   },
   'zh-TW': {
     hero_badge1: '已上線',
@@ -319,6 +314,8 @@ const i18n = {
     game3_desc: '新遊戲正在開發中……',
     coming_soon_short: '即將上線',
     coming_soon_short2: '即將上線',
+    game1_img: 'images/game_catstars_zh.jpg',
+    game2_img: 'images/game_relics_zh.jpg',
   },
   en: {
     hero_badge1: 'Now Live',
@@ -341,6 +338,8 @@ const i18n = {
     game3_desc: 'New game in development…',
     coming_soon_short: 'Coming Soon',
     coming_soon_short2: 'Coming Soon',
+    game1_img: 'images/game_catstars_en.jpg',
+    game2_img: 'images/game_relics_en.jpg',
   }
 };
 
@@ -367,6 +366,16 @@ function applyLang(lang) {
   // Update active state
   document.querySelectorAll('.lang-option').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Update images
+  document.querySelectorAll('[data-i18n-img]').forEach(el => {
+    const key = el.dataset.i18nImg;
+    if (dict[key]) {
+      el.src = dict[key];
+      // If image was previously hidden by onerror, show it again
+      el.style.display = '';
+    }
   });
 
   // Save preference
