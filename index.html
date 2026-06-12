@@ -3,507 +3,434 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          warm: { 50:'#fff8f0', 100:'#ffedd5', 200:'#fdd9a6', 300:'#fbbc74', 400:'#f8973b', 500:'#f2751c', 600:'#d45a10', 700:'#a84312', 800:'#7c3114', 900:'#4a1d0b' },
-          cream: '#fef9f2',
-          cat: { pink:'#f4a3b8', blue:'#7ec8e3', orange:'#f7a54b', purple:'#b8a0d2', green:'#8cc9a6', yellow:'#f5d76e' }
+          soft: { 50:'#fefcf9', 100:'#fdf8f0', 200:'#faedd6', 300:'#f5dbb3', 400:'#edc487', 500:'#e0a45a', 600:'#d48a3a', 700:'#b06f2d', 800:'#8d5927', 900:'#6e4621' },
+          brand: { coral:'#ff6b6b', pink:'#ff85a1', orange:'#ffa94d', peach:'#ffc078', mint:'#69db7c' }
         },
-        fontFamily: {
-          display: ['"Noto Sans SC"', 'Manrope', 'sans-serif'],
-          body: ['"Noto Sans SC"', 'Inter', 'sans-serif']
-        }
+        fontFamily: { display: ['"Noto Sans SC"', 'Inter', 'sans-serif'], body: ['Inter', '"Noto Sans SC"', 'sans-serif'] }
       }
     }
   }
 </script>
 <style>
-  body { font-family: 'Noto Sans SC', 'Inter', sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: #faf8f5; color: #2d2d3f; }
 
-  .gradient-text {
-    background: linear-gradient(135deg, #f2751c 0%, #f8973b 40%, #d45a10 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  /* Carousel */
+  .carousel-track { transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+  .carousel-slide { min-width: 100%; }
+  .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,0.12); cursor: pointer; transition: all 0.3s; }
+  .carousel-dot.active { background: #ff6b6b; width: 24px; border-radius: 4px; }
 
-  .hero-bg {
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, #fff8f0 0%, #ffe8d0 30%, #fdd9a6 70%, #fbbc74 100%);
-  }
+  /* Banner cards */
+  .game-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+  .game-card:hover { transform: translateY(-8px) scale(1.02); }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    25%  { transform: translateY(-18px) rotate(1deg); }
-    50%  { transform: translateY(-8px) rotate(-0.5deg); }
-    75%  { transform: translateY(-22px) rotate(0.5deg); }
-  }
-  @keyframes float2 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33%  { transform: translateY(-14px) rotate(-2deg); }
-    66%  { transform: translateY(-6px) rotate(1deg); }
-  }
-  @keyframes float3 {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    50%  { transform: translateY(-20px) scale(1.05); }
-  }
-  @keyframes pawPrints {
-    0% { opacity: 0; transform: translateY(0) scale(0.5); }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-60px) scale(1.1); }
-  }
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { animation: fadeUp 0.8s ease-out both; }
+
+  @keyframes pulseGlow { 0%,100% { opacity:0.3; } 50% { opacity:0.6; } }
+  .glow-pulse { animation: pulseGlow 3s ease-in-out infinite; }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,107,107,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,107,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 
-  .float-1 { animation: float 5s ease-in-out infinite; }
-  .float-2 { animation: float2 6s ease-in-out infinite; }
-  .float-3 { animation: float3 4.5s ease-in-out infinite; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #faf8f5; }
+  ::-webkit-scrollbar-thumb { background: #edc487; border-radius: 3px; }
 
-  .paw-particle {
-    position: absolute;
-    pointer-events: none;
-    animation: pawPrints 2.5s ease-out infinite;
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .feature-card {
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
-  }
-  .feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px -12px rgba(242, 117, 28, 0.18);
-  }
-
-  .cat-emoji-bg {
-    background-image: radial-gradient(circle, rgba(244,163,184,0.15) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #fff8f0; }
-  ::-webkit-scrollbar-thumb { background: #fbbc74; border-radius: 3px; }
+  /* Language dropdown */
+  #langMenu.show { display: block; }
+  .lang-option.active { color: #2d2d3f; background: rgba(255,107,107,0.08); }
 </style>
-<title>猫咪车站 - 微信小游戏</title>
+<title>HEYHONG - Game Platform</title>
 </head>
-<body class="bg-cream text-gray-800 overflow-x-hidden">
+<body>
 
-<!-- =====================================================================
-     导航栏
-===================================================================== -->
-<nav id="mainNav" class="fixed top-0 w-full z-50 transition-all duration-500">
-  <div class="flex items-center justify-between px-6 md:px-10 py-4">
+<!-- ==============================
+     Navigation
+============================== -->
+<nav class="fixed top-0 w-full z-50 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 h-16">
     <a href="#" class="flex items-center gap-2.5">
-      <img src="images/home_logo.png" alt="猫咪车站" class="w-9 h-9 rounded-xl object-cover shadow-sm"/>
-      <span class="font-display font-bold text-lg text-gray-800 tracking-wide">猫咪车站</span>
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-coral to-brand-orange flex items-center justify-center text-white font-black text-sm">H</div>
+      <span class="font-display font-bold text-lg tracking-wide text-gray-800">HEYHONG</span>
     </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#features" class="text-sm text-gray-500 hover:text-warm-500 transition-colors font-medium">游戏特色</a>
-      <a href="#howto" class="text-sm text-gray-500 hover:text-warm-500 transition-colors font-medium">玩法介绍</a>
-      <a href="#screenshots" class="text-sm text-gray-500 hover:text-warm-500 transition-colors font-medium">精彩截图</a>
-      <a href="#play" class="px-5 py-2 bg-warm-500 text-white text-sm font-semibold rounded-full hover:bg-warm-600 transition-all shadow-lg shadow-warm-500/20">
-        立即体验
-      </a>
+    <div class="relative">
+      <button id="langBtn" class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors font-medium">
+        <span class="material-symbols-outlined text-base">language</span>
+        <span id="langLabel">简体中文</span>
+        <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+      <div id="langMenu" class="absolute right-0 top-full mt-2 w-36 bg-white border border-gray-200 rounded-xl shadow-xl shadow-black/5 overflow-hidden hidden">
+        <button data-lang="zh-CN" class="lang-option w-full text-left px-4 py-2.5 text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors">简体中文</button>
+        <button data-lang="zh-TW" class="lang-option w-full text-left px-4 py-2.5 text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors">繁體中文</button>
+        <button data-lang="en" class="lang-option w-full text-left px-4 py-2.5 text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors">English</button>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- =====================================================================
-     Hero Section
-===================================================================== -->
-<section class="hero-bg relative min-h-screen flex items-center overflow-hidden">
-  <!-- 装饰圆 -->
-  <div class="absolute top-20 right-10 w-72 h-72 bg-cat-pink/20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute bottom-32 left-10 w-96 h-96 bg-cat-blue/15 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-cat-yellow/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- ==============================
+     Hero Carousel
+============================== -->
+<section class="relative bg-gradient-to-b from-soft-50 via-white to-soft-100 overflow-hidden pb-2 md:pb-3">
+  <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+  <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-peach/20 rounded-full blur-[160px] pointer-events-none glow-pulse"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-pink/15 rounded-full blur-[140px] pointer-events-none glow-pulse" style="animation-delay:1.5s;"></div>
 
-  <!-- 浮动猫咪装饰 -->
-  <img src="images/cat_pink.png" alt="" class="absolute top-24 right-[12%] w-16 md:w-20 float-1 pointer-events-none" style="animation-delay: 0s;"/>
-  <img src="images/cat_blue.png" alt="" class="absolute top-40 right-[22%] w-14 md:w-16 float-2 pointer-events-none" style="animation-delay: 0.8s;"/>
-  <img src="images/cat_orange.png" alt="" class="absolute top-[55%] left-[8%] w-20 md:w-24 float-3 pointer-events-none" style="animation-delay: 1.5s;"/>
-  <img src="images/cat_purple.png" alt="" class="absolute top-[48%] left-[18%] w-12 md:w-14 float-1 pointer-events-none" style="animation-delay: 2.2s;"/>
-  <img src="images/cat_green.png" alt="" class="absolute top-1/3 left-[4%] w-10 md:w-12 float-2 pointer-events-none" style="animation-delay: 0.4s;"/>
-  <img src="images/cat_yellow.png" alt="" class="absolute top-[60%] right-[6%] w-14 md:w-16 float-3 pointer-events-none" style="animation-delay: 1.0s;"/>
+  <div class="relative w-full max-w-7xl mx-auto px-6 md:px-10 pt-[72px]">
+    <!-- Carousel track -->
+    <div class="overflow-hidden rounded-3xl">
+      <div id="carouselTrack" class="carousel-track flex" style="transform: translateX(0%);">
 
-  <!-- 脚印粒子 -->
-  <div class="paw-particle top-[55%] left-[20%]" style="animation-delay:0s;">🐾</div>
-  <div class="paw-particle top-[45%] left-[30%]" style="animation-delay:1.2s;">🐾</div>
-  <div class="paw-particle top-[50%] right-[25%]" style="animation-delay:2.4s;">🐾</div>
-
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-10 pt-20">
-    <div class="flex flex-col items-center text-center">
-      <!-- Logo -->
-      <div class="mb-6 animate-[fadeIn_1s_ease-out]">
-        <img src="images/home_logo.png" alt="猫咪车站 Logo" class="w-24 h-24 md:w-28 md:h-28 rounded-2xl shadow-2xl object-cover"/>
-      </div>
-
-      <!-- 标签 -->
-      <div class="flex items-center gap-2 mb-6 animate-[fadeIn_0.8s_ease-out]">
-        <span class="px-3 py-1 bg-warm-100 text-warm-700 text-xs font-semibold rounded-full tracking-wide">微信小游戏</span>
-        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full tracking-wide">休闲益智</span>
-      </div>
-
-      <!-- 标题 -->
-      <h1 class="font-display font-black text-5xl md:text-7xl lg:text-8xl tracking-[-0.03em] mb-6 animate-[slideUp_0.8s_ease-out]">
-        <span class="gradient-text">猫咪车站</span>
-      </h1>
-
-      <!-- 副标题 -->
-      <p class="text-gray-500 text-lg md:text-xl max-w-xl leading-relaxed mb-10 animate-[slideUp_0.8s_ease-out_0.15s]" style="animation-fill-mode: both;">
-        帮助彩色猫咪排队上车，在温馨的猫猫车站里<br class="hidden md:block"/>开启一段治愈解压的 puzzle 之旅。
-      </p>
-
-      <!-- CTA 按钮 -->
-      <div class="flex flex-col sm:flex-row items-center gap-4 animate-[slideUp_0.8s_ease-out_0.3s]" style="animation-fill-mode: both;">
-        <a href="#play" class="px-8 py-3.5 bg-warm-500 text-white font-semibold rounded-full hover:bg-warm-600 transition-all shadow-xl shadow-warm-500/25 text-lg flex items-center gap-2">
-          开始玩耍
-          <span class="material-symbols-outlined text-xl">arrow_forward</span>
-        </a>
-        <a href="#howto" class="px-8 py-3.5 bg-white/80 text-gray-600 font-semibold rounded-full hover:bg-white transition-all border border-gray-200 text-lg">
-          了解玩法
-        </a>
-      </div>
-
-      <!-- 数据 -->
-      <div class="flex items-center gap-8 md:gap-12 mt-14 animate-[fadeIn_1s_ease-out_0.5s]" style="animation-fill-mode: both;">
-        <div class="text-center">
-          <div class="text-2xl md:text-3xl font-black gradient-text">100+</div>
-          <div class="text-xs md:text-sm text-gray-400 mt-1">精心设计的关卡</div>
-        </div>
-        <div class="w-px h-10 bg-gray-200"></div>
-        <div class="text-center">
-          <div class="text-2xl md:text-3xl font-black gradient-text">20+</div>
-          <div class="text-xs md:text-sm text-gray-400 mt-1">猫咪和载具皮肤</div>
-        </div>
-        <div class="w-px h-10 bg-gray-200"></div>
-        <div class="text-center">
-          <div class="text-2xl md:text-3xl font-black gradient-text">14</div>
-          <div class="text-xs md:text-sm text-gray-400 mt-1">精美章节背景</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- =====================================================================
-     Features Section
-===================================================================== -->
-<section id="features" class="relative py-24 md:py-32 px-6 md:px-10">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16 reveal">
-      <span class="text-warm-500 text-sm font-bold tracking-[0.2em] uppercase">Features</span>
-      <h2 class="font-display text-3xl md:text-5xl font-black mt-3 mb-4">为什么你会爱上它</h2>
-      <p class="text-gray-400 max-w-lg mx-auto text-base">轻松上手，却又充满策略。每一次点击都是一次可爱的治愈。</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-      <!-- 卡片 1 -->
-      <div class="feature-card reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100" style="transition-delay: 0s;">
-        <div class="w-12 h-12 bg-cat-pink/15 rounded-xl flex items-center justify-center mb-5">
-          <span class="material-symbols-outlined text-cat-pink text-2xl">psychology</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-3">轻松上手 策略解谜</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          点击同色猫咪让它们排队上车，规划好顺序才能让所有猫咪顺利回家。第一关内置新手引导，三秒上手。
-        </p>
-      </div>
-
-      <!-- 卡片 2 -->
-      <div class="feature-card reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100" style="transition-delay: 0.1s;">
-        <div class="w-12 h-12 bg-cat-blue/15 rounded-xl flex items-center justify-center mb-5">
-          <span class="material-symbols-outlined text-cat-blue text-2xl">palette</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-3">20+ 猫咪与载具皮肤</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          雨衣、红围巾、樱花铃铛、站长帽……猫咪换装超可爱。火箭飞船、花花巴士、夜间特快等载具皮肤也让每一次封箱出发都充满惊喜。
-        </p>
-      </div>
-
-      <!-- 卡片 3 -->
-      <div class="feature-card reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100" style="transition-delay: 0.2s;">
-        <div class="w-12 h-12 bg-cat-green/15 rounded-xl flex items-center justify-center mb-5">
-          <span class="material-symbols-outlined text-cat-green text-2xl">landscape</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-3">十四章节 旅途风景</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          从樱花公园到霓虹雨夜，从迷雾站台到雪夜终点站。每个章节都有独特的手绘风格背景，陪伴猫咪一路前行。
-        </p>
-      </div>
-
-      <!-- 卡片 4 -->
-      <div class="feature-card reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100" style="transition-delay: 0.15s;">
-        <div class="w-12 h-12 bg-cat-purple/15 rounded-xl flex items-center justify-center mb-5">
-          <span class="material-symbols-outlined text-cat-purple text-2xl">directions_bus</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-3">多种载具 趣味收集</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          纸箱、猫窝、猫爬架、巴士……猫咪回家的交通工具五花八门。火箭飞船、花花巴士等限定皮肤让收集更有乐趣。
-        </p>
-      </div>
-
-      <!-- 卡片 5 -->
-      <div class="feature-card reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100" style="transition-delay: 0.25s;">
-        <div class="w-12 h-12 bg-cat-orange/15 rounded-xl flex items-center justify-center mb-5">
-          <span class="material-symbols-outlined text-cat-orange text-2xl">auto_awesome</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-3">救援道具 智取难关</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          退一步、灵感铃、重新排、加脚印——四种救援道具助你化解死局。通关掉落，策略使用，越玩越有成就感。
-        </p>
-      </div>
-
-      <!-- 卡片 6 -->
-      <div class="feature-card reveal bg-white rounded-2xl p-8 shadow-sm border border-gray-100" style="transition-delay: 0.3s;">
-        <div class="w-12 h-12 bg-cat-yellow/15 rounded-xl flex items-center justify-center mb-5">
-          <span class="material-symbols-outlined text-cat-yellow text-2xl">emoji_events</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-3">三星目标 好友竞技</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          每关设有三星评分，争取最少步数和最少惩罚。接入微信好友排行榜，看看谁才是真正的猫猫站长。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =====================================================================
-     How to Play
-===================================================================== -->
-<section id="howto" class="relative py-24 md:py-32 bg-white">
-  <div class="absolute inset-0 cat-emoji-bg pointer-events-none"></div>
-  <div class="relative max-w-6xl mx-auto px-6 md:px-10">
-    <div class="text-center mb-16 reveal">
-      <span class="text-warm-500 text-sm font-bold tracking-[0.2em] uppercase">How to Play</span>
-      <h2 class="font-display text-3xl md:text-5xl font-black mt-3 mb-4">三步成为猫猫站长</h2>
-      <p class="text-gray-400 max-w-lg mx-auto text-base">规则简单，老少皆宜，但想拿三星可不简单。</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
-      <!-- Step 1 -->
-      <div class="reveal text-center" style="transition-delay: 0s;">
-        <div class="relative mx-auto w-28 h-28 bg-cat-pink/10 rounded-full flex items-center justify-center mb-6">
-          <span class="font-display font-black text-5xl gradient-text">1</span>
-          <img src="images/cat_orange.png" alt="" class="absolute -top-2 -right-2 w-12 h-12"/>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-2">点击同色猫咪</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          观察棋盘上的彩色猫咪，点击一只能走到通道口的猫咪，它就会迈着小碎步出发。
-        </p>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="reveal text-center" style="transition-delay: 0.15s;">
-        <div class="relative mx-auto w-28 h-28 bg-cat-blue/10 rounded-full flex items-center justify-center mb-6">
-          <span class="font-display font-black text-5xl gradient-text">2</span>
-          <img src="images/carrier_bus_blue.png" alt="" class="absolute -top-2 -right-2 w-12 h-12"/>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-2">排队进入载具</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          猫咪沿着脚印通道走到对应颜色的猫窝或纸箱。每种颜色的载具只能接收同色猫咪哦。
-        </p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="reveal text-center" style="transition-delay: 0.3s;">
-        <div class="relative mx-auto w-28 h-28 bg-cat-green/10 rounded-full flex items-center justify-center mb-6">
-          <span class="font-display font-black text-5xl gradient-text">3</span>
-          <span class="material-symbols-outlined absolute -top-2 -right-2 text-3xl text-cat-green">celebration</span>
-        </div>
-        <h3 class="font-display font-bold text-lg mb-2">满员封箱回家</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          集齐 4 只同色猫咪后，载具封箱出发！所有猫咪送走后通关，争取三星评价刷新最佳纪录。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =====================================================================
-     Screenshots
-===================================================================== -->
-<section id="screenshots" class="relative py-24 md:py-32 px-6 md:px-10">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16 reveal">
-      <span class="text-warm-500 text-sm font-bold tracking-[0.2em] uppercase">Gallery</span>
-      <h2 class="font-display text-3xl md:text-5xl font-black mt-3 mb-4">游戏精彩瞬间</h2>
-      <p class="text-gray-400 max-w-lg mx-auto text-base">温馨治愈的画面，每一帧都值得截图保存。</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="reveal rounded-2xl overflow-hidden shadow-lg" style="transition-delay: 0s;">
-        <img src="images/_share_preview.png" alt="游戏截图" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="reveal rounded-2xl overflow-hidden shadow-lg" style="transition-delay: 0.1s;">
-        <img src="images/share_card.jpg" alt="分享卡片" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="reveal rounded-2xl overflow-hidden shadow-lg" style="transition-delay: 0.2s;">
-        <img src="images/background_chapter_cherry_park.jpg" alt="樱花公园章节" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="reveal rounded-2xl overflow-hidden shadow-lg" style="transition-delay: 0.15s;">
-        <img src="images/background_chapter_station_hall.jpg" alt="车站大厅章节" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="reveal rounded-2xl overflow-hidden shadow-lg" style="transition-delay: 0.25s;">
-        <img src="images/background_chapter_snowy.jpg" alt="雪夜章节" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"/>
-      </div>
-      <div class="reveal rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-cat-pink/20 via-cat-blue/10 to-cat-yellow/15 flex items-center justify-center" style="transition-delay: 0.35s;">
-        <div class="text-center p-6">
-          <span class="material-symbols-outlined text-5xl text-warm-300 mb-3">apps</span>
-          <p class="text-gray-400 text-sm">更多精彩等你发现...</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =====================================================================
-     CTA - How to Play
-===================================================================== -->
-<section id="play" class="relative py-24 md:py-32 bg-warm-500 overflow-hidden">
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute top-10 left-10 text-8xl">🐱</div>
-    <div class="absolute bottom-10 right-10 text-8xl">🚌</div>
-    <div class="absolute top-1/2 left-1/3 text-6xl">🐾</div>
-    <div class="absolute top-1/3 right-1/4 text-7xl">📦</div>
-  </div>
-  <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
-
-  <div class="relative max-w-3xl mx-auto px-6 md:px-10 text-center">
-    <div class="reveal">
-      <span class="text-white/70 text-sm font-bold tracking-[0.2em] uppercase">Play Now</span>
-      <h2 class="font-display text-3xl md:text-5xl font-black text-white mt-3 mb-6">快来体验猫咪车站吧</h2>
-      <p class="text-white/80 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-        打开微信，搜索「<strong class="text-white">猫咪车站</strong>」小程序，<br class="hidden md:block"/>
-        即可免费开始你的猫猫站长之旅。
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-        <div class="bg-white/15 backdrop-blur rounded-2xl px-8 py-5 text-left">
-          <div class="text-white/60 text-xs tracking-widest uppercase mb-1">Step 1</div>
-          <div class="text-white font-semibold flex items-center gap-2">
-            <span class="material-symbols-outlined text-xl">search</span>
-            打开微信 → 发现 → 小程序
+        <!-- Slide 1 -->
+        <div class="carousel-slide relative min-h-[40vh] md:min-h-[50vh] rounded-3xl overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-soft-100 via-white to-soft-200"></div>
+          <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-pink/8 to-transparent"></div>
+          <div class="relative h-full flex flex-col justify-center px-8 md:px-16 py-6 md:py-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 text-xs text-gray-500 mb-6 w-fit fade-up shadow-sm" style="animation-delay:0.1s;">
+              <span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+              <span data-i18n="hero_badge1">已上线</span>
+            </div>
+            <h1 class="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-6 fade-up" style="animation-delay:0.2s;" data-i18n="hero_title" data-i18n-html="true">
+              <span class="bg-gradient-to-r from-gray-800 via-brand-coral to-brand-orange bg-clip-text text-transparent">Discover Fun<br/>Games Here</span>
+            </h1>
+            <p class="text-gray-400 max-w-xl text-base md:text-lg leading-relaxed mb-5 fade-up" style="animation-delay:0.3s;" data-i18n="hero_sub1">
+              HEYHONG 为您精选高品质休闲游戏，随时随地，打开即玩。
+            </p>
+            <div class="fade-up" style="animation-delay:0.4s;">
+              <a href="#games" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-coral to-brand-orange text-white font-semibold rounded-full hover:opacity-90 transition-all shadow-lg shadow-brand-coral/25 text-sm" data-i18n="hero_cta">
+                Explore Games
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              </a>
+            </div>
           </div>
         </div>
-        <span class="material-symbols-outlined text-white/40 text-2xl hidden sm:block">arrow_forward</span>
-        <div class="bg-white/15 backdrop-blur rounded-2xl px-8 py-5 text-left">
-          <div class="text-white/60 text-xs tracking-widest uppercase mb-1">Step 2</div>
-          <div class="text-white font-semibold flex items-center gap-2">
-            <span class="material-symbols-outlined text-xl">pet_supplies</span>
-            搜索「猫咪车站」
-          </div>
-        </div>
-        <span class="material-symbols-outlined text-white/40 text-2xl hidden sm:block">arrow_forward</span>
-        <div class="bg-white/15 backdrop-blur rounded-2xl px-8 py-5 text-left">
-          <div class="text-white/60 text-xs tracking-widest uppercase mb-1">Step 3</div>
-          <div class="text-white font-semibold flex items-center gap-2">
-            <span class="material-symbols-outlined text-xl">play_circle</span>
-            点击开始玩耍
-          </div>
-        </div>
-      </div>
 
-      <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full px-6 py-3">
-        <span class="w-2.5 h-2.5 bg-green-300 rounded-full animate-pulse"></span>
-        <span class="text-white/90 text-sm font-medium">完全免费 · 无需下载 · 即点即玩</span>
+        <!-- Slide 2 -->
+        <div class="carousel-slide relative min-h-[40vh] md:min-h-[50vh] rounded-3xl overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-soft-50 via-white to-soft-100"></div>
+          <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-mint/10 to-transparent"></div>
+          <div class="relative h-full flex flex-col justify-center px-8 md:px-16 py-6 md:py-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 text-xs text-gray-500 mb-6 w-fit fade-up shadow-sm" style="animation-delay:0.1s;">
+              <span class="material-symbols-outlined text-sm">stadia_controller</span>
+              Casual
+            </div>
+            <h2 class="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-6 fade-up" style="animation-delay:0.2s;" data-i18n="slide2_title" data-i18n-html="true">
+              <span class="bg-gradient-to-r from-gray-800 via-brand-mint to-blue-400 bg-clip-text text-transparent">Play Anytime,<br/>Anywhere</span>
+            </h2>
+            <p class="text-gray-400 max-w-xl text-base md:text-lg leading-relaxed mb-5 fade-up" style="animation-delay:0.3s;" data-i18n="slide2_sub">
+              无需下载，即点即玩。在碎片时间里享受纯粹的游戏乐趣。
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide relative min-h-[40vh] md:min-h-[50vh] rounded-3xl overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-soft-100 via-white to-soft-200"></div>
+          <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-pink/10 to-transparent"></div>
+          <div class="relative h-full flex flex-col justify-center px-8 md:px-16 py-6 md:py-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 text-xs text-gray-500 mb-6 w-fit fade-up shadow-sm" style="animation-delay:0.1s;">
+              <span class="material-symbols-outlined text-sm">diamond</span>
+              Premium
+            </div>
+            <h2 class="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-6 fade-up" style="animation-delay:0.2s;" data-i18n="slide3_title" data-i18n-html="true">
+              <span class="bg-gradient-to-r from-gray-800 via-brand-pink to-brand-coral bg-clip-text text-transparent">Curated for<br/>You</span>
+            </h2>
+            <p class="text-gray-400 max-w-xl text-base md:text-lg leading-relaxed mb-5 fade-up" style="animation-delay:0.3s;" data-i18n="slide3_sub">
+              每一款游戏都经过精心挑选，只为带给你最好的体验。
+            </p>
+          </div>
+        </div>
+
       </div>
+    </div>
+
+    <!-- Carousel controls -->
+    <div class="flex items-center justify-center gap-3 mt-2">
+      <button id="carouselPrev" class="w-8 h-8 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-all shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <div id="carouselDots" class="flex items-center gap-2">
+        <div class="carousel-dot active" data-index="0"></div>
+        <div class="carousel-dot" data-index="1"></div>
+        <div class="carousel-dot" data-index="2"></div>
+      </div>
+      <button id="carouselNext" class="w-8 h-8 rounded-full border border-gray-200 bg-white hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-all shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- =====================================================================
+<!-- ==============================
+     Games Section
+============================== -->
+<section id="games" class="relative pt-6 pb-16 md:pt-8 md:pb-20 bg-soft-50">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-soft-100/30 to-transparent pointer-events-none"></div>
+  <div class="relative max-w-7xl mx-auto px-6 md:px-10">
+    <div class="text-center mb-6">
+      <h2 class="font-display font-black text-3xl md:text-5xl text-gray-800" data-i18n="games_title">精选游戏</h2>
+      <p class="text-gray-400 text-sm mt-4 max-w-md mx-auto" data-i18n="games_sub">发现好玩 · 随时开玩</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+
+      <!-- Game 1 - 猫咪扫雷 / Cat Stars -->
+      <a href="https://apps.apple.com/us/app/cat-stars/id6775446731" target="_blank" rel="noopener noreferrer" class="game-card group relative rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl">
+        <div class="aspect-[3/4] relative overflow-hidden">
+          <img src="images/background_chapter_cherry_park.jpg" alt="Cat Stars" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded bg-gray-100 text-[10px] font-semibold text-gray-500 tracking-wide">PUZZLE</span>
+              <span class="px-2 py-0.5 rounded bg-brand-coral/10 text-[10px] font-semibold text-brand-coral tracking-wide">NEW</span>
+            </div>
+            <h3 class="font-display font-bold text-xl md:text-2xl text-gray-800" data-i18n="game1_title">猫咪扫雷</h3>
+            <p class="text-gray-400 text-xs md:text-sm mt-2 leading-relaxed line-clamp-2" data-i18n="game1_desc">经典扫雷玩法融合可爱猫咪主题，在轻松愉悦中挑战你的推理能力。</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Game 2 - 怪谈修复铺 / Ghostlight Relics -->
+      <a href="https://apps.apple.com/us/app/ghostlight-relics/id6777337695" target="_blank" rel="noopener noreferrer" class="game-card group relative rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl">
+        <div class="aspect-[3/4] relative overflow-hidden">
+          <div class="w-full h-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center">
+            <div class="text-center">
+              <span class="material-symbols-outlined text-6xl text-gray-300">auto_fix</span>
+              <p class="text-gray-300 text-sm mt-4 font-medium" data-i18n="coming_soon_short">即将上线</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded bg-gray-100 text-[10px] font-semibold text-gray-500 tracking-wide" data-i18n="game2_tag">TAG</span>
+            </div>
+            <h3 class="font-display font-bold text-xl md:text-2xl text-gray-800" data-i18n="game2_title">怪谈修复铺</h3>
+            <p class="text-gray-400 text-xs md:text-sm mt-2 leading-relaxed" data-i18n="game2_desc">收集散落的记忆碎片，修复被遗忘的故事。一款温暖治愈的叙事解谜游戏。</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Game 3 - Coming soon -->
+      <a href="#" class="game-card group relative rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl">
+        <div class="aspect-[3/4] relative overflow-hidden">
+          <div class="w-full h-full bg-gradient-to-br from-soft-100 to-soft-200 flex items-center justify-center">
+            <div class="text-center">
+              <span class="material-symbols-outlined text-6xl text-gray-300">construction</span>
+              <p class="text-gray-300 text-sm mt-4 font-medium" data-i18n="coming_soon_short2">即将上线</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded bg-gray-100 text-[10px] font-semibold text-gray-500 tracking-wide">TBD</span>
+            </div>
+            <h3 class="font-display font-bold text-xl md:text-2xl text-gray-400" data-i18n="game3_title">敬请期待</h3>
+            <p class="text-gray-300 text-xs md:text-sm mt-2 leading-relaxed" data-i18n="game3_desc">新游戏正在开发中……</p>
+          </div>
+        </div>
+      </a>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded bg-white/10 text-[10px] font-semibold text-white/70 tracking-wide">TBD</span>
+            </div>
+            <h3 class="font-display font-bold text-xl md:text-2xl text-white/60" data-i18n="game3_title">敬请期待</h3>
+            <p class="text-white/30 text-xs md:text-sm mt-2 leading-relaxed" data-i18n="game3_desc">新游戏正在开发中……</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
      Footer
-===================================================================== -->
-<footer class="bg-gray-900 py-12 px-6 md:px-10">
-  <div class="max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-2.5">
-        <img src="images/home_logo.png" alt="" class="w-7 h-7 rounded-lg object-cover"/>
-        <span class="font-display font-bold text-white/80 text-sm tracking-wide">猫咪车站</span>
-      </div>
-      <div class="flex items-center gap-6">
-        <span class="text-white/30 text-xs">微信小游戏</span>
-        <span class="text-white/10">·</span>
-        <span class="text-white/30 text-xs">休闲益智</span>
-        <span class="text-white/10">·</span>
-        <span class="text-white/30 text-xs">Bus Jam Puzzle</span>
-      </div>
-      <div class="text-white/25 text-xs">
-        © 2026 猫咪车站. 在微信小程序中搜索体验。
-      </div>
+============================== -->
+<footer class="relative bg-white border-t border-gray-100 py-8">
+  <div class="max-w-7xl mx-auto px-6 md:px-10">
+    <div class="text-center w-full">
+      <p class="text-gray-300 text-xs">© 2026 @heyhong</p>
+      <a href="mailto:hong@heyhong.net" class="text-gray-400 hover:text-brand-coral transition-colors text-xs">hong@heyhong.net</a>
     </div>
   </div>
 </footer>
 
-<!-- =====================================================================
+<!-- ==============================
      JavaScript
-===================================================================== -->
+============================== -->
 <script>
-// 导航栏滚动效果
-(function () {
-  const nav = document.getElementById('mainNav');
-
-  function updateNav() {
-    if (window.scrollY > 80) {
-      nav.style.background = 'rgba(255,255,255,0.92)';
-      nav.style.backdropFilter = 'blur(20px)';
-      nav.style.boxShadow = '0 1px 0 rgba(0,0,0,0.06)';
-    } else {
-      nav.style.background = 'transparent';
-      nav.style.backdropFilter = 'none';
-      nav.style.boxShadow = 'none';
-    }
+// ============================================================
+//  i18n System
+// ============================================================
+const i18n = {
+  'zh-CN': {
+    hero_badge1: '已上线',
+    hero_title: '发现好玩<br/>游戏',
+    hero_sub1: 'HEYHONG 为您精选高品质休闲游戏，随时随地，打开即玩。',
+    hero_cta: '浏览游戏',
+    slide2_title: '随时畅玩<br/>无需下载',
+    slide2_sub: '无需下载，即点即玩。在碎片时间里享受纯粹的游戏乐趣。',
+    slide3_title: '为你精选<br/>每一款',
+    slide3_sub: '每一款游戏都经过精心挑选，只为带给你最好的体验。',
+    games_label: '游戏',
+    games_title: '精选游戏',
+    games_sub: '发现好玩 · 随时开玩',
+    game1_title: '猫咪扫雷',
+    game1_desc: '经典扫雷玩法融合可爱猫咪主题，在轻松愉悦中挑战你的推理能力。',
+    game2_tag: '叙事',
+    game2_title: '怪谈修复铺',
+    game2_desc: '收集散落的记忆碎片，修复被遗忘的故事。一款温暖治愈的叙事解谜游戏。',
+    game3_title: '敬请期待',
+    game3_desc: '新游戏正在开发中……',
+    coming_soon_short: '即将上线',
+    coming_soon_short2: '即将上线',
+  },
+  'zh-TW': {
+    hero_badge1: '已上線',
+    hero_title: '發現好玩<br/>遊戲',
+    hero_sub1: 'HEYHONG 為您精選高品質休閒遊戲，隨時隨地，打開即玩。',
+    hero_cta: '瀏覽遊戲',
+    slide2_title: '隨時暢玩<br/>無需下載',
+    slide2_sub: '無需下載，即點即玩。在碎片時間裡享受純粹的遊戲樂趣。',
+    slide3_title: '為你精選<br/>每一款',
+    slide3_sub: '每一款遊戲都經過精心挑選，只為帶給你最好的體驗。',
+    games_label: '遊戲',
+    games_title: '精選遊戲',
+    games_sub: '發現好玩 · 隨時開玩',
+    game1_title: '貓咪掃雷',
+    game1_desc: '經典掃雷玩法融合可愛貓咪主題，在輕鬆愉悅中挑戰你的推理能力。',
+    game2_tag: '敘事',
+    game2_title: '怪談修復鋪',
+    game2_desc: '收集散落的記憶碎片，修復被遺忘的故事。一款溫暖治癒的敘事解謎遊戲。',
+    game3_title: '敬請期待',
+    game3_desc: '新遊戲正在開發中……',
+    coming_soon_short: '即將上線',
+    coming_soon_short2: '即將上線',
+  },
+  en: {
+    hero_badge1: 'Now Live',
+    hero_title: 'Discover Fun<br/>Games Here',
+    hero_sub1: 'HEYHONG curates quality casual games for you. Play anytime, anywhere, instantly.',
+    hero_cta: 'Explore Games',
+    slide2_title: 'Play Anytime,<br/>Anywhere',
+    slide2_sub: 'No download required. Enjoy pure gaming fun in your spare moments.',
+    slide3_title: 'Curated for<br/>You',
+    slide3_sub: 'Every game is carefully selected to bring you the best experience.',
+    games_label: 'Games',
+    games_title: 'Featured Games',
+    games_sub: 'Discover · Play · Enjoy',
+    game1_title: 'Cat Stars',
+    game1_desc: 'Classic minesweeper meets cute cats. Challenge your logic in a delightful puzzle adventure.',
+    game2_tag: 'NARRATIVE',
+    game2_title: 'Ghostlight Relics',
+    game2_desc: 'Collect scattered memory fragments and restore forgotten stories. A warm narrative puzzle game.',
+    game3_title: 'Coming Soon',
+    game3_desc: 'New game in development…',
+    coming_soon_short: 'Coming Soon',
+    coming_soon_short2: 'Coming Soon',
   }
+};
 
-  window.addEventListener('scroll', updateNav, { passive: true });
-})();
+function applyLang(lang) {
+  const dict = i18n[lang] || i18n['zh-CN'];
+  document.documentElement.lang = lang;
 
-// 滚动显示动画
-(function () {
-  const reveals = document.querySelectorAll('.reveal');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) {
+      if (el.dataset.i18nHtml === 'true') {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
       }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-  reveals.forEach(el => observer.observe(el));
-})();
-
-// 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+  // Update label
+  const labels = { 'zh-CN': '简体中文', 'zh-TW': '繁體中文', en: 'English' };
+  document.getElementById('langLabel').textContent = labels[lang] || '简体中文';
+
+  // Update active state
+  document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Save preference
+  localStorage.setItem('heyhong_lang', lang);
+}
+
+function getDefaultLang() {
+  const saved = localStorage.getItem('heyhong_lang');
+  if (saved && i18n[saved]) return saved;
+  const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  if (nav.startsWith('zh-tw') || nav.startsWith('zh-hk')) return 'zh-TW';
+  if (nav.startsWith('zh')) return 'zh-CN';
+  return 'en';
+}
+
+// Init i18n
+const defaultLang = getDefaultLang();
+applyLang(defaultLang);
+
+// Dropdown toggle
+const langBtn = document.getElementById('langBtn');
+const langMenu = document.getElementById('langMenu');
+langBtn.addEventListener('click', () => {
+  langMenu.classList.toggle('show');
 });
+document.addEventListener('click', (e) => {
+  if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+    langMenu.classList.remove('show');
+  }
+});
+document.querySelectorAll('.lang-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    applyLang(btn.dataset.lang);
+    langMenu.classList.remove('show');
+  });
+});
+
+// ============================================================
+//  Carousel
+// ============================================================
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const total = slides.length;
+  let cur = 0, timer;
+
+  function goTo(n) {
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + cur * 100 + '%)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+  }
+
+  function startTimer() { timer = setInterval(() => goTo(cur + 1), 5000); }
+  function resetTimer() { clearInterval(timer); startTimer(); }
+
+  nextBtn.addEventListener('click', () => { goTo(cur + 1); resetTimer(); });
+  prevBtn.addEventListener('click', () => { goTo(cur - 1); resetTimer(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(parseInt(d.dataset.index)); resetTimer(); }));
+
+  startTimer();
+})();
 </script>
 
 </body>
