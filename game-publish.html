@@ -154,9 +154,8 @@
   .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:8px; }
   .kpi-item { display:flex; align-items:center; gap:8px; padding:8px 12px; background:#fff; border:1px solid var(--c-border); border-radius:8px; }
   .kpi-item .kpi-icon { font-size:14px; }
-  .kpi-item .kpi-info { flex:1; min-width:0; }
-  .kpi-item .kpi-label { font-size:10px; color:var(--c-text-hint); }
-  .kpi-item .kpi-val { font-size:13px; font-weight:600; }
+  .kpi-item .kpi-info { flex:1; min-width:0; display:flex; align-items:center; }
+  .kpi-item .kpi-label { font-size:12px; color:var(--c-text-sec); }
 
   /* TABLE */
   .checklist-table { width:100%; border-collapse:collapse; margin-top:12px; font-size:11px; }
@@ -242,6 +241,13 @@
   </div>
 </section>
 
+<!-- 数据说明 -->
+<section class="container" style="margin:0 auto 20px; max-width:1300px;">
+  <div style="background:var(--c-amber-bg); border:1px solid var(--c-amber-light); border-radius:var(--radius); padding:14px 18px; font-size:12px; color:var(--c-amber); line-height:1.7;">
+    <strong>数据说明：</strong>本手册中标注来源的引用来自官方文档或公开行业报告；未标注来源的数值、阈值、样本量、周期等均为<strong>行业经验值或内部管理基准</strong>，实施前请结合项目品类、目标市场与最新平台政策进行校准。各阶段 KPI 区域仅保留需关注的维度，具体数值基准由项目组结合自身历史数据与品类标准自定义。遇到政策/数据更新，请以官方口径为准。
+  </div>
+</section>
+
 <!-- ====== UNIFIED DASHBOARD ====== -->
 <div class="container">
 
@@ -297,12 +303,12 @@
       <div class="dash-card global">
         <h3><span class="region-tag gl-tag">海外</span>Google Play / App Store</h3>
         <div class="value">30%</div>
-        <div class="note">首$1M→15% · Epic Store 仅12%</div>
+        <div class="note">首$1M→15%</div>
       </div>
       <div class="dash-card global">
-        <h3><span class="region-tag gl-tag">海外</span>Steam 阶梯分成</h3>
-        <div class="value">30→25→20%</div>
-        <div class="note">$10M / $50M 收入阈值触发降档</div>
+        <h3><span class="region-tag gl-tag">海外</span>Steam / Epic 阶梯分成</h3>
+        <div class="value">30→25→20% / 12%</div>
+        <div class="note">Steam：$10M / $50M 阈值降档 · Epic：固定12%</div>
       </div>
       <div class="dash-card global">
         <h3><span class="region-tag gl-tag">海外</span>全球月均广告主</h3>
@@ -377,7 +383,7 @@
         <tr>
           <td><strong>支付体系</strong></td>
           <td class="cn-col">微信支付 + 支付宝 占绝对主导，接入简单统一</td>
-          <td class="gl-col">信用卡/借记卡 + PayPal + 各区域本地支付（日韩Line Pay/KakaoPay，东南亚GrabPay/GoPay/Dana，欧洲Klarna，巴西Pix，印度UPI等）</td>
+          <td class="gl-col">信用卡/借记卡 + PayPal + 各区域本地支付（日本 PayPay / 韩国 KakaoPay，东南亚GrabPay/GoPay/Dana，欧洲Klarna，巴西Pix，印度UPI等）</td>
         </tr>
         <tr>
           <td><strong>社区运营</strong></td>
@@ -501,7 +507,7 @@
           <li><span class="sub-tag t-who">内部评测组</span> DEMO/原型版本试玩评测：手感、节奏、留存潜力三维评分</li>
           <li><span class="sub-tag t-deadline">必须项</span> 研发进度里程碑审核 & 团队交付能力 & 历史口碑评估</li>
           <li><span class="sub-tag t-who">技术评测</span> 技术栈成熟度：引擎选型、网络架构、性能基准、跨平台能力</li>
-          <li><span class="sub-tag t-who">技术评测</span> 技术债务与代码审计：尤其对于代理或并购老项目，需评估代码可维护性、文档完整性、第三方依赖授权与重构成本
+          <li><span class="sub-tag t-who">技术评测</span> 技术债务与代码审计：尤其对于代理或并购老项目，需评估代码可维护性、文档完整性、第三方依赖授权与重构成本</li>
           <li>核心玩法差异化程度评分（0–10）：内部通常 ≥6 分通过</li>
         </ul></div>
       </div>
@@ -535,7 +541,7 @@
           <li><span class="sub-tag t-tool">模型推算</span> 潜力用户规模估算（基于对标产品的下载量/DAU回归）</li>
           <li>初步 LTV / CPI / ROAS 回收模型：国内+海外分别建立预测模型</li>
           <li><span class="sub-tag t-who">品类顾问</span> 品类市场趋势研判：结构性增长 vs 存量竞争 vs 萎缩赛道</li>
-          <li><span class="sub-tag t-deadline">政策风险</span> 目标市场政策突变风险评估：如印度封禁中国游戏、土耳其/印尼本地化内容要求、欧盟数字市场法(DMA)等可能影响上线或运营的区域性政策
+          <li><span class="sub-tag t-deadline">政策风险</span> 目标市场政策突变风险评估：如印度封禁中国游戏、土耳其/印尼本地化内容要求、欧盟数字市场法(DMA)等可能影响上线或运营的区域性政策</li>
         </ul></div>
       </div>
       <div class="module-card">
@@ -589,18 +595,18 @@
     </div>
     <div class="kpi-section"><h4>阶段核心 KPI 参照</h4>
       <div class="kpi-grid">
-        <div class="kpi-item"><span class="kpi-icon">⏱</span><div class="kpi-info"><div class="kpi-label">内部审核决策周期</div><div class="kpi-val" style="color:var(--c-blue)">4-12 周</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📋</span><div class="kpi-info"><div class="kpi-label">DEMO 玩法评分门槛</div><div class="kpi-val" style="color:var(--c-blue)">≥ 70 分</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🔍</span><div class="kpi-info"><div class="kpi-label">竞品扫描覆盖数</div><div class="kpi-val" style="color:var(--c-blue)">≥ 10 款</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📊</span><div class="kpi-info"><div class="kpi-label">初步 LTV/CPI 比</div><div class="kpi-val" style="color:var(--c-blue)">≥ 2.0（预测）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">💰</span><div class="kpi-info"><div class="kpi-label">IRR 基准</div><div class="kpi-val" style="color:var(--c-blue)">≥ 25%/年</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📄</span><div class="kpi-info"><div class="kpi-label">版号资质确认（国内）</div><div class="kpi-val" style="color:var(--c-cn)">100%确认</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🌐</span><div class="kpi-info"><div class="kpi-label">目标区域TAM测算（海外）</div><div class="kpi-val" style="color:var(--c-global)">≥3个区域</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">⚠️</span><div class="kpi-info"><div class="kpi-label">回收期上限</div><div class="kpi-val" style="color:var(--c-blue)">≤24个月</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">⏱</span><div class="kpi-info"><div class="kpi-label">内部审核决策周期</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📋</span><div class="kpi-info"><div class="kpi-label">DEMO 玩法评分门槛</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🔍</span><div class="kpi-info"><div class="kpi-label">竞品扫描覆盖数</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📊</span><div class="kpi-info"><div class="kpi-label">初步 LTV/CPI 比</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">💰</span><div class="kpi-info"><div class="kpi-label">IRR 基准</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📄</span><div class="kpi-info"><div class="kpi-label">版号资质确认（国内）</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🌐</span><div class="kpi-info"><div class="kpi-label">目标区域TAM测算（海外）</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">⚠️</span><div class="kpi-info"><div class="kpi-label">回收期上限</div></div></div>
       </div>
     </div>
     <div class="ref-box"><h4>行业参照</h4>
-      <p>2025–2026 头部发行商立项通过率约 5–10%。国内额外因素：传奇/棋牌类版号审批几乎停滞，二次元等品类审批相对宽松。海外额外因素：欧洲GDPR罚款可达€2000万或全球年营收4%（取高者），北美COPPA对儿童数据保护严格。</p>
+      <p>部分头部发行商/投资机构披露立项通过率约 5–10%（行业经验值，非官方统计，请结合内部历史数据确认）。国内额外因素：传奇/棋牌类版号审批几乎停滞，二次元等品类审批相对宽松。海外额外因素：欧洲GDPR罚款可达€2000万或全球年营收4%（取高者），北美COPPA对儿童数据保护严格。</p>
       <p style="margin-top:4px;font-size:9px;color:#6b6504;">来源：<a href="https://www.youqibang.com/index/guide/banhao_process.html" target="_blank" style="color:inherit;">游企帮 2026版号流程</a> · <a href="https://developer.apple.com/news/?id=dadukodv" target="_blank" style="color:inherit;">Apple Developer News 2026.03.12</a> · <a href="https://gdpr-info.eu/issues/fines-penalties/" target="_blank" style="color:inherit;">gdpr-info.eu Art.83</a> · <a href="https://gamegrowthadvisor.com/blog/2026-03-17-mobile-game-retention-strategies-2026/" target="_blank" style="color:inherit;">GameGrowthAdvisor 2026</a></p></div>
   </div>
 </div></div>
@@ -614,7 +620,7 @@
   <div class="phase-body">
     <div class="phase-intro">
       <h3>阶段核心任务</h3>
-      <p>立项确认后搭建发行执行体系，产出<strong>《发行策略书》</strong>。国内外的筹备路径在此阶段出现最大分岔：国内重点是联运渠道签约+版号送审+巨量/腾讯广告基建；海外重点是多语言本地化管线+MMP归因接入+全球商店页上线+各区域社区阵地搭建。Steam数据显示表现最好的游戏平均预发布可见期214天。</p>
+      <p>立项确认后搭建发行执行体系，产出<strong>《发行策略书》</strong>。国内外的筹备路径在此阶段出现最大分岔：国内重点是联运渠道签约+版号送审+巨量/腾讯广告基建；海外重点是多语言本地化管线+MMP归因接入+全球商店页上线+各区域社区阵地搭建。GameDiscoverCo 2025年数据显示，Steam高转化游戏平均预发布可见期约214天（低转化游戏约411天）。</p>
       <div class="goal-tags"><span>输出《发行策略书》</span><span>完成各渠道签约</span><span>搭建素材流水线</span><span>数据/技术基建就绪</span></div>
     </div>
 
@@ -637,7 +643,7 @@
         <li><strong>MMP归因系统接入</strong>：AppsFlyer / Adjust / Singular / Kochava 中选一，这是海外归因的强制需求 · <a href="https://dev.appsflyer.com/" target="_blank">AppsFlyer</a> · <a href="https://dev.adjust.com/" target="_blank">Adjust</a></li>
         <li><strong>GDPR/CCPA隐私合规框架搭建</strong>：隐私政策多语言版本+用户数据管理后台+Cookie Consent · <a href="https://gdpr.eu/" target="_blank">GDPR</a> · <a href="https://oag.ca.gov/privacy/ccpa" target="_blank">CCPA</a></li>
         <li><strong>IARC/ESRB/PEGI年龄分级申请</strong>：各平台和各区域的分级要求不同，需要逐一处理 · <a href="https://www.globalratings.com/" target="_blank">IARC</a> · <a href="https://www.esrb.org/" target="_blank">ESRB</a> · <a href="https://pegi.info/" target="_blank">PEGI</a></li>
-        <li><strong>海外支付系统接入</strong>：信用卡+PayPal+各地区本地支付（Line Pay/KakaoPay等）· <a href="https://developer.paypal.com/" target="_blank">PayPal</a> · <a href="https://stripe.com/docs/payments" target="_blank">Stripe</a> · <a href="https://developers.xsolla.com/" target="_blank">Xsolla</a></li>
+        <li><strong>海外支付系统接入</strong>：信用卡+PayPal+各地区本地支付（日本 PayPay / 韩国 KakaoPay等）· <a href="https://developer.paypal.com/" target="_blank">PayPal</a> · <a href="https://stripe.com/docs/payments" target="_blank">Stripe</a> · <a href="https://developers.xsolla.com/" target="_blank">Xsolla</a></li>
         <li><strong>海外社区阵地</strong>：Discord+Reddit+Twitter(X)+YouTube+TikTok+Facebook+各地区特色平台</li>
         <li><strong>Steam专项</strong>：胶囊图艺术+20个标签优化+商店页描述多语言版本，越早创建越好</li>
         <li><strong>Console平台认证（如适用）</strong>：PS/Xbox/Switch 的 TRC/TCR/Lotcheck 技术合规认证周期长，P1 阶段应尽早提交开发者账号申请与认证文档 · <a href="https://partners.playstation.net/" target="_blank">PlayStation Partners</a> · <a href="https://developer.microsoft.com/games/" target="_blank">Xbox Developer</a> · <a href="https://developer.nintendo.com/" target="_blank">Nintendo Developer Portal</a></li>
@@ -690,7 +696,7 @@
           <li><span class="sub-tag t-who">美术总监</span> 视觉VI体系建立：LOGO、字体、色板、Key Art风格指南</li>
           <li>核心美术资产需求清单(Asset Checklist)：按阶段×场景×尺寸×格式</li>
           <li><span class="sub-tag t-tool">制作排期</span> 宣传物料制作总计划：PV/CG/实机/SNS素材/买量素材分类管理</li>
-          <li><span class="sub-tag t-deadline">版权清关</span> 音频资产全球授权确认：音乐/SFX/配音的授权区域、期限、平台、改编权及转授权条款，避免全球发行时版权纠纷
+          <li><span class="sub-tag t-deadline">版权清关</span> 音频资产全球授权确认：音乐/SFX/配音的授权区域、期限、平台、改编权及转授权条款，避免全球发行时版权纠纷</li>
           <li><span class="sub-tag t-deadline">双轨素材</span> 国内：抖音竖版短视频+巨量素材规格 / 海外：各平台素材尺寸+可玩广告</li>
           <li>本地化素材适配：国内（简中） vs 海外（多语言版本+文化适配性审查）</li>
           <li>UGC/KOL素材授权规则 & 素材银行(Content Bank)搭建</li>
@@ -740,7 +746,7 @@
           <li><span class="sub-tag t-deadline">素材规格</span> 图标(1024px)+截图(5-8张/区域)+预览视频(15-30s)，国内需竖版素材，海外横版为主</li>
           <li><span class="sub-tag t-tool">工具</span> 国内：七麦数据/点点数据 / 海外：AppTweak/SensorTower/AppFollow/SteamDB</li>
           <li><span class="sub-tag t-deadline">Steam专项</span> 20个标签策略：选择高流量+低竞争标签组合，前3个权重最高</li>
-          <li>描述文案A/B测试：短描述（Google Play 80字截断）+ 长描述（前3句决定转化率）</li>
+          <li>描述文案A/B测试：短描述（Google Play Short Description ≤80字符截断）+ 长描述（前3句决定转化率）</li>
           <li>评分/评论储备策略：上线前种子用户定向邀请、关键词评论区引导</li>
         </ul></div>
       </div>
@@ -762,8 +768,8 @@
         <div class="module-card-body"><ul class="mod-steps">
           <li><span class="sub-tag t-tool">方法论</span> 关键词池建立：SEM竞品反查+自动联想+用户评论语义分析，每区域≥200个候选词</li>
           <li><span class="sub-tag t-tool">分级策略</span> 关键词优先级矩阵：搜索量×竞争度四象限（核心词/长尾词/品牌词/蹭量词）</li>
-          <li><span class="sub-tag t-deadline">标题优化</span> 标题格式规范：[游戏名] – [核心关键词1] [核心关键词2] · [副标题差异化卖点]，≤30字符</li>
-          <li><span class="sub-tag t-deadline">描述优化</span> 商店描述字段标准化：Short Description（≤80字，前3句决定转化率）+ Full Description（≥500字SEO内容）</li>
+          <li><span class="sub-tag t-deadline">标题优化</span> 标题格式规范：[游戏名] – [核心关键词1] [核心关键词2] · [副标题差异化卖点]；App Store ≤30字符，Google Play ≤50字符</li>
+          <li><span class="sub-tag t-deadline">描述优化</span> 商店描述字段标准化：Google Play Short Description（≤80字符，前3句决定转化率）+ Full Description（≥500字SEO内容）；App Store 描述字段需直接在前3句命中核心卖点</li>
           <li><span class="sub-tag t-tool">视觉优化</span> Icon A/B测试（≥3版方案）+ 截图前3张决定80%转化，必须包含玩法实截图</li>
           <li><span class="sub-tag t-deadline">双轨ASO</span> 国内：App Store + 各安卓商店独立优化 / 海外：App Store + Google Play各语言独立页面</li>
           <li><span class="sub-tag t-tool">持续迭代</span> ASO持续追踪：榜单排名变化、关键词覆盖数（初始≥300词，成熟期≥800词）、转化率漏斗</li>
@@ -773,14 +779,14 @@
     </div>
     <div class="kpi-section"><h4>阶段核心 KPI 参照</h4>
       <div class="kpi-grid">
-        <div class="kpi-item"><span class="kpi-icon">📄</span><div class="kpi-info"><div class="kpi-label">发行策略书完成</div><div class="kpi-val" style="color:var(--c-purple)">T-90天前</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🤝</span><div class="kpi-info"><div class="kpi-label">渠道签约完成率</div><div class="kpi-val" style="color:var(--c-purple)">≥80%（T-90）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📡</span><div class="kpi-info"><div class="kpi-label">数据埋点完成率</div><div class="kpi-val" style="color:var(--c-purple)">100%上线前就绪</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🛡</span><div class="kpi-info"><div class="kpi-label">国内：防沉迷接入</div><div class="kpi-val" style="color:var(--c-cn)">测试前完成</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🔐</span><div class="kpi-info"><div class="kpi-label">反作弊方案就绪</div><div class="kpi-val" style="color:var(--c-purple)">P1完成</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🌍</span><div class="kpi-info"><div class="kpi-label">海外：本地化语种</div><div class="kpi-val" style="color:var(--c-global)">≥5种</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🔗</span><div class="kpi-info"><div class="kpi-label">海外：MMP接入</div><div class="kpi-val" style="color:var(--c-global)">测试前完成</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🏷</span><div class="kpi-info"><div class="kpi-label">ASO关键词池</div><div class="kpi-val" style="color:var(--c-purple)">≥200词/区域</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📄</span><div class="kpi-info"><div class="kpi-label">发行策略书完成</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🤝</span><div class="kpi-info"><div class="kpi-label">渠道签约完成率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📡</span><div class="kpi-info"><div class="kpi-label">数据埋点完成率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🛡</span><div class="kpi-info"><div class="kpi-label">国内：防沉迷接入</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🔐</span><div class="kpi-info"><div class="kpi-label">反作弊方案就绪</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🌍</span><div class="kpi-info"><div class="kpi-label">海外：本地化语种</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🔗</span><div class="kpi-info"><div class="kpi-label">海外：MMP接入</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🏷</span><div class="kpi-info"><div class="kpi-label">ASO关键词池</div></div></div>
       </div>
     </div>
     <div class="ref-box"><h4>行业参照</h4><p>Steam最佳预发布可见期214天（高转化率Top 20游戏的平均数值，GameDiscoverCo 2025）。国内TOP100手游买量成本2025H1超180亿元（伽马数据），买量基建必须前置。米哈游崩坏：星穹铁道预注册破1000万，证明了多平台同步+高密度信息释放+品牌势能驱动的有效性。Aarki/SocialPeta 2026白皮书：全球月均广告主84,000+（+21.9% YoY），获客成本同比+12%、用户规模仅+2%。</p>
@@ -797,7 +803,7 @@
   <div class="phase-body">
     <div class="phase-intro">
       <h3>阶段核心任务</h3>
-      <p>首曝是品牌建设的决定性瞬间。国内首曝主阵地是<strong>B站+抖音+TapTap</strong>三件套，海外则是<strong>YouTube+Twitter(X)+Steam</strong>三件套。国内注重"话题造势+KOL矩阵引爆"，海外注重"媒体关系+愿望单积累+社区冷启动"。2025-2026年数据显示，Steam Next Fest期间Demo试玩→愿望单转化率中位数为16.33%（试玩过Demo的用户中有16.33%添加了愿望单），Top 30%可超20%。</p>
+      <p>首曝是品牌建设的决定性瞬间。国内首曝主阵地是<strong>B站+抖音+TapTap</strong>三件套，海外则是<strong>YouTube+Twitter(X)+Steam</strong>三件套。国内注重"话题造势+KOL矩阵引爆"，海外注重"媒体关系+愿望单积累+社区冷启动"。2025-2026年数据显示，Steam Next Fest期间Demo试玩→愿望单转化率中位数为16.33%，70th分位约20%（即约前30%产品转化率≥20%）。</p>
       <div class="goal-tags"><span>首曝话题热度达标</span><span>预约蓄水启动</span><span>媒体基础认知建立</span><span>社区冷启动成功</span></div>
     </div>
 
@@ -925,14 +931,14 @@
     </div>
     <div class="kpi-section"><h4>阶段核心 KPI 参照</h4>
       <div class="kpi-grid">
-        <div class="kpi-item"><span class="kpi-icon">🎬</span><div class="kpi-info"><div class="kpi-label">首曝视频播放量</div><div class="kpi-val" style="color:var(--c-orange)">目标平台Top1-10%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📥</span><div class="kpi-info"><div class="kpi-label">首周预约/愿望单转化率</div><div class="kpi-val" style="color:var(--c-orange)">≥15%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📱</span><div class="kpi-info"><div class="kpi-label">国内：TapTap预约量</div><div class="kpi-val" style="color:var(--c-cn)">品类+预算设定</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">⭐</span><div class="kpi-info"><div class="kpi-label">海外：Steam愿望单日增量</div><div class="kpi-val" style="color:var(--c-global)">50-200/天（有机）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🎮</span><div class="kpi-info"><div class="kpi-label">SNF Demo转化率</div><div class="kpi-val" style="color:var(--c-orange)">中位16.33%（SNF基准）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📍</span><div class="kpi-info"><div class="kpi-label">展会展位数</div><div class="kpi-val" style="color:var(--c-orange)">≥3个/年</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📰</span><div class="kpi-info"><div class="kpi-label">媒体报道覆盖数</div><div class="kpi-val" style="color:var(--c-orange)">≥20篇</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">⚡</span><div class="kpi-info"><div class="kpi-label">竞品冲突指数</div><div class="kpi-val" style="color:var(--c-orange)">< 0.6</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🎬</span><div class="kpi-info"><div class="kpi-label">首曝视频播放量</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📥</span><div class="kpi-info"><div class="kpi-label">首周预约/愿望单转化率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📱</span><div class="kpi-info"><div class="kpi-label">国内：TapTap预约量</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">⭐</span><div class="kpi-info"><div class="kpi-label">海外：Steam愿望单日增量</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🎮</span><div class="kpi-info"><div class="kpi-label">SNF Demo转化率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📍</span><div class="kpi-info"><div class="kpi-label">展会展位数</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📰</span><div class="kpi-info"><div class="kpi-label">媒体报道覆盖数</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">⚡</span><div class="kpi-info"><div class="kpi-label">竞品冲突指数</div></div></div>
       </div>
     </div>
     <div class="ref-box"><h4>行业参照</h4><p>国内：米哈游崩坏：星穹铁道预注册破1000万（2023.1.29 米游社公告）。海外：Steam Next Fest每个游戏仅能参加一次，需在愿望单≥500-1000后参加。愿望单→首周销量中位数0.15x（含成人/低价游戏；定价>$10的标准游戏基准为0.10x，基于愿望单≥25,000的游戏；愿望单&lt;5,000的独立游戏通常约0.10-0.12x）。SNF Demo转化率中位16.33%，Top 30%可达20%+。</p><p style="margin-top:4px;color:var(--c-amber);font-size:12px;"><strong>⚠ Steam 2026.6.4 首页改版影响</strong>：Popular Upcoming（即将推出）入口阈值从约 7K-10K 愿望单跃升至约 80K 愿望单，且更依赖个性化日历（每位用户每日仅2个 slot）。中小游戏不能将 Popular Upcoming 作为主要自然量来源，Steam Next Fest 和外部引流（KOL/社区/媒体）的重要性进一步上升。</p>
@@ -968,7 +974,7 @@
       <ul>
         <li><strong>Soft Launch（软启动）</strong>：在1-2个小市场（菲律宾/加拿大/澳大利亚/印尼等）做真实全链路测试，含真实付费</li>
         <li><strong>Steam Playtest</strong>：云串流方式，每轮20-50名测试者，可多轮迭代</li>
-        <li><strong>iOS SKAN/AdAttributionKit归因挑战</strong>：ATT opt-in 率约35%（游戏品类 40-50%），需要配置 SKAdNetwork 4.0 或 AdAttributionKit，建立概率归因模型和增量测试(Lift Test)</li>
+        <li><strong>iOS SKAN/AdAttributionKit归因挑战</strong>：ATT opt-in 率约35%（Adjust Q2 2025），游戏子品类 40-50%（体育50%、超休闲43%、动作40%），需要配置 SKAdNetwork 4.0 或 AdAttributionKit，建立概率归因模型和增量测试(Lift Test)</li>
         <li><strong>Android 隐私沙盒影响</strong>：Google Privacy Sandbox 逐步限制 Android Advertising ID（GAID）的可用性，海外 Android 归因需提前测试 Privacy Sandbox API（Topics、FLEDGE、Attribution Reporting 等）兼容性，并准备替代归因方案</li>
         <li><strong>买量校准多区域</strong>：需按T1/T2/T3市场分别建立CPI/ROAS基准，CPI差异可达3-5倍</li>
         <li><strong>本地化内容测试</strong>：多语言版本需由本地玩家进行LQA（语言质量保证）和体验测试</li>
@@ -1012,7 +1018,7 @@
           <li><span class="sub-tag t-deadline">海外：不受版号限制</span> Soft Launch 真实付费验证（菲律宾/加拿大等小市场）</li>
           <li><span class="sub-tag t-deadline">重要</span> 渠道专项测试：国内联运渠道 vs 海外各区域渠道用户质量对比</li>
           <li>付费模型A/B测试：礼包结构、定价、首充门槛、战令时机</li>
-          <li><span class="sub-tag t-tool">Steam专项</span> Playtest：云串流方式，每轮20-50名测试者</li>
+          <li><span class="sub-tag t-tool">Steam专项</span> Playtest：云串流方式，每轮通常招募数十名测试者（规模视测试目标与版本稳定性调整）</li>
         </ul></div>
       </div>
       <div class="module-card">
@@ -1092,27 +1098,28 @@
       </div>
     </div>
 
-    <div class="kpi-section"><h4>分品类留存基准参照（2025–2026 行业数据）</h4>
+    <div class="kpi-section"><h4>分品类核心关注维度</h4>
+      <p style="font-size:11px;color:var(--c-text-sec);margin-bottom:8px;">具体留存/回收基准因品类差异较大，建议项目组结合自身历史数据与第三方行业报告自定义，不设定统一阈值。下表仅列出各品类长线运营中需重点关注的核心策略方向。</p>
       <table class="checklist-table">
-        <thead><tr><th>品类</th><th>D1留存（中位）</th><th>D7留存（中位）</th><th>D30留存（中位）</th><th>上线门槛</th><th>核心策略</th></tr></thead>
+        <thead><tr><th>品类</th><th>核心策略方向</th></tr></thead>
         <tbody>
-          <tr><td>Match/三消</td><td>32.65%</td><td>14.2%</td><td>7.15%</td><td>D1≥35%</td><td>元层深度、收集系统</td></tr>
-          <tr><td>Midcore RPG</td><td>30.54%</td><td>10.6%</td><td>3.48%</td><td>D1≥30%</td><td>简化引导、公会钩子</td></tr>
-          <tr><td>Strategy/4X SLG</td><td>25-30%</td><td>中位8.4%，Top 25%≥15%</td><td>2-4%</td><td>D1≥30%（iOS≥35%）</td><td>内容频率、联盟机制</td></tr>
-          <tr><td>Hypercasual</td><td>27%</td><td>5.2%</td><td>1.2%</td><td>D0 ROAS&gt;40%</td><td>广告变现、品类升级</td></tr>
-          <tr><td>Casual Puzzle</td><td>31.85%</td><td>12.8%</td><td>5.35%</td><td>D1≥32%</td><td>元层解锁、活动频率</td></tr>
+          <tr><td>Match/三消</td><td>元层深度、收集系统</td></tr>
+          <tr><td>Midcore RPG</td><td>简化引导、公会钩子</td></tr>
+          <tr><td>Strategy/4X SLG</td><td>内容频率、联盟机制</td></tr>
+          <tr><td>Hypercasual</td><td>广告变现、品类升级</td></tr>
+          <tr><td>Casual Puzzle</td><td>元层解锁、活动频率</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="kpi-section" style="margin-top:14px;"><h4>上线门槛标准（红灯停/黄灯调/绿灯放）</h4>
-      <p style="font-size:11px;color:var(--c-amber);margin-bottom:8px;">* 以下为 Top 25% 头部游戏标准（GameGrowthAdvisor 2026），非全品类通用门槛，实际判断需结合具体品类基准</p>
+    <div class="kpi-section" style="margin-top:14px;"><h4>上线需关注的指标</h4>
+      <p style="font-size:11px;color:var(--c-amber);margin-bottom:8px;">以下维度为测试验证阶段需重点监控的指标，具体健康线/阈值由项目组结合品类基准与历史数据自定义。</p>
       <div class="kpi-grid">
-        <div class="kpi-item"><span class="kpi-icon">📊</span><div class="kpi-info"><div class="kpi-label">D1留存（跨品类健康线）</div><div class="kpi-val" style="color:var(--c-green)">≥30-40%（按品类）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📉</span><div class="kpi-info"><div class="kpi-label">D7留存（跨品类健康线）</div><div class="kpi-val" style="color:var(--c-green)">≥15-20%（按品类）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">💰</span><div class="kpi-info"><div class="kpi-label">首月回收ROAS</div><div class="kpi-val" style="color:var(--c-green)">≥30%(D30)</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🎮</span><div class="kpi-info"><div class="kpi-label">首小时完成率</div><div class="kpi-val" style="color:var(--c-green)">≥70%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📄</span><div class="kpi-info"><div class="kpi-label">国内：版号状态</div><div class="kpi-val" style="color:var(--c-cn)">已取得</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🚫</span><div class="kpi-info"><div class="kpi-label">退款率（Steam）</div><div class="kpi-val" style="color:var(--c-green)">&lt;10%</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📊</span><div class="kpi-info"><div class="kpi-label">D1留存（跨品类健康线）</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📉</span><div class="kpi-info"><div class="kpi-label">D7留存（跨品类健康线）</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">💰</span><div class="kpi-info"><div class="kpi-label">首月回收ROAS</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🎮</span><div class="kpi-info"><div class="kpi-label">首小时完成率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📄</span><div class="kpi-info"><div class="kpi-label">国内：版号状态</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🚫</span><div class="kpi-info"><div class="kpi-label">退款率（Steam）</div></div></div>
       </div>
     </div>
     <div class="ref-box"><h4>行业参照</h4><p>Aarki数据：超过95%手游用户30天内流失。Singular 2025数据：Q3是海外UA显著反弹季。国内TOP100手游2025H1买量成本&gt;180亿元（+86.6% YoY），测试阶段的买量成本校准直接影响上线后的ROI回收。</p>
@@ -1129,7 +1136,7 @@
   <div class="phase-body">
     <div class="phase-intro">
       <h3>阶段核心任务</h3>
-      <p>上线首月是资源集中引爆期。前72小时的流量密度决定后续自然量的命脉。国内侧重<strong>联运渠道首发资源+KOL矩阵+买量冲榜</strong>，海外侧重<strong>Steam New & Trending榜+媒体评测集中发布+各区域分阶段上线</strong>。差评率≤15%是健康线。</p>
+      <p>上线首月是资源集中引爆期。前72小时的流量密度决定后续自然量的命脉。国内侧重<strong>联运渠道首发资源+KOL矩阵+买量冲榜</strong>，海外侧重<strong>Steam Popular New Releases（原New & Trending）榜+媒体评测集中发布+各区域分阶段上线</strong>。差评率≤15%是健康线。</p>
       <div class="goal-tags"><span>首日/首周DAU达成</span><span>首月流水达标</span><span>榜单冲榜</span><span>口碑基础健康</span></div>
     </div>
 
@@ -1146,7 +1153,7 @@
 
     <div class="region-callout global"><h4>🌍 海外专属 · P4公测关键差异</h4>
       <ul>
-        <li><strong>Steam冲榜核心</strong>：前48小时销量约需$8,000+才能进入New & Trending榜，首日销量vs愿望单转化≥12%为健康。注意：Steam 2026.6.4首页改版后，Popular Upcoming阈值跃升至约80K愿望单，中小游戏更依赖Next Fest+外部引流</li>
+        <li><strong>Steam冲榜核心</strong>：前48小时收入约需$8,000+才能进入Popular New Releases（原New & Trending）榜；首周销量vs愿望单转化中位数约15%（GameDiscoverCo），≥12%可作为保守参考线（经验值）。注意：Steam 2026.6.4首页改版后，Popular Upcoming阈值跃升至约80K愿望单，中小游戏更依赖Next Fest+外部引流</li>
         <li><strong>Steam 2026.6.4首页改版</strong>：Popular Upcoming（即将推出）入口阈值大幅上升，个性化日历每日仅2个slot；不能将其作为中小游戏主要自然量来源</li>
         <li><strong>各区域分阶段上线</strong>：不一定全球同步——可按T1→T2→T3分阶段，让服务器压力和运营团队有缓冲</li>
         <li><strong>买量主力</strong>：Meta+Google Ads+TikTok，预算按70/20/10法则分配（70%已验证渠道+20%扩展+10%实验）</li>
@@ -1196,7 +1203,7 @@
           <li>KOL/达人矩阵同步首发内容释放：72小时内密集发布</li>
           <li>媒体评测集中发布：国内（游民/3DM/TapTap）/ 海外（Embargo解除后集中发布）</li>
           <li><span class="sub-tag t-deadline">国内关键</span> 联运渠道首发推荐位资源兑现</li>
-          <li><span class="sub-tag t-deadline">海外关键</span> Steam New & Trending榜冲刺+App Store/Google Play Feature争取</li>
+          <li><span class="sub-tag t-deadline">海外关键</span> Steam Popular New Releases（原New & Trending）冲刺+App Store/Google Play Feature争取</li>
         </ul></div>
       </div>
       <div class="module-card">
@@ -1276,17 +1283,17 @@
 
     <div class="kpi-section"><h4>阶段核心 KPI 参照</h4>
       <div class="kpi-grid">
-        <div class="kpi-item"><span class="kpi-icon">👥</span><div class="kpi-info"><div class="kpi-label">首日DAU</div><div class="kpi-val" style="color:var(--c-amber)">目标值×1.2-1.5</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">💵</span><div class="kpi-info"><div class="kpi-label">首月流水完成率</div><div class="kpi-val" style="color:var(--c-amber)">≥90%预算目标</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🛠</span><div class="kpi-info"><div class="kpi-label">P0 Bug修复时效</div><div class="kpi-val" style="color:var(--c-amber)">≤4小时</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">⭐</span><div class="kpi-info"><div class="kpi-label">差评率</div><div class="kpi-val" style="color:var(--c-amber)">≤15%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📈</span><div class="kpi-info"><div class="kpi-label">首日销量vs愿望单(Steam)</div><div class="kpi-val" style="color:var(--c-amber)">≥12%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🇨🇳</span><div class="kpi-info"><div class="kpi-label">国内：联运首日新增</div><div class="kpi-val" style="color:var(--c-cn)">渠道排期目标</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🌍</span><div class="kpi-info"><div class="kpi-label">海外：Steam首日评测数</div><div class="kpi-val" style="color:var(--c-global)">≥10条</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📅</span><div class="kpi-info"><div class="kpi-label">首月D2留存</div><div class="kpi-val" style="color:var(--c-amber)">≥50%（活跃用户）</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">👥</span><div class="kpi-info"><div class="kpi-label">首日DAU</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">💵</span><div class="kpi-info"><div class="kpi-label">首月流水完成率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🛠</span><div class="kpi-info"><div class="kpi-label">P0 Bug修复时效</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">⭐</span><div class="kpi-info"><div class="kpi-label">差评率</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📈</span><div class="kpi-info"><div class="kpi-label">首周销量vs愿望单(Steam)</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🇨🇳</span><div class="kpi-info"><div class="kpi-label">国内：联运首日新增</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🌍</span><div class="kpi-info"><div class="kpi-label">海外：Steam首日评测数</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📅</span><div class="kpi-info"><div class="kpi-label">首月D2留存</div></div></div>
       </div>
     </div>
-    <div class="ref-box"><h4>行业参照</h4><p>典型UA预算分配：30%付费媒体+20-25% PR+KOL+15-20%内容制作。国内TOP100手游买量成本2025H1同比+86.6%。海外：Aarki全漏斗框架显示UA与RT联动可提升20% LTV。Steam New & Trending约需$8,000+前48小时销售额。注意：Steam 2026.6.4首页改版后，Popular Upcoming 阈值跃升至约80K愿望单，中小游戏需更依赖 Next Fest + KOL/社区/媒体引流。</p>
+    <div class="ref-box"><h4>行业参照</h4><p>典型UA预算分配：30%付费媒体+20-25% PR+KOL+15-20%内容制作。国内TOP100手游买量成本2025H1同比+86.6%。海外：Aarki全漏斗框架显示UA与RT联动可提升20% LTV。Steam Popular New Releases（原New & Trending）约需$8,000+前48小时销售额。注意：Steam 2026.6.4首页改版后，Popular Upcoming 阈值跃升至约80K愿望单，中小游戏需更依赖 Next Fest + KOL/社区/媒体引流。</p>
     <p style="margin-top:4px;font-size:9px;color:#6b6504;">来源：<a href="https://finance.sina.com.cn/jjxw/2025-08-06/doc-infkacvn8212756.shtml" target="_blank" style="color:inherit;">伽马数据 2025.08</a> · <a href="https://investgame.net/wp-content/uploads/2026/04/2026-04-07-investgame_socialpeta_x_singular_x_aarki_2026_global_mobile_gaming_wp.pdf" target="_blank" style="color:inherit;">Aarki/Singular 2026</a> · <a href="https://www.gamermarkt.com/blog/steam-store-redesign-indie-games-discoverability-risk/" target="_blank" style="color:inherit;">gamermarkt.com 2026</a> · <a href="https://www.businessofapps.com/data/mobile-game-retention-rates/" target="_blank" style="color:inherit;">Business of Apps 2026</a></p></div>
   </div>
 </div></div>
@@ -1404,12 +1411,12 @@
         <div class="module-card-body"><ul class="mod-steps">
           <li><span class="sub-tag t-tool">核心指标</span> 战力/经济系统膨胀率监控：新版本单次战力增幅≤15%，年度复合膨胀率≤80%（SLG/MMO品类）</li>
           <li><span class="sub-tag t-deadline">经济健康度</span> 虚拟经济系统健康度评分卡：通胀率（≤5%/月）+ Gini系数（0.3-0.5）+ 流通速率</li>
-          <li><span class="sub-tag t-who">数值策划</span> 版本间数值增幅控制：每个新版本（约6周）内容战力增幅上限15%，年度不超过3倍</li>
+          <li><span class="sub-tag t-who">数值策划</span> 版本间数值增幅控制：每个新版本（约6周）内容战力增幅上限15%，与年度复合膨胀率目标对齐</li>
           <li><span class="sub-tag t-deadline">预警机制</span> 数值崩溃预警：头部玩家付费占>30% / 0氪玩家进度差距 >12个月 → 触发数值重组</li>
           <li><span class="sub-tag t-tool">平衡手段</span> 追平机制设计：新玩家加速追赶（经验值/资源加成）、老玩家转移奖励（绝版外观/称号）</li>
           <li><span class="sub-tag t-who">运营</span> 退环境策略：按赛季/大版本重置部分数值体系（Battle Pass/排名），避免无限膨胀</li>
           <li><span class="sub-tag t-tool">监控面板</span> 建立实时数值健康面板：各战力段玩家分布/各稀有度道具持有率/各消费层级ARPPU趋势</li>
-          <li>经典教训：某SLG新品1年内战力膨胀12倍导致玩家断层，3个月内日活跌至峰值20%</li>
+          <li>经典教训：曾有SLG产品因1年内战力膨胀10倍以上导致玩家断层，3个月内日活跌至峰值20%（示意案例，非具体产品）</li>
         </ul></div>
       </div>
       <div class="module-card">
@@ -1454,15 +1461,15 @@
       <div class="module-card">
         <div class="module-card-header" onclick="toggleModule(this)"><div style="display:flex;align-items:center;"><div class="mod-dot" style="background:var(--c-teal)"></div><h4 style="color:var(--c-teal)">小游戏生态专项</h4></div><span class="mod-chevron">▶</span></div>
         <div class="module-card-body"><ul class="mod-steps">
-          <li><span class="sub-tag t-deadline">平台政策</span> 2026微信小游戏IAP新游首发实行「5000万流水内不分成」平台让利政策；IAA可选择90%快回收或85%长线留存分成方案</li>
-          <li><span class="sub-tag t-deadline">平台选择</span> 微信小游戏（MAU 5亿+，男性53%/女性47%，20-40岁占一半，40岁以上占40% / 2026年开发者大会公布） vs 抖音小游戏（2025年DAU同比+120%，小游戏行业MAU约6亿）vs 双平台并行</li>
+          <li><span class="sub-tag t-deadline">平台政策</span> 2026微信小游戏IAP新游首发实行「5000万流水内不分成」平台让利政策；IAA买量场景注册激励可选：1-30天广告流水40%（快回收）或 1-90天广告流水35%（长线），具体以 <a href="https://developers.weixin.qq.com/minigame/introduction/commercialization/guide/ad-monetization.html" target="_blank">微信小游戏官方文档</a> 为准</li>
+          <li><span class="sub-tag t-deadline">平台选择</span> 微信小游戏（MAU 5亿+，男性53%/女性47%，一二线城市占45%，24-40岁占一半，40岁以上占40% / 2026年开发者大会公布） vs 抖音小游戏（2025年DAU同比+120%，小游戏行业MAU约6亿）vs 双平台并行</li>
           <li><span class="sub-tag t-tool">技术适配</span> 包体限制：微信小游戏主包≤4MB，主包+分包总计≤30MB（资源可远程加载扩展），需深度裁剪引擎和资源</li>
           <li><span class="sub-tag t-deadline">买量差异</span> 小游戏买量模型不同：微信以社交裂变为主（分享率是核心指标），抖音以feed流原生广告为主</li>
           <li><span class="sub-tag t-deadline">审核流程</span> 微信小游戏过审要点：版号（IAP必须）+软著+隐私合规+类目资质，审核周期约7-15个工作日</li>
           <li><span class="sub-tag t-who">运营</span> 社交裂变设计：排行榜+群排行+邀请有奖+拼团/互助+红包裂变（合规框架内）</li>
-          <li><span class="sub-tag t-tool">变现模式</span> 小游戏变现选择：IAP（需版号）+ IAA（广告变现，激励视频CPM约¥20-40）+ 混合变现</li>
-          <li><span class="sub-tag t-deadline">关键差异</span> 小游戏用户行为差异：平均单次时长6-8分钟（App为15-20分钟），需重构新手引导和留存设计</li>
-          <li>数据参考：2025微信小游戏广告消耗增速>60%，IAA游戏eCPM下降趋势需在ROI模型中体现</li>
+          <li><span class="sub-tag t-tool">变现模式</span> 小游戏变现选择：IAP（需版号）+ IAA（广告变现，激励视频CPM行业常见区间约¥20-40，实际受品类、用户质量与季节波动影响，需以实时数据为准）+ 混合变现</li>
+          <li><span class="sub-tag t-deadline">关键差异</span> 小游戏用户行为差异：平均单次时长约6-8分钟（App为15-20分钟，行业经验值，需结合实测校准），需重构新手引导和留存设计</li>
+          <li>数据参考：2025年微信小游戏广告消耗同比上涨约20%（IAA类超30%），IAA游戏eCPM下降趋势需在ROI模型中体现（腾讯营销/2025微信广告生态大会）</li>
         </ul></div>
       </div>
       <div class="module-card">
@@ -1493,14 +1500,14 @@
 
     <div class="kpi-section"><h4>阶段核心 KPI 参照</h4>
       <div class="kpi-grid">
-        <div class="kpi-item"><span class="kpi-icon">📉</span><div class="kpi-info"><div class="kpi-label">月流水留存比</div><div class="kpi-val" style="color:var(--c-teal)">≥60% MoM</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">👤</span><div class="kpi-info"><div class="kpi-label">付费用户D30留存</div><div class="kpi-val" style="color:var(--c-teal)">≥50%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📈</span><div class="kpi-info"><div class="kpi-label">社区月活增长</div><div class="kpi-val" style="color:var(--c-teal)">≥5% MoM</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">⭐</span><div class="kpi-info"><div class="kpi-label">评分稳定性</div><div class="kpi-val" style="color:var(--c-teal)">波动&lt;5%</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🔄</span><div class="kpi-info"><div class="kpi-label">D14留存</div><div class="kpi-val" style="color:var(--c-teal)">按品类基准</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">💡</span><div class="kpi-info"><div class="kpi-label">NPS分数</div><div class="kpi-val" style="color:var(--c-teal)">≥50（季度）</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">📊</span><div class="kpi-info"><div class="kpi-label">数值膨胀控制</div><div class="kpi-val" style="color:var(--c-teal)">≤15%/版本</div></div></div>
-        <div class="kpi-item"><span class="kpi-icon">🎨</span><div class="kpi-info"><div class="kpi-label">创作者贡献新增</div><div class="kpi-val" style="color:var(--c-teal)">≥10%（首年）</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📉</span><div class="kpi-info"><div class="kpi-label">月流水留存比</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">👤</span><div class="kpi-info"><div class="kpi-label">付费用户D30留存</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📈</span><div class="kpi-info"><div class="kpi-label">社区月活增长</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">⭐</span><div class="kpi-info"><div class="kpi-label">评分稳定性</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🔄</span><div class="kpi-info"><div class="kpi-label">D14留存</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">💡</span><div class="kpi-info"><div class="kpi-label">NPS分数</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">📊</span><div class="kpi-info"><div class="kpi-label">数值膨胀控制</div></div></div>
+        <div class="kpi-item"><span class="kpi-icon">🎨</span><div class="kpi-info"><div class="kpi-label">创作者贡献新增</div></div></div>
       </div>
     </div>
     <div class="ref-box"><h4>行业参照</h4><p>社交关系是留存最强的杠杆——4X SLG中参与联盟的玩家游戏时间是非联盟玩家的3-4倍。Aarki：UA与RT联动可提升20% LTV。国内私域社群运营对留存的影响在最近3年被头部发行商反复验证。2025年月均新素材占比58.1%（SocialPeta），82.5%+广告主月均更新素材。</p>
@@ -1538,9 +1545,9 @@
             <a href="https://open.oppomobile.com/" target="_blank">OPPO开放平台</a> ·
             <a href="https://dev.vivo.com.cn/" target="_blank">vivo开发者</a> ·
             <a href="https://dev.mi.com/" target="_blank">小米开放平台</a> ·
-            <a href="https://wikinew.open.qq.com/" target="_blank">应用宝开放平台</a> ·
+            <a href="https://open.qq.com/" target="_blank">应用宝开放平台</a> ·
             <a href="https://developer.taptap.com/" target="_blank">TapTap开发者</a> ·
-            <a href="https://www.biligame.com/" target="_blank">B站游戏</a> ·
+            <a href="https://open.bilibili.com/" target="_blank">B站游戏开放平台</a> ·
             <a href="https://developers.weixin.qq.com/minigame/dev/guide/" target="_blank">微信小游戏开发文档</a> ·
             <a href="https://developer.open-douyin.com/" target="_blank">抖音开放平台</a> ·
             <a href="https://partner.steamgames.com/" target="_blank">Steamworks</a> ·
@@ -1571,7 +1578,7 @@
             <a href="https://play.google.com/console/" target="_blank">Google Play Console</a> ·
             <a href="https://partner.steamgames.com/" target="_blank">Steamworks</a> ·
             <a href="https://dev.epicgames.com/" target="_blank">Epic Developer Portal</a> ·
-            <a href="https://www.gog.com/" target="_blank">GOG Partner Portal</a> ·
+            <a href="https://www.gog.com/partner" target="_blank">GOG Partner Portal</a> ·
             <a href="https://partners.playstation.net/" target="_blank">PlayStation Partners</a> ·
             <a href="https://developer.microsoft.com/en-us/games/" target="_blank">Xbox Developer</a> ·
             <a href="https://developer.nintendo.com/" target="_blank">Nintendo Developer</a> ·
@@ -1713,7 +1720,7 @@
           <tr><td>PayPal</td><td>全球覆盖最广的第三方支付 · <a href="https://developer.paypal.com/" target="_blank">PayPal Developer</a></td></tr>
           <tr><td>北美</td><td>信用卡为主+PayPal+Apple Pay+Google Pay · <a href="https://stripe.com/docs/payments" target="_blank">Stripe Payments</a></td></tr>
           <tr><td>欧洲</td><td>信用卡+Klarna（先买后付）+Sofort/iDEAL（本地银行转账） · <a href="https://docs.klarna.com/" target="_blank">Klarna API</a></td></tr>
-          <tr><td>日本</td><td>信用卡+Line Pay+PayPay+便利店支付 · <a href="https://pay.line.me/portal/global/main" target="_blank">LINE Pay API</a> · <a href="https://developer.paypay.ne.jp/" target="_blank">PayPay API</a></td></tr>
+          <tr><td>日本</td><td>信用卡+PayPay（主流）+便利店支付；LINE Pay 已逐步退出日本本土市场 · <a href="https://developer.paypay.ne.jp/" target="_blank">PayPay API</a></td></tr>
           <tr><td>韩国</td><td>信用卡+KakaoPay+Naver Pay+Toss+文化商品券 · <a href="https://developers.kakao.com/" target="_blank">KakaoPay API</a></td></tr>
           <tr><td>东南亚</td><td>GrabPay+GoPay+OVO+Touch'n Go+GCash+PayMaya · <a href="https://developer.grab.com/" target="_blank">Grab Developer</a></td></tr>
           <tr><td>拉美</td><td>信用卡+Boleto（巴西）+Mercado Pago+OXXO（墨西哥） · <a href="https://www.mercadopago.com/developers" target="_blank">Mercado Pago API</a></td></tr>
@@ -1852,7 +1859,7 @@ document.querySelectorAll('.phase-block').forEach(el=>observer.observe(el));
           <tr><td>SocialPeta/Singular/Aarki 2026白皮书</td><td>全球月均广告主84,000+（+21.9%），获客成本+12%用户+2%，95%用户30天流失，UA+RT联动+20% LTV，月均新素材占比58.1%</td><td><a href="https://investgame.net/wp-content/uploads/2026/04/2026-04-07-investgame_socialpeta_x_singular_x_aarki_2026_global_mobile_gaming_wp.pdf" target="_blank" style="font-size:10px;">investgame.net</a></td></tr>
           <tr><td>GameGrowthAdvisor 2026</td><td>分品类D1/D7/D30留存中位数，Top-Quartile上线门槛标准，4X SLG联盟玩家vs非联盟3-4倍游戏时间</td><td><a href="https://gamegrowthadvisor.com/blog/2026-03-17-mobile-game-retention-strategies-2026/" target="_blank" style="font-size:10px;">gamegrowthadvisor.com</a></td></tr>
           <tr><td>Business of Apps 2026</td><td>Match D1 32.6%/D30 7.1%，Strategy D1 25.3%，iOS D1 35.7% vs Android 27.5%</td><td><a href="https://www.businessofapps.com/data/mobile-game-retention-rates/" target="_blank" style="font-size:10px;">businessofapps.com</a></td></tr>
-          <tr><td>GameDiscoverCo 2025</td><td>Steam愿望单→首周销售中位数0.15x（全量）/ 0.10x（定价>$10），214天=高转化Top20平均预发布期</td><td><a href="https://newsletter.gamediscover.co/p/the-state-of-steam-wishlist-conversions" target="_blank" style="font-size:10px;">gamediscover.co</a></td></tr>
+          <tr><td>GameDiscoverCo 2025</td><td>Steam高愿望基数游戏（>25k愿望单）首周销售中位数0.15x，定价>$10降至0.10x；高转化游戏平均预发布期约214天（低转化约411天）</td><td><a href="https://gamedevreports.substack.com/p/gamediscoverco-the-state-of-steam" target="_blank" style="font-size:10px;">gamedevreports.substack.com</a></td></tr>
           <tr><td>HowToMarketAGame / Chris Zukowski</td><td>SNF Demo转化率中位16.33%/70th 20%，Pre-Steam页面规则5条，2025 Steam 20,282款新游（608款1000+评论=3%）</td><td><a href="https://howtomarketagame.com/2025/03/26/benchmarks-how-many-wishlists-can-i-get-from-steam-next-fest/" target="_blank" style="font-size:10px;">howtomarketagame.com</a></td></tr>
           <tr><td>Big Games Machine 2024</td><td>67%记者希望提前≥3周获得评测副本（150+游戏记者调查）</td><td><a href="https://playruo.com/blog/game-embargo-management-remote-preview-guide" target="_blank" style="font-size:10px;">playruo.com</a></td></tr>
           <tr><td>GDPR / gdpr-info.eu</td><td>Art.83(5)：严重违规罚款上限€2000万或全球年营收4%（取高者）</td><td><a href="https://gdpr-info.eu/issues/fines-penalties/" target="_blank" style="font-size:10px;">gdpr-info.eu</a></td></tr>
@@ -1864,7 +1871,7 @@ document.querySelectorAll('.phase-block').forEach(el=>observer.observe(el));
         </tbody>
       </table>
     </div>
-  </section>
+</div>
 </div>
 
 </body>
