@@ -1,241 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>海外主流社区平台官号搭建与认证 SOP（校验修订版）</title>
-<style>
-  :root {
-    --primary: #1a56db;
-    --primary-light: #eff6ff;
-    --success: #059669;
-    --warning: #d97706;
-    --danger: #dc2626;
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #ffffff;
-    color: var(--gray-800);
-    line-height: 1.7;
-    font-size: 15px;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>海外主流社区平台官号搭建与认证 SOP（校验修订版） | HEYHONG</title>
+    <link rel="stylesheet" href="article-pages.css" />
+    <link rel="stylesheet" href="article-doc.css" />
+    
+  </head>
+  <body>
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="HEYHONG 首页">
+        <img src="assets/logo.png" alt="HEYHONG" />
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="articles.html">发行</a>
+        <a href="index.html#games">产品</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
 
-  /* Cover */
-  .cover {
-    background: linear-gradient(135deg, #1e3a5f 0%, #1a56db 40%, #4f46e5 100%);
-    color: #fff;
-    padding: 80px 60px;
-    text-align: center;
-  }
-  .cover h1 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
-  .cover .subtitle { font-size: 18px; opacity: 0.85; }
-  .cover .meta { margin-top: 32px; font-size: 13px; opacity: 0.6; }
-  .cover .badge-row { margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .cover .badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 6px 18px; font-size: 13px; }
-
-  /* Container */
-  .container { max-width: 1020px; margin: 0 auto; padding: 48px 40px; }
-
-  /* TOC */
-  .toc { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 12px; padding: 32px 36px; margin-bottom: 48px; }
-  .toc h2 { font-size: 20px; color: var(--gray-900); margin-bottom: 16px; }
-  .toc ol { list-style: none; counter-reset: toc; }
-  .toc ol li { counter-increment: toc; padding: 6px 0; font-size: 14px; }
-  .toc ol li::before { content: counter(toc) ". "; font-weight: 700; color: var(--primary); }
-  .toc ol li a { color: var(--gray-600); text-decoration: none; transition: color 0.15s; }
-  .toc ol li a:hover { color: var(--primary); text-decoration: underline; }
-
-  /* Section */
-  .section { margin-bottom: 56px; }
-  .section h2 { font-size: 26px; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; padding-bottom: 12px; border-bottom: 3px solid var(--primary); }
-  .section h3 { font-size: 20px; font-weight: 700; color: var(--gray-800); margin: 28px 0 10px; }
-
-  /* Platform Card */
-  .platform-section {
-    margin-bottom: 48px;
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    overflow: hidden;
-    page-break-inside: avoid;
-  }
-  .platform-header {
-    display: flex; align-items: center; gap: 16px;
-    padding: 20px 28px;
-    background: var(--gray-50);
-    border-bottom: 1px solid var(--gray-200);
-  }
-  .platform-header .platform-icon {
-    width: 44px; height: 44px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0;
-  }
-  .platform-header .platform-name { font-size: 19px; font-weight: 800; color: var(--gray-900); }
-  .platform-body { padding: 24px 28px; }
-
-  /* Flow */
-  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 24px; }
-  .flow-step {
-    background: var(--primary-light); border: 1.5px solid var(--primary); border-radius: 8px;
-    padding: 10px 16px; font-size: 13px; font-weight: 600; color: var(--primary);
-    text-align: center; min-width: 90px;
-  }
-  .flow-step.key {
-    background: #fef3c7; border-color: var(--warning); color: #92400e;
-  }
-  .flow-arrow { color: var(--gray-400); font-size: 18px; font-weight: 300; }
-  .flow-note { font-size: 12px; color: var(--gray-500); font-weight: 400; display: block; margin-top: 2px; }
-
-  /* Detail Grid */
-  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
-  .detail-card { background: var(--gray-50); border-radius: 8px; padding: 18px; border: 1px solid var(--gray-100); }
-  .detail-card h4 { font-size: 13px; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-  .detail-card p, .detail-card li { font-size: 13px; color: var(--gray-700); line-height: 1.65; }
-  .detail-card ul { padding-left: 18px; }
-
-  /* Official Links */
-  .official-links {
-    margin-top: 16px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 16px 20px;
-  }
-  .official-links h4 { font-size: 13px; font-weight: 700; color: var(--gray-600); margin-bottom: 10px; }
-  .official-links .link-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 5px 0; font-size: 13px;
-  }
-  .official-links .link-item .link-label {
-    color: var(--gray-500); min-width: 140px; flex-shrink: 0; font-weight: 600;
-  }
-  .official-links .link-item a {
-    color: var(--primary); text-decoration: none; word-break: break-all;
-  }
-  .official-links .link-item a:hover { text-decoration: underline; }
-
-  /* Comparison Table */
-  .comparison-table {
-    width: 100%; border-collapse: collapse; font-size: 13px;
-    margin: 20px 0; border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden;
-  }
-  .comparison-table th {
-    background: var(--gray-800); color: #fff; padding: 12px 14px;
-    text-align: left; font-weight: 600; font-size: 12px;
-    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
-  }
-  .comparison-table td { padding: 11px 14px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
-  .comparison-table tr:last-child td { border-bottom: none; }
-  .comparison-table tr:nth-child(even) td { background: var(--gray-50); }
-  .tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
-  .tag.free { background: #ecfdf5; color: #065f46; }
-  .tag.paid { background: #fef3c7; color: #92400e; }
-  .tag.conditional { background: #eff6ff; color: #1e40af; }
-
-  /* Asset Table */
-  .asset-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
-  .asset-table th { background: var(--gray-100); padding: 8px 12px; text-align: left; font-weight: 700; font-size: 12px; color: var(--gray-600); border-bottom: 2px solid var(--gray-200); }
-  .asset-table td { padding: 8px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
-
-  /* Priorities */
-  .priority-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
-  @media (max-width: 768px) { .priority-grid { grid-template-columns: 1fr 1fr; } }
-  .priority-card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px; text-align: center; }
-  .priority-card.p0 { border-left: 4px solid var(--danger); }
-  .priority-card.p1 { border-left: 4px solid var(--warning); }
-  .priority-card.p2 { border-left: 4px solid var(--primary); }
-  .priority-card.p3 { border-left: 4px solid var(--success); }
-  .priority-card .pri-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-  .priority-card.p0 .pri-label { color: var(--danger); }
-  .priority-card.p1 .pri-label { color: var(--warning); }
-  .priority-card.p2 .pri-label { color: var(--primary); }
-  .priority-card.p3 .pri-label { color: var(--success); }
-  .priority-card .pri-platforms { font-size: 13px; color: var(--gray-700); font-weight: 600; }
-
-  /* Checklist */
-  .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin: 20px 0; }
-  @media (max-width: 768px) { .checklist { grid-template-columns: 1fr; } }
-  .checklist-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 14px; color: var(--gray-700); }
-  .checklist-item .checkbox { width: 18px; height: 18px; border: 2px solid var(--gray-300); border-radius: 4px; flex-shrink: 0; }
-
-  /* Platform-grouped checklist */
-  .platform-checklist { margin: 20px 0; }
-  .platform-checklist-group {
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    margin-bottom: 16px;
-    overflow: hidden;
-  }
-  .platform-checklist-header {
-    display: flex; align-items: center; gap: 10px;
-    padding: 12px 18px;
-    background: var(--gray-50);
-    border-bottom: 1px solid var(--gray-100);
-    font-size: 15px; font-weight: 700; color: var(--gray-900);
-  }
-  .platform-checklist-header .pch-icon {
-    width: 28px; height: 28px; border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; flex-shrink: 0;
-  }
-  .platform-checklist-body {
-    padding: 12px 18px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 20px;
-  }
-  @media (max-width: 768px) { .platform-checklist-body { grid-template-columns: 1fr; } }
-  .platform-checklist-body .checklist-item { padding: 5px 0; font-size: 13px; }
-  .platform-checklist-body .checklist-item .checkbox { width: 16px; height: 16px; }
-
-  /* Summary */
-  .summary-box {
-    background: linear-gradient(135deg, #eff6ff, #f0f9ff);
-    border: 1px solid #bfdbfe; border-radius: 12px; padding: 28px 32px; margin: 36px 0;
-  }
-  .summary-box h3 { color: var(--primary); margin-top: 0; }
-  .summary-box ul { padding-left: 20px; }
-  .summary-box li { margin-bottom: 6px; font-size: 14px; color: var(--gray-700); }
-
-  /* Intro */
-  .intro-note {
-    background: var(--gray-50); border-left: 4px solid var(--primary);
-    border-radius: 8px; padding: 16px 20px; margin-bottom: 12px;
-    font-size: 14px; color: var(--gray-600);
-  }
-  .intro-note strong { color: var(--gray-800); }
-
-  /* Platform intro */
-  .platform-intro {
-    font-size: 14px; color: var(--gray-600); margin-bottom: 18px; line-height: 1.65;
-  }
-
-  /* Footer */
-  .footer { text-align: center; padding: 32px; color: var(--gray-400); font-size: 12px; border-top: 1px solid var(--gray-100); margin-top: 48px; }
-
-  @media print {
-    .cover { page-break-after: always; }
-    .platform-section { page-break-inside: avoid; }
-    body { font-size: 13px; }
-  }
-</style>
-</head>
-<body>
-
+    <main>
 <!-- ============== COVER ============== -->
-<div class="cover">
+<div class="doc-cover shell">
   <h1>🌐 海外主流社区平台<br>官号搭建与认证 SOP</h1>
   <div class="subtitle">10 大平台 · 全流程覆盖 · 附官方链接</div>
   <div class="badge-row">
@@ -247,7 +34,7 @@
 </div>
 
 <!-- ============== CONTAINER ============== -->
-<div class="container">
+<div class="doc-container shell">
 
 <!-- TOC -->
 <div class="toc">
@@ -1352,11 +1139,12 @@
   </div>
 </div>
 
-<div class="footer">
-  <p>本文件基于《主流社区平台官号搭建与认证 SOP》校验重构</p>
-  <p>数据来源：各平台官方文档及 2026年6月可执行状态 &nbsp;|&nbsp; 生成日期：2026年6月11日</p>
-</div>
 
-</div>
-</body>
+    </main>
+
+    <footer id="contact" class="footer">
+      <div>© 2026 @heyhong</div>
+      <a href="mailto:hong@heyhong.net">hong@heyhong.net</a>
+    </footer>
+  </body>
 </html>
